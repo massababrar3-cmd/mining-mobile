@@ -1,0 +1,52 @@
+BRAVUS — MINE OPERATIONS HUB — MOBILE EDITION 1.0
+
+IPHONE PR OPEN:
+1. Is package ko public HTTPS static website par publish karein. GitHub Pages free
+   option hai. GitHub repository > Settings > Pages > Deploy from a branch >
+   mobile-pages > / (root) > Save. Sirf mobile-site ki files us branch mein hain.
+2. GitHub jab actual published link dikhaye, us link ko iPhone Safari mein kholein.
+   Downloaded HTML ko Files/Quick Look mein kholna supported deployment nahi.
+3. Safari > Share > Add to Home Screen optional hai. Pehle start screen par karein.
+4. First Name, Last Name, template, job title aur department set karke Start report.
+5. Answers fill karein. Take a photo se native camera, Choose pictures se file/photo
+   selection use karein. JPEG/PNG/WebP, max 12 MB source, max 12 photos supported.
+   HEIC directly supported nahi; JPEG/Most Compatible use karein.
+6. Complete & generate PDF dabayein. PDF device par banti hai; yeh delivery nahi.
+7. Share PDF — Outlook / Save to Files se share sheet kholein. Outlook select karein,
+   account/recipient/attachment check karein aur Send dabayein. Outlook app signed in
+   honi chahiye. Agar file share supported nahi to Download PDF > Outlook > Attach.
+8. Open email link PDF attach nahi karta. Us mein manually downloaded PDF attach karein.
+9. SharePoint folder URL paste karein > Open SharePoint folder > apne account se
+   sign in > Upload > Files > saved PDF. Account ko write access chahiye.
+10. Clear report / finish se dashboard ka report/photo state clear hota hai. Pehle
+    PDF save karein; Files/Outlook/SharePoint copies clear nahi hotin.
+
+PRIVATE REPORTS / NO HISTORY:
+- Report answers/photos/identity sirf current page ki memory mein hain. No IndexedDB,
+  local/session storage, report cookies, service worker, telemetry or background upload.
+- Page reload/close/navigation se report lost ho sakti hai. iOS tab eviction bhi work
+  lose kar sakti hai. Saved PDF/OS camera originals/screenshots/browser snapshots
+  dashboard ke control mein nahi; unhein company policy ke mutabiq handle karein.
+- Once loaded PDF offline generate ho sakti hai, lekin offline reload/start guaranteed
+  nahi. Persistent drafts/history aapki request ke mutabiq is version mein nahi hain.
+- Website code, generic forms, branding public hain. Reports website/GitHub par nahi
+  bheji jatin. Website loading par host ko usual connection/IP logs mil sakte hain.
+- Share sheet and manually selected Outlook/SharePoint intentionally data receive
+  karte hain. Dashboard actual send/upload receipt verify nahi karta.
+- Local names verified Microsoft accounts/authentication nahi hain.
+
+TEMPLATES:
+Templates & delivery settings mein form builder, per-question pictures, conditional
+required answers, remove/add template, emails, areas, shift times/deadlines/timezone
+aur SharePoint folder URL edit karein. Changes session-only hain. Export configuration
+only se templates/settings file save aur Import se reuse karein. Export mein reports,
+photos ya profiles nahi. Custom templates/URLs sensitive hon to protected Files mein
+rakhein; public repository mein upload na karein. Desktop report backups import nahi.
+Corrective actions current report PDF mein include hotay hain, historical tracking nahi.
+Previous shift review ek declared response hai; previous records fetch/verify nahi hote.
+
+TEST LIMITS:
+Cloud automated tests device-emulated browser/PDF/share fixtures ko verify karte hain.
+Actual iPhone Safari/Chrome, camera/HEIC conversion, Outlook share sheet, Home Screen,
+Files association aur company inbox/SharePoint upload physical testing pending hain.
+Use the actually published GitHub Pages URL; a guessed link is not proof of deployment.

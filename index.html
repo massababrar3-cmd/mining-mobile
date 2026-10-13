@@ -1,0 +1,2507 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#101627">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data: blob:; connect-src 'none'; worker-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>BRAVUS — Mobile Operations</title>
+<style>
+* {
+  box-sizing: border-box;
+}
+html {
+  background: #f5f6f8;
+  color: #172033;
+  font:
+    16px/1.5 -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+}
+body {
+  margin: 0;
+}
+header {
+  background: #101627;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: calc(18px + env(safe-area-inset-top))
+    max(18px, env(safe-area-inset-right)) 18px
+    max(18px, env(safe-area-inset-left));
+}
+header img {
+  width: 138px;
+  max-width: 35vw;
+}
+header span {
+  font-weight: 650;
+  line-height: 1.3;
+}
+small {
+  display: block;
+  font-size: 12px;
+  font-weight: 400;
+  opacity: 0.8;
+  margin-top: 5px;
+}
+.privacy {
+  background: #ddf0e8;
+  padding: 10px 16px;
+  font-size: 12px;
+  color: #185442;
+  text-align: center;
+}
+main {
+  max-width: 780px;
+  margin: auto;
+  padding: 22px 16px 36px;
+}
+h1 {
+  font-size: 29px;
+  line-height: 1.2;
+  margin: 0 0 10px;
+}
+h2 {
+  font-size: 21px;
+  margin: 0 0 10px;
+}
+h3 {
+  font-size: 17px;
+  margin: 0 0 8px;
+}
+p {
+  margin: 8px 0 16px;
+}
+.muted {
+  color: #657086;
+  font-size: 14px;
+}
+.panel,
+.question {
+  background: white;
+  border: 1px solid #dce1e9;
+  border-radius: 12px;
+  padding: 18px;
+  margin: 16px 0;
+  overflow-wrap: anywhere;
+}
+label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  margin: 12px 0;
+}
+input,
+select,
+textarea {
+  display: block;
+  width: 100%;
+  font: inherit;
+  font-size: 16px;
+  color: inherit;
+  border: 1px solid #aeb8c8;
+  border-radius: 7px;
+  padding: 11px;
+  margin-top: 6px;
+  background: white;
+  min-height: 46px;
+}
+textarea {
+  min-height: 115px;
+  resize: vertical;
+}
+input[type="checkbox"] {
+  display: inline;
+  width: 22px;
+  min-height: 22px;
+  vertical-align: middle;
+  margin: 0 8px 0 0;
+}
+input[type="file"] {
+  font-size: 14px;
+}
+button,
+.button {
+  font: inherit;
+  font-weight: 600;
+  background: #85cdb6;
+  color: #102c24;
+  border: 0;
+  border-radius: 7px;
+  padding: 12px 16px;
+  min-height: 46px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+}
+button.secondary,
+.button.secondary {
+  background: #e9edf3;
+  color: #243047;
+}
+button.danger {
+  background: #fbe5e5;
+  color: #922d2d;
+}
+button:disabled {
+  opacity: 0.5;
+  cursor: wait;
+}
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 12px 0;
+}
+.buttons > * {
+  flex: 1 1 180px;
+}
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.photos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 10px;
+}
+.photo {
+  border: 1px solid #e0e5ec;
+  border-radius: 8px;
+  padding: 10px;
+  margin: 12px 0;
+}
+.photo img {
+  width: 100%;
+  height: 130px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+.photo label {
+  font-size: 12px;
+}
+.photo input {
+  padding: 7px;
+}
+.hint {
+  font-size: 13px;
+  color: #61708a;
+}
+.warn {
+  padding: 12px;
+  background: #fff4d8;
+  border-radius: 7px;
+  color: #634b11;
+  font-size: 14px;
+}
+.tag {
+  font-size: 12px;
+  background: #e5f4ed;
+  padding: 5px 9px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-bottom: 12px;
+}
+#notice {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  padding: 14px 18px;
+  background: #e3f3eb;
+  border-bottom: 1px solid #8cc3ab;
+  font-size: 14px;
+}
+#notice.error {
+  background: #fbe8e8;
+  border-color: #c16b6b;
+  color: #852a2a;
+}
+footer {
+  padding: 20px 16px calc(20px + env(safe-area-inset-bottom));
+  text-align: center;
+  color: #67758b;
+  font-size: 12px;
+  border-top: 1px solid #dde3eb;
+}
+details {
+  margin: 14px 0;
+}
+summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+.hidden,
+[hidden] {
+  display: none !important;
+}
+.mono {
+  font-family: ui-monospace, monospace;
+  font-size: 13px;
+}
+.step {
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #61708a;
+  margin-bottom: 10px;
+}
+a {
+  color: #195f50;
+  overflow-wrap: anywhere;
+}
+input:focus,
+textarea:focus,
+select:focus,
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid #369d82;
+  outline-offset: 2px;
+}
+@media (max-width: 450px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .buttons > * {
+    flex-basis: 100%;
+  }
+  main {
+    padding: 20px 12px;
+  }
+  .panel,
+  .question {
+    padding: 16px;
+  }
+  header {
+    gap: 14px;
+  }
+  h1 {
+    font-size: 26px;
+  }
+}
+
+</style>
+</head>
+<body>
+<header><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0NDAgOTUiIHJvbGU9ImltZyIgYXJpYS1sYWJlbGxlZGJ5PSJicmF2dXMtdGl0bGUiPgogIDx0aXRsZSBpZD0iYnJhdnVzLXRpdGxlIj5CUkFWVVM8L3RpdGxlPgogIDwhLS0gVHlwb2dyYXBoaWMgcmVwcm9kdWN0aW9uIGluc3BpcmVkIGJ5IHRoZSB1c2VyJ3Mgc2NyZWVuc2hvdC4gT2ZmaWNpYWwgdmVjdG9yIGFydHdvcmsgY291bGQgbm90IGJlIHJldHJpZXZlZDsgdGhpcyBpcyBub3QgYW4gYXV0aGVudGljYXRlZCBvZmZpY2lhbCBsb2dvIGFzc2V0LiAtLT4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iYnJhdnVzLXNpbHZlciIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNmZmZmZmYiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIwLjM2IiBzdG9wLWNvbG9yPSIjZjRmNGY2Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMC42OCIgc3RvcC1jb2xvcj0iI2IzYjZiYyIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNmZmZmZmYiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgPC9kZWZzPgogIDx0ZXh0IHg9IjQiIHk9Ijc1IiBmaWxsPSJ1cmwoI2JyYXZ1cy1zaWx2ZXIpIiBmb250LWZhbWlseT0iQXJpYWwgQmxhY2ssIEFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9Ijg2IiBmb250LXdlaWdodD0iOTAwIiBsZXR0ZXItc3BhY2luZz0iLTMiIHRleHRMZW5ndGg9IjQyNSIgbGVuZ3RoQWRqdXN0PSJzcGFjaW5nQW5kR2x5cGhzIj5CUkFWVVM8L3RleHQ+Cjwvc3ZnPgo=" alt="BRAVUS"><span>Mine Operations Hub<small>Mobile · Report capture</small></span></header>
+<div class="privacy">On-device processing · No report history · No background uploads</div>
+<div id="notice" role="status" aria-live="polite" hidden></div>
+<main id="app"></main>
+<footer>Mobile Edition 1.0 · Names are declared attribution, not verified login.<br>Downloaded PDFs and OS shares remain outside this dashboard.</footer>
+<noscript>Enable JavaScript to complete forms and generate PDFs.</noscript>
+<script>
+"use strict";
+/* Mine Operations browser PDF export. No network, external fonts or print dialog.
+   Western text remains selectable. Other scripts are drawn with Chrome's installed
+   fonts and embedded as images so they are not encoded as broken PDF characters.
+   Those text runs are visually preserved but are not selectable/searchable. */
+(() => {
+  const PAGE_WIDTH = 595.28,
+    PAGE_HEIGHT = 841.89;
+  const MARGIN = 42,
+    CONTENT_WIDTH = PAGE_WIDTH - MARGIN * 2;
+  const TOP = 110,
+    BOTTOM = 790,
+    MAX_PAGES = 300;
+  const encoder = new TextEncoder();
+  const extended = new Map([
+    [0x20ac, 128],
+    [0x201a, 130],
+    [0x0192, 131],
+    [0x201e, 132],
+    [0x2026, 133],
+    [0x2020, 134],
+    [0x2021, 135],
+    [0x02c6, 136],
+    [0x2030, 137],
+    [0x0160, 138],
+    [0x2039, 139],
+    [0x0152, 140],
+    [0x017d, 142],
+    [0x2018, 145],
+    [0x2019, 146],
+    [0x201c, 147],
+    [0x201d, 148],
+    [0x2022, 149],
+    [0x2013, 150],
+    [0x2014, 151],
+    [0x02dc, 152],
+    [0x2122, 153],
+    [0x0161, 154],
+    [0x203a, 155],
+    [0x0153, 156],
+    [0x017e, 158],
+    [0x0178, 159],
+  ]);
+  const ascii = (value) => encoder.encode(value);
+  const number = (value) => Number(value).toFixed(2);
+  const label = (value) => String(value ?? "").replaceAll("_", " ");
+  const clean = (value) =>
+    String(value ?? "—")
+      .replace(/\r\n?/g, "\n")
+      .replace(/\t/g, "    ")
+      .replace(/[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]/g, " ");
+  function western(value) {
+    return [...value].every((char) => {
+      const n = char.codePointAt(0);
+      return (n >= 32 && n <= 126) || (n >= 160 && n <= 255) || extended.has(n);
+    });
+  }
+  function literal(value) {
+    return (
+      "(" +
+      [...value]
+        .map((char) => {
+          const n = char.codePointAt(0),
+            byte = extended.get(n) ?? n;
+          if (byte > 255) throw new Error("Unsupported PDF text encoding.");
+          if (char === "(" || char === ")" || char === "\\") return "\\" + char;
+          return byte >= 32 && byte < 127
+            ? char
+            : "\\" + byte.toString(8).padStart(3, "0");
+        })
+        .join("") +
+      ")"
+    );
+  }
+  function metadata(value) {
+    const bytes = [254, 255];
+    for (let i = 0; i < value.length; i++)
+      bytes.push(value.charCodeAt(i) >> 8, value.charCodeAt(i) & 255);
+    return (
+      "<" + bytes.map((b) => b.toString(16).padStart(2, "0")).join("") + ">"
+    );
+  }
+  function join(parts) {
+    const result = new Uint8Array(
+      parts.reduce((sum, part) => sum + part.length, 0),
+    );
+    let offset = 0;
+    for (const part of parts) {
+      result.set(part, offset);
+      offset += part.length;
+    }
+    return result;
+  }
+  function bytesFromDataURL(url) {
+    const data = atob(url.slice(url.indexOf(",") + 1));
+    return Uint8Array.from(data, (char) => char.charCodeAt(0));
+  }
+  async function readableImage(
+    data,
+    name = "Photograph",
+    background = "white",
+  ) {
+    if (
+      typeof data !== "string" ||
+      !/^data:image\/(png|jpeg|webp);base64,/i.test(data)
+    )
+      throw new Error(name + " is not an embedded JPEG, PNG or WebP image.");
+    const img = new Image();
+    await new Promise((resolve, reject) => {
+      img.onload = resolve;
+      img.onerror = () =>
+        reject(
+          new Error(name + " could not be decoded. PDF was not exported."),
+        );
+      img.src = data;
+    });
+    if (
+      !img.naturalWidth ||
+      !img.naturalHeight ||
+      img.naturalWidth * img.naturalHeight > 50000000
+    )
+      throw new Error(
+        name + " has invalid dimensions or exceeds 50 megapixels.",
+      );
+    const factor = Math.min(
+      1,
+      1800 / Math.max(img.naturalWidth, img.naturalHeight),
+    );
+    const canvas = document.createElement("canvas");
+    canvas.width = Math.max(1, Math.round(img.naturalWidth * factor));
+    canvas.height = Math.max(1, Math.round(img.naturalHeight * factor));
+    const ctx = canvas.getContext("2d");
+    if (!ctx)
+      throw new Error("Chrome canvas is unavailable for PDF photographs.");
+    ctx.fillStyle = background;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+    const result = {
+      width: canvas.width,
+      height: canvas.height,
+      bytes: bytesFromDataURL(canvas.toDataURL("image/jpeg", 0.9)),
+    };
+    canvas.width = canvas.height = 1;
+    return result;
+  }
+  function conditional(question, answers, questions, seen = new Set()) {
+    if (!question.condition) return true;
+    if (seen.has(question.id)) return false;
+    const parent = questions.find((q) => q.id === question.condition.question);
+    return (
+      (!parent ||
+        conditional(
+          parent,
+          answers,
+          questions,
+          new Set([...seen, question.id]),
+        )) &&
+      String(answers[question.condition.question] ?? "") ===
+        question.condition.equals
+    );
+  }
+  function answer(value) {
+    if (value == null || value === "") return "No response recorded";
+    if (typeof value === "object") return JSON.stringify(value, null, 2);
+    return String(value);
+  }
+  function filename(record) {
+    const reference = String(record.reference || record.id || "record")
+      .replace(/[^a-zA-Z0-9._-]/g, "-")
+      .replace(/-+/g, "-")
+      .slice(0, 100);
+    const kind = record.kind || record.snapshot?.kind || "record";
+    return (
+      (kind === "handover"
+        ? "Handover-"
+        : kind === "inspection"
+          ? "Inspection-"
+          : "Record-") +
+      reference +
+      "-v" +
+      Math.max(0, Number(record.submissionVersion) || 0) +
+      ".pdf"
+    );
+  }
+  async function createRecordPDF(record, options = {}) {
+    if (
+      !record ||
+      !record.snapshot ||
+      !Array.isArray(record.snapshot.questions)
+    )
+      throw new Error(
+        "A saved record and its form version are required for PDF export.",
+      );
+    if ((record.photos?.length || 0) > 100)
+      throw new Error(
+        "PDF export supports at most 100 photographs per record.",
+      );
+    const timeZone = options.timeZone || "Australia/Brisbane";
+    let formatter;
+    try {
+      formatter = new Intl.DateTimeFormat("en-AU", {
+        timeZone,
+        dateStyle: "medium",
+        timeStyle: "short",
+      });
+    } catch {
+      throw new Error("The configured PDF time zone is invalid.");
+    }
+    const date = (value) =>
+      value && !Number.isNaN(new Date(value).getTime())
+        ? formatter.format(new Date(value)) + " (" + timeZone + ")"
+        : "Not recorded";
+    const name = (id) =>
+      id
+        ? typeof options.profileName === "function"
+          ? options.profileName(id)
+          : "Profile " + id
+        : "Not assigned";
+    const company = clean(options.companyName || "BRAVUS");
+    const site = clean(options.siteName || "Mine Operations Hub");
+    const kind = label(
+      record.kind || record.snapshot.kind || "Operational record",
+    );
+    const objects = [
+      null,
+      null,
+      null,
+      ascii(
+        "<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>",
+      ),
+      ascii(
+        "<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>",
+      ),
+      ascii(
+        "<< /Title " +
+          metadata(kind + " " + (record.reference || "")) +
+          " /Author " +
+          metadata(clean(record.authorName || "Local profile")) +
+          " /Creator " +
+          metadata("Mine Operations Hub — Browser Edition") +
+          " >>",
+      ),
+    ];
+    const reserve = () => {
+      objects.push(null);
+      return objects.length - 1;
+    };
+    const imageCache = new Map();
+    const pages = [];
+    let page,
+      cursor = TOP,
+      unicodeUsed = false;
+    const measureCanvas = document.createElement("canvas"),
+      measure = measureCanvas.getContext("2d");
+    if (!measure)
+      throw new Error("Chrome canvas is unavailable for PDF text layout.");
+    function newPage() {
+      if (pages.length >= MAX_PAGES)
+        throw new Error(
+          "PDF exceeds 300 pages. Shorten this record before exporting.",
+        );
+      page = { content: [], images: new Map() };
+      pages.push(page);
+      cursor = TOP;
+    }
+    function ensure(height) {
+      if (cursor + height > BOTTOM) newPage();
+    }
+    function rectangle(x, top, width, height, color) {
+      page.content.push(
+        color +
+          " rg " +
+          number(x) +
+          " " +
+          number(PAGE_HEIGHT - top - height) +
+          " " +
+          number(width) +
+          " " +
+          number(height) +
+          " re f\n",
+      );
+    }
+    function addImage(image) {
+      if (image.object) return image.object;
+      const id = reserve();
+      objects[id] = join([
+        ascii(
+          "<< /Type /XObject /Subtype /Image /Width " +
+            image.width +
+            " /Height " +
+            image.height +
+            " /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length " +
+            image.bytes.length +
+            " >>\nstream\n",
+        ),
+        image.bytes,
+        ascii("\nendstream"),
+      ]);
+      image.object = id;
+      return id;
+    }
+    function drawImage(image, x, top, width, height) {
+      const id = addImage(image),
+        resource = "Im" + id;
+      page.images.set(resource, id);
+      page.content.push(
+        "q " +
+          number(width) +
+          " 0 0 " +
+          number(height) +
+          " " +
+          number(x) +
+          " " +
+          number(PAGE_HEIGHT - top - height) +
+          " cm /" +
+          resource +
+          " Do Q\n",
+      );
+    }
+    function drawLine(
+      value,
+      x,
+      top,
+      size,
+      bold = false,
+      color = "0.1 0.13 0.2",
+      width = CONTENT_WIDTH,
+    ) {
+      value = clean(value);
+      if (!value) return;
+      if (western(value)) {
+        page.content.push(
+          "BT /" +
+            (bold ? "FB" : "FR") +
+            " " +
+            size +
+            " Tf " +
+            color +
+            " rg 1 0 0 1 " +
+            number(x) +
+            " " +
+            number(PAGE_HEIGHT - top - size) +
+            " Tm " +
+            literal(value) +
+            " Tj ET\n",
+        );
+      } else {
+        unicodeUsed = true;
+        const canvas = document.createElement("canvas"),
+          factor = 3;
+        canvas.width = Math.max(1, Math.ceil(width * factor));
+        canvas.height = Math.ceil(size * 1.8 * factor);
+        const ctx = canvas.getContext("2d");
+        ctx.scale(factor, factor);
+        ctx.fillStyle = color === "1 1 1" ? "#0e1424" : "white";
+        ctx.fillRect(0, 0, width, size * 1.8);
+        ctx.font = (bold ? "bold " : "") + size + "px Arial, sans-serif";
+        ctx.fillStyle =
+          "rgb(" +
+          color
+            .split(" ")
+            .map((n) => Math.round(Number(n) * 255))
+            .join(",") +
+          ")";
+        ctx.textBaseline = "top";
+        const rtl = /^[\s\d\p{P}]*[\u0590-\u08ff]/u.test(value);
+        ctx.direction = rtl ? "rtl" : "ltr";
+        ctx.textAlign = rtl ? "right" : "left";
+        ctx.fillText(value, rtl ? width : 0, 0);
+        const image = {
+          width: canvas.width,
+          height: canvas.height,
+          bytes: bytesFromDataURL(canvas.toDataURL("image/jpeg", 0.95)),
+        };
+        drawImage(image, x, top, width, size * 1.8);
+        canvas.width = canvas.height = 1;
+      }
+    }
+    function lines(value, size, bold = false, width = CONTENT_WIDTH) {
+      measure.font = (bold ? "bold " : "") + size + "px Arial, sans-serif";
+      const result = [];
+      for (const paragraph of clean(value).split("\n")) {
+        if (!paragraph) {
+          result.push("");
+          continue;
+        }
+        let current = "";
+        for (const word of paragraph.split(/(\s+)/)) {
+          if (measure.measureText(current + word).width <= width) {
+            current += word;
+            continue;
+          }
+          if (current.trim()) result.push(current.trimEnd());
+          current = "";
+          // Split long URLs, equipment IDs and text without spaces by grapheme.
+          const chars =
+            typeof Intl.Segmenter === "function"
+              ? [
+                  ...new Intl.Segmenter(undefined, {
+                    granularity: "grapheme",
+                  }).segment(word),
+                ].map((s) => s.segment)
+              : [...word];
+          for (const char of chars) {
+            if (current && measure.measureText(current + char).width > width) {
+              result.push(current);
+              current = "";
+            }
+            current += char;
+          }
+        }
+        if (current.trim()) result.push(current.trimEnd());
+      }
+      return result.length ? result : [""];
+    }
+    function text(
+      value,
+      {
+        size = 10,
+        bold = false,
+        color = "0.1 0.13 0.2",
+        gap = 5,
+        indent = 0,
+      } = {},
+    ) {
+      const height = Math.max(size * 1.9, 17);
+      for (const line of lines(value, size, bold, CONTENT_WIDTH - indent)) {
+        ensure(height);
+        drawLine(
+          line,
+          MARGIN + indent,
+          cursor,
+          size,
+          bold,
+          color,
+          CONTENT_WIDTH - indent,
+        );
+        cursor += height;
+      }
+      cursor += gap;
+    }
+    function section(title) {
+      ensure(48);
+      cursor += 8;
+      rectangle(MARGIN, cursor, CONTENT_WIDTH, 24, "0.9 0.96 0.94");
+      drawLine(
+        title,
+        MARGIN + 10,
+        cursor + 5,
+        11,
+        true,
+        "0.06 0.32 0.28",
+        CONTENT_WIDTH - 20,
+      );
+      cursor += 34;
+    }
+    function field(key, value) {
+      text(key + ": " + clean(value), { size: 10, gap: 1 });
+    }
+    async function photograph(photo, index, prefix = "Photo") {
+      const data = photo.data || photo.dataUrl;
+      let image = imageCache.get(data);
+      if (!image) {
+        image = await readableImage(data, photo.name || prefix + " " + index);
+        imageCache.set(data, image);
+      }
+      const factor = Math.min(
+        CONTENT_WIDTH / image.width,
+        340 / image.height,
+        1,
+      );
+      const width = image.width * factor,
+        height = image.height * factor;
+      ensure(height + 55);
+      text(prefix + " " + index + " — " + (photo.name || "Evidence"), {
+        bold: true,
+        gap: 2,
+      });
+      // Never stretch the image; retain its original aspect ratio.
+      ensure(height + 8);
+      drawImage(image, MARGIN, cursor, width, height);
+      cursor += height + 8;
+      if (photo.caption) text("Caption: " + photo.caption, { gap: 2 });
+      if (photo.capturedAt)
+        text("Added: " + date(photo.capturedAt), {
+          size: 8,
+          color: "0.35 0.38 0.43",
+        });
+      cursor += 7;
+    }
+    newPage();
+    text(
+      kind.charAt(0).toUpperCase() +
+        kind.slice(1) +
+        " — " +
+        (record.reference || "Record"),
+      { size: 18, bold: true },
+    );
+    field(
+      "Form",
+      record.snapshot.name + " · version " + record.snapshot.version,
+    );
+    field("Personnel", record.authorName || "Name not recorded");
+    field(
+      "Job title",
+      record.authorPosition ||
+        record.authorTitle ||
+        "Not captured on this record",
+    );
+    field(
+      "Department",
+      record.authorDepartment || "Not captured on this record",
+    );
+    field("Operational date", record.date || "Not recorded");
+    field("Shift", record.shift?.name || record.shift || "Not recorded");
+    if (record.shift?.start || record.shift?.end)
+      field(
+        "Shift times",
+        (record.shift.start || "") + "–" + (record.shift.end || ""),
+      );
+    field("Area", record.area || "Not recorded");
+    field("Status", label(record.status));
+    field(options.submissionLabel || "Submitted", date(record.submittedAt));
+    field("Submission version", record.submissionVersion ?? 0);
+    if (record.recipient) field("Incoming recipient", name(record.recipient));
+    section("Responses");
+    const answers = record.answers || {},
+      questions = record.snapshot.questions;
+    const shownPhotos = new Set();
+    for (const question of questions) {
+      if (!conditional(question, answers, questions)) continue;
+      ensure(60);
+      text(question.label || question.id, { bold: true, gap: 1 });
+      text(answer(answers[question.id]), { gap: 10 });
+      for (const [i, photo] of (record.photos || []).entries())
+        if (photo.questionId === question.id) {
+          await photograph(photo, i + 1, "Question photo");
+          shownPhotos.add(photo);
+        }
+    }
+    section("Photographic evidence");
+    if (!(record.photos || []).length) text("No photographs recorded.");
+    for (const [i, photo] of (record.photos || []).entries())
+      if (!shownPhotos.has(photo)) {
+        if (photo.questionLabel)
+          text("Associated question: " + photo.questionLabel, {
+            bold: true,
+            gap: 4,
+          });
+        await photograph(photo, i + 1);
+      }
+    const actions = (options.actions || []).filter(
+      (action) =>
+        !record.id ||
+        action.recordId === record.id ||
+        action.carriedTo?.includes(record.id),
+    );
+    section("Corrective actions");
+    if (!actions.length) text("No linked corrective actions.");
+    for (const [i, action] of actions.entries()) {
+      ensure(75);
+      text(
+        "Action " + (i + 1) + " — " + (action.reference || action.id || ""),
+        { bold: true },
+      );
+      text(action.description || "No description");
+      field(
+        "Status / priority",
+        label(action.status) + " / " + label(action.priority),
+      );
+      field("Assigned to", action.assigneeName || name(action.assignee));
+      field(
+        "Due",
+        options.actionDateOnly
+          ? action.dueAt?.slice(0, 10) || "Not recorded"
+          : date(action.dueAt),
+      );
+      for (const progress of action.progress || [])
+        text(
+          (progress.name || name(progress.by)) +
+            " · " +
+            date(progress.at) +
+            "\n" +
+            progress.note,
+          { size: 9 },
+        );
+      if (action.completion) {
+        text(
+          "Completion — " +
+            (action.completion.name || name(action.completion.by)) +
+            " · " +
+            date(action.completion.at),
+          { bold: true },
+        );
+        text(action.completion.note || "No completion note");
+        for (const [n, photo] of (action.completion.photos || []).entries())
+          await photograph(photo, n + 1, "Completion photo");
+      }
+      if (action.verification)
+        text(
+          "Verification — " +
+            (action.verification.name || name(action.verification.by)) +
+            " · " +
+            date(action.verification.at) +
+            "\n" +
+            (action.verification.note || ""),
+        );
+    }
+    if (record.acknowledgements?.length || record.reviews?.length) {
+      section("Acknowledgements and reviews");
+      for (const ack of record.acknowledgements || [])
+        text(
+          (ack.name || name(ack.by)) +
+            " acknowledged submission v" +
+            ack.version +
+            " · " +
+            date(ack.at),
+        );
+      for (const review of record.reviews || [])
+        text(
+          (review.name || name(review.by)) +
+            " · " +
+            review.decision +
+            " · submission v" +
+            review.version +
+            " · " +
+            date(review.at) +
+            "\n" +
+            (review.note || ""),
+        );
+    }
+    let logo;
+    if (options.logoDataUrl)
+      logo = await readableImage(
+        options.logoDataUrl,
+        "Company logo",
+        "#0e1424",
+      );
+    // Add repeated headers and actual page counts after content pagination.
+    for (let i = 0; i < pages.length; i++) {
+      page = pages[i];
+      rectangle(MARGIN, 30, CONTENT_WIDTH, 60, "0.055 0.078 0.14");
+      if (logo) {
+        const factor = Math.min(160 / logo.width, 35 / logo.height);
+        drawImage(
+          logo,
+          MARGIN + 12,
+          39,
+          logo.width * factor,
+          logo.height * factor,
+        );
+        drawLine(
+          site,
+          MARGIN + 185,
+          45,
+          10,
+          true,
+          "1 1 1",
+          CONTENT_WIDTH - 195,
+        );
+      } else {
+        drawLine(
+          company,
+          MARGIN + 12,
+          39,
+          20,
+          true,
+          "1 1 1",
+          CONTENT_WIDTH - 24,
+        );
+        drawLine(site, MARGIN + 12, 68, 9, false, "1 1 1", CONTENT_WIDTH - 24);
+      }
+      rectangle(MARGIN, 802, CONTENT_WIDTH, 1, "0.3 0.68 0.57");
+      drawLine(
+        "Local profile attribution · " +
+          (record.reference || "Operational record"),
+        MARGIN,
+        810,
+        7,
+        false,
+        "0.35 0.38 0.43",
+        CONTENT_WIDTH - 70,
+      );
+      drawLine(
+        "Page " + (i + 1) + " of " + pages.length,
+        PAGE_WIDTH - MARGIN - 61,
+        810,
+        7,
+        false,
+        "0.35 0.38 0.43",
+        61,
+      );
+      if (unicodeUsed)
+        drawLine(
+          "Other scripts use browser fonts as images; those text runs are not searchable.",
+          MARGIN,
+          823,
+          6.5,
+          false,
+          "0.35 0.38 0.43",
+        );
+    }
+    const kids = [];
+    for (const p of pages) {
+      const content = ascii(p.content.join("")),
+        stream = reserve(),
+        id = reserve();
+      objects[stream] = join([
+        ascii("<< /Length " + content.length + " >>\nstream\n"),
+        content,
+        ascii("endstream"),
+      ]);
+      const resources = [...p.images]
+        .map(([key, id]) => "/" + key + " " + id + " 0 R")
+        .join(" ");
+      objects[id] = ascii(
+        "<< /Type /Page /Parent 2 0 R /MediaBox [0 0 " +
+          PAGE_WIDTH +
+          " " +
+          PAGE_HEIGHT +
+          "] /Resources << /Font << /FR 3 0 R /FB 4 0 R >> /XObject << " +
+          resources +
+          " >> >> /Contents " +
+          stream +
+          " 0 R >>",
+      );
+      kids.push(id + " 0 R");
+    }
+    objects[1] = ascii("<< /Type /Catalog /Pages 2 0 R >>");
+    objects[2] = ascii(
+      "<< /Type /Pages /Kids [" +
+        kids.join(" ") +
+        "] /Count " +
+        kids.length +
+        " >>",
+    );
+    const parts = [
+        join([
+          ascii("%PDF-1.4\n%"),
+          new Uint8Array([226, 227, 207, 211]),
+          ascii("\n"),
+        ]),
+      ],
+      offsets = [0];
+    let offset = parts[0].length;
+    for (let id = 1; id < objects.length; id++) {
+      const chunk = join([
+        ascii(id + " 0 obj\n"),
+        objects[id],
+        ascii("\nendobj\n"),
+      ]);
+      offsets.push(offset);
+      parts.push(chunk);
+      offset += chunk.length;
+    }
+    const xref =
+      "xref\n0 " +
+      objects.length +
+      "\n0000000000 65535 f \n" +
+      offsets
+        .slice(1)
+        .map((position) => String(position).padStart(10, "0") + " 00000 n \n")
+        .join("");
+    parts.push(
+      ascii(
+        xref +
+          "trailer\n<< /Size " +
+          objects.length +
+          " /Root 1 0 R /Info 5 0 R >>\nstartxref\n" +
+          offset +
+          "\n%%EOF\n",
+      ),
+    );
+    measureCanvas.width = measureCanvas.height = 1;
+    return new Blob(parts, { type: "application/pdf" });
+  }
+  window.MinePDF = Object.freeze({ createRecordPDF, filename });
+})();
+
+"use strict";
+(() => {
+  const $ = (id) => document.getElementById(id);
+  const clone = (x) => structuredClone(x);
+  const uid = () => crypto.randomUUID();
+  const MAX_PHOTOS = 12,
+    MAX_SOURCE = 12 * 1024 * 1024;
+  let settings = {
+    companyName: "BRAVUS",
+    siteName: "Mine Operations",
+    timeZone: "Australia/Brisbane",
+    areas: ["North Pit", "Workshop", "Haul Road"],
+    shifts: [
+      { name: "Day shift", start: "06:00", end: "18:00", deadline: "18:30" },
+      { name: "Night shift", start: "18:00", end: "06:00", deadline: "06:30" },
+    ],
+    handoverEmail: "Massab.Abrar@bravus.com.au",
+    inspectionEmail: "Massab.Abrar@bravus.com.au",
+    sharepointUrl: "",
+  };
+  function q(
+    label,
+    type = "textarea",
+    required = false,
+    photoMode = "optional",
+    options = [],
+  ) {
+    return {
+      id: uid(),
+      label,
+      type,
+      required,
+      photoMode,
+      options,
+      condition: null,
+    };
+  }
+  const titles = [
+    "Mining Superintendent",
+    "Drill & Blast Superintendent",
+    "OCE",
+    "Mining Supervisor",
+    "Drill & Blast Supervisor",
+  ];
+  let templates = titles.map((position) => ({
+    id: uid(),
+    name: position + " handover",
+    position,
+    department: position.includes("Blast") ? "Drill & Blast" : "Mining",
+    kind: "handover",
+    version: 1,
+    questions: [
+      q("JSA / task risk assessment"),
+      q("Operational summary", "textarea", true),
+      q("Safety observations / changes", "textarea", true),
+      q("Outstanding work for the next shift"),
+      q("Previous shift review", "select", true, "none", [
+        "Reviewed",
+        "Not reviewed",
+        "Not applicable",
+      ]),
+      q("Previous handover reference", "text", true),
+      q("Follow-up required?", "select", true, "none", ["No", "Yes"]),
+    ],
+  }));
+  for (const t of templates)
+    t.questions[5].condition = {
+      question: t.questions[4].id,
+      equals: "Reviewed",
+    };
+  templates.push({
+    id: uid(),
+    name: "Workplace inspection checklist",
+    position: "Inspection Officer",
+    department: "Mining",
+    kind: "inspection",
+    version: 1,
+    questions: [
+      q("Location / equipment inspected", "text", true),
+      q("Access and workplace condition", "select", true, "optional", [
+        "Acceptable",
+        "Requires attention",
+        "Not applicable",
+      ]),
+      q("Findings and observations", "textarea", true),
+    ],
+  });
+  let identity = null,
+    record = null,
+    prepared = null,
+    busy = false,
+    epoch = 0,
+    configDraft = null;
+  const urls = new Set();
+  function n(tag, attrs = {}, ...children) {
+    const el = document.createElement(tag);
+    for (const [key, value] of Object.entries(attrs)) {
+      if (key.startsWith("on")) el.addEventListener(key.slice(2), value);
+      else if (key === "text") el.textContent = value;
+      else if (key in el) el[key] = value;
+      else el.setAttribute(key, value);
+    }
+    for (const child of children.flat()) {
+      if (child != null)
+        el.append(
+          child instanceof Node
+            ? child
+            : document.createTextNode(String(child)),
+        );
+    }
+    return el;
+  }
+  const txt = (tag, value, attrs = {}) => n(tag, attrs, value);
+  const btn = (label, fn, style = "") =>
+    n(
+      "button",
+      { type: "button", className: style, onclick: () => run(fn) },
+      label,
+    );
+  const field = (label, el) => {
+    el.setAttribute("aria-label", label);
+    return n("label", {}, label, el);
+  };
+  const inp = (name, value = "", type = "text", attrs = {}) =>
+    n("input", { name, value, type, autocomplete: "off", ...attrs });
+  const area = (name, value = "", attrs = {}) =>
+    n("textarea", {
+      name,
+      value,
+      autocomplete: "off",
+      maxLength: 10000,
+      ...attrs,
+    });
+  function sel(name, options, value) {
+    return n(
+      "select",
+      { name, value },
+      options.map((x) =>
+        n(
+          "option",
+          {
+            value: typeof x === "string" ? x : x.value,
+            selected: (typeof x === "string" ? x : x.value) === value,
+          },
+          typeof x === "string" ? x : x.label,
+        ),
+      ),
+    );
+  }
+  function notice(message, error = false) {
+    $("notice").textContent = message;
+    $("notice").className = error ? "error" : "";
+    $("notice").hidden = false;
+  }
+  async function run(fn) {
+    try {
+      await fn();
+    } catch (e) {
+      notice(e.message || "Operation failed; no delivery was confirmed.", true);
+    }
+  }
+  function required(value, label, max = 100) {
+    value = String(value ?? "").trim();
+    if (!value || value.length > max)
+      throw new Error(label + " is required (maximum " + max + " characters).");
+    return value;
+  }
+  function today() {
+    const parts = new Intl.DateTimeFormat("en-CA", {
+      timeZone: settings.timeZone,
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+    }).formatToParts(new Date());
+    const get = (x) => parts.find((p) => p.type === x).value;
+    return get("year") + "-" + get("month") + "-" + get("day");
+  }
+  const dateName = () => today().split("-").reverse().join("-");
+  function revoke() {
+    for (const url of urls) URL.revokeObjectURL(url);
+    urls.clear();
+  }
+  function reset() {
+    epoch++;
+    record = null;
+    prepared = null;
+    identity = null;
+    configDraft = null;
+    revoke();
+    $("notice").hidden = true;
+    $("app").replaceChildren();
+    busy = false;
+  }
+  function finish() {
+    if (
+      !confirm(
+        "Clear this report and its pictures from the dashboard? Save/share the PDF first. Downloaded files and shared copies will remain.",
+      )
+    )
+      return;
+    reset();
+    home();
+  }
+  function home() {
+    const c = $("app");
+    c.replaceChildren(
+      txt("div", "01 · Your report", { className: "step" }),
+      txt("h1", "Capture your shift."),
+      txt(
+        "p",
+        "Complete a handover or inspection, create a PDF, then share it or upload it to your permitted SharePoint folder.",
+        { className: "muted" },
+      ),
+    );
+    const form = n(
+      "form",
+      { autocomplete: "off" },
+      n(
+        "div",
+        { className: "grid" },
+        field(
+          "First Name",
+          inp("first", identity?.first || "", "text", {
+            required: true,
+            maxLength: 60,
+          }),
+        ),
+        field(
+          "Surname / Last Name",
+          inp("last", identity?.last || "", "text", {
+            required: true,
+            maxLength: 60,
+          }),
+        ),
+      ),
+      field(
+        "Report template",
+        sel(
+          "template",
+          templates.map((t) => ({ value: t.id, label: t.name })),
+          templates[0].id,
+        ),
+      ),
+      field(
+        "Job title",
+        inp("position", templates[0].position, "text", {
+          required: true,
+          maxLength: 100,
+        }),
+      ),
+      field(
+        "Department",
+        inp("department", templates[0].department, "text", {
+          required: true,
+          maxLength: 100,
+        }),
+      ),
+      n("button", { type: "submit" }, "Start report"),
+    );
+    form.elements.template.addEventListener("change", () => {
+      const t = templates.find((x) => x.id === form.elements.template.value);
+      form.elements.position.value = t.position;
+      form.elements.department.value = t.department;
+    });
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      run(() => {
+        const first = required(form.elements.first.value, "First Name", 60),
+          last = required(form.elements.last.value, "Last Name", 60);
+        identity = {
+          first,
+          last,
+          name: required(first + " " + last, "Full name", 100),
+          position: required(form.elements.position.value, "Job title"),
+          department: required(form.elements.department.value, "Department"),
+        };
+        const t = clone(
+          templates.find((x) => x.id === form.elements.template.value),
+        );
+        record = {
+          id: uid(),
+          kind: t.kind,
+          reference:
+            (t.kind === "handover" ? "HOV" : "INS") +
+            "-M-" +
+            new Date().toISOString().replace(/\D/g, "").slice(0, 14) +
+            "-" +
+            uid().slice(0, 8),
+          snapshot: t,
+          authorName: identity.name,
+          authorPosition: identity.position,
+          authorDepartment: identity.department,
+          date: today(),
+          shift: clone(settings.shifts[0]),
+          area: settings.areas[0],
+          answers: {},
+          photos: [],
+          actions: [],
+          acknowledgements: [],
+          reviews: [],
+          status: "in_progress",
+          submissionVersion: 0,
+        };
+        editor();
+      });
+    });
+    c.append(
+      n("section", { className: "panel" }, form),
+      txt(
+        "p",
+        "No report is saved in browser storage or uploaded in the background. Reload/closing can lose unsaved work. Keep the page open until the PDF is saved.",
+        { className: "warn" },
+      ),
+      n(
+        "div",
+        { className: "buttons" },
+        btn("Templates & delivery settings", () => config()),
+        btn("Privacy & iPhone help", help, "secondary"),
+      ),
+    );
+  }
+  function visible(question, answers = record.answers) {
+    if (!question.condition) return true;
+    const parent = record.snapshot.questions.find(
+      (q) => q.id === question.condition.question,
+    );
+    return (
+      !!parent &&
+      visible(parent, answers) &&
+      String(answers[parent.id] ?? "") === question.condition.equals
+    );
+  }
+  function photoCount() {
+    return record.photos.length;
+  }
+  async function readPhoto(file, questionId, questionLabel) {
+    if (
+      !["image/jpeg", "image/png", "image/webp"].includes(file.type) ||
+      file.size > MAX_SOURCE
+    )
+      throw new Error(
+        "Choose a JPEG/PNG/WebP photograph up to 12 MB. For HEIC, select JPEG/Most Compatible or convert locally; no photo was uploaded.",
+      );
+    const source = await new Promise((ok, no) => {
+      const r = new FileReader();
+      r.onload = () => ok(r.result);
+      r.onerror = () => no(new Error("Photo could not be read."));
+      r.readAsDataURL(file);
+    });
+    const img = new Image();
+    await new Promise((ok, no) => {
+      img.onload = ok;
+      img.onerror = () =>
+        no(new Error("This photograph could not be decoded."));
+      img.src = source;
+    });
+    if (!img.naturalWidth || img.naturalWidth * img.naturalHeight > 50000000)
+      throw new Error("Photographs must be no larger than 50 megapixels.");
+    const f = Math.min(1, 1800 / Math.max(img.naturalWidth, img.naturalHeight));
+    const canvas = document.createElement("canvas");
+    canvas.width = Math.max(1, Math.round(img.naturalWidth * f));
+    canvas.height = Math.max(1, Math.round(img.naturalHeight * f));
+    canvas.getContext("2d").drawImage(img, 0, 0, canvas.width, canvas.height);
+    const data = canvas.toDataURL("image/jpeg", 0.85);
+    canvas.width = canvas.height = 1;
+    return {
+      id: uid(),
+      name: file.name.replace(/\.[^.]+$/, ".jpg"),
+      questionId,
+      questionLabel,
+      data,
+      caption: "",
+      capturedAt: new Date().toISOString(),
+    };
+  }
+  function photos(questionId) {
+    const wrap = n("div", {});
+    const list = n("div", { className: "photos" });
+    const draw = () => {
+      list.replaceChildren(
+        ...record.photos
+          .filter((p) => (p.questionId || "") === (questionId || ""))
+          .map((p) =>
+            n(
+              "div",
+              { className: "photo" },
+              n("img", { src: p.data, alt: p.caption || "Report photograph" }),
+              field(
+                "Photo caption",
+                inp("caption", p.caption, "text", {
+                  maxLength: 300,
+                  oninput: (e) => (p.caption = e.target.value),
+                }),
+              ),
+              btn(
+                "Remove photo",
+                () => {
+                  record.photos = record.photos.filter((x) => x.id !== p.id);
+                  draw();
+                },
+                "danger",
+              ),
+            ),
+          ),
+      );
+    };
+    async function add(files, control) {
+      const mark = epoch,
+        currentRecord = record;
+      if (busy) throw new Error("Wait for current photo/PDF processing.");
+      if (photoCount() + files.length > MAX_PHOTOS)
+        throw new Error("Maximum 12 photographs per report.");
+      busy = true;
+      notice("Processing photographs on this device…");
+      try {
+        const added = [];
+        const questionLabel =
+          currentRecord.snapshot.questions.find((q) => q.id === questionId)
+            ?.label || "";
+        for (const file of files)
+          added.push(await readPhoto(file, questionId, questionLabel));
+        if (mark !== epoch || currentRecord !== record) return;
+        record.photos.push(...added);
+        draw();
+        notice("Photo added on this device. Nothing uploaded.");
+      } finally {
+        if (mark === epoch) busy = false;
+        control.value = "";
+      }
+    }
+    const camera = inp("camera", "", "file", {
+      accept: "image/jpeg,image/png,image/webp",
+      capture: "environment",
+    });
+    const files = inp("photos", "", "file", {
+      accept: "image/jpeg,image/png,image/webp",
+      multiple: true,
+    });
+    for (const control of [camera, files])
+      control.addEventListener("change", () =>
+        run(() => add(Array.from(control.files), control)),
+      );
+    wrap.append(
+      field("Take a photo", camera),
+      field("Choose pictures", files),
+      list,
+    );
+    draw();
+    return wrap;
+  }
+  function editor() {
+    const c = $("app");
+    c.replaceChildren(
+      txt("div", "02 · Complete form", { className: "step" }),
+      txt("h1", record.snapshot.name),
+      txt("p", identity.name + " · " + identity.position, {
+        className: "muted",
+      }),
+      txt(
+        "p",
+        "Keep this page open. Your answers/pictures exist only in this page until you save the PDF.",
+        { className: "warn" },
+      ),
+    );
+    const form = n("form", { autocomplete: "off" });
+    form.append(
+      n(
+        "section",
+        { className: "panel" },
+        field(
+          "Personnel name",
+          inp("author", record.authorName, "text", { readOnly: true }),
+        ),
+        n(
+          "div",
+          { className: "grid" },
+          field(
+            "Operational date",
+            inp("date", record.date, "date", {
+              required: true,
+              oninput: (e) => (record.date = e.target.value),
+            }),
+          ),
+          field(
+            "Shift",
+            sel(
+              "shift",
+              settings.shifts.map((s, i) => ({
+                value: String(i),
+                label: s.name + " · " + s.start + "–" + s.end,
+              })),
+              String(
+                Math.max(
+                  0,
+                  settings.shifts.findIndex(
+                    (s) =>
+                      s.name === record.shift.name &&
+                      s.start === record.shift.start,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+        field("Area", sel("area", settings.areas, record.area)),
+      ),
+    );
+    form.elements.shift.addEventListener(
+      "change",
+      (e) => (record.shift = clone(settings.shifts[Number(e.target.value)])),
+    );
+    form.elements.area.addEventListener(
+      "change",
+      (e) => (record.area = e.target.value),
+    );
+    if (record.kind === "handover")
+      form.append(
+        n(
+          "section",
+          { className: "panel" },
+          field(
+            "Incoming personnel name (optional)",
+            inp("incoming", record.recipient || "", "text", {
+              maxLength: 100,
+              oninput: (e) => (record.recipient = e.target.value.trim()),
+            }),
+          ),
+        ),
+      );
+    const sections = [];
+    for (const question of record.snapshot.questions) {
+      let control;
+      if (question.type === "textarea")
+        control = area(question.id, record.answers[question.id] || "");
+      else if (question.type === "select")
+        control = sel(
+          question.id,
+          [
+            { value: "", label: "Choose…" },
+            ...question.options.map((s) => ({ value: s, label: s })),
+          ],
+          record.answers[question.id] || "",
+        );
+      else
+        control = inp(
+          question.id,
+          question.type === "checkbox" ? "" : record.answers[question.id] || "",
+          question.type,
+          { maxLength: 10000, checked: !!record.answers[question.id] },
+        );
+      const section = n(
+        "section",
+        { className: "question" },
+        field(question.label + (question.required ? " *" : ""), control),
+      );
+      if (question.photoMode !== "none") {
+        section.append(
+          txt(
+            "p",
+            question.photoMode === "required"
+              ? "A photograph is required for this question."
+              : "Photographs are optional for this question.",
+            { className: "hint" },
+          ),
+          photos(question.id),
+        );
+      }
+      control.addEventListener("input", () => {
+        record.answers[question.id] =
+          question.type === "checkbox" ? control.checked : control.value;
+        update();
+      });
+      sections.push({ question, section, control });
+      form.append(section);
+    }
+    function update() {
+      for (const x of sections) {
+        const shown = visible(x.question);
+        x.section.hidden = !shown;
+        x.control.required = shown && x.question.required;
+        x.control.disabled = !shown;
+      }
+    }
+    update();
+    const actionList = n("div", {});
+    function drawActions() {
+      actionList.replaceChildren(
+        ...record.actions.map((a, i) =>
+          n(
+            "section",
+            { className: "question" },
+            txt("h3", "Corrective action " + (i + 1)),
+            field(
+              "Action description",
+              area("action", a.description, {
+                oninput: (e) => (a.description = e.target.value),
+              }),
+            ),
+            field(
+              "Assigned to",
+              inp("assignee", a.assigneeName, "text", {
+                maxLength: 100,
+                oninput: (e) => (a.assigneeName = e.target.value),
+              }),
+            ),
+            field(
+              "Priority",
+              n(
+                "select",
+                { onchange: (e) => (a.priority = e.target.value) },
+                ["Low", "Medium", "High", "Critical"].map((p) =>
+                  n("option", { value: p, selected: p === a.priority }, p),
+                ),
+              ),
+            ),
+            field(
+              "Due date",
+              inp("due", a.dueAt?.slice(0, 10) || "", "date", {
+                oninput: (e) =>
+                  (a.dueAt = e.target.value ? e.target.value : ""),
+              }),
+            ),
+            btn(
+              "Remove action",
+              () => {
+                record.actions = record.actions.filter((x) => x.id !== a.id);
+                drawActions();
+              },
+              "danger",
+            ),
+          ),
+        ),
+      );
+    }
+    form.append(
+      n(
+        "section",
+        { className: "panel" },
+        txt("h2", "Additional photographic evidence"),
+        photos(""),
+      ),
+      n(
+        "section",
+        { className: "panel" },
+        txt("h2", "Corrective actions"),
+        txt(
+          "p",
+          "Include assigned follow-up work in this PDF. This mobile edition does not track historical action progress.",
+          { className: "hint" },
+        ),
+        actionList,
+        btn(
+          "Add corrective action",
+          () => {
+            if (record.actions.length >= 20)
+              throw new Error("Maximum 20 actions per report.");
+            record.actions.push({
+              id: uid(),
+              recordId: record.id,
+              description: "",
+              assigneeName: "",
+              priority: "Medium",
+              dueAt: "",
+              status: "open",
+              progress: [],
+            });
+            drawActions();
+          },
+          "secondary",
+        ),
+      ),
+    );
+    drawActions();
+    form.append(n("button", { type: "submit" }, "Complete & generate PDF"));
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      run(() => generate());
+    });
+    c.append(
+      form,
+      n(
+        "div",
+        { className: "buttons" },
+        btn("Clear report / finish", finish, "danger"),
+      ),
+    );
+  }
+  async function generate() {
+    if (busy) throw new Error("Wait for photo processing to finish.");
+    for (const question of record.snapshot.questions) {
+      if (!visible(question)) continue;
+      const value = record.answers[question.id];
+      if (
+        question.required &&
+        (value == null ||
+          String(value).trim() === "" ||
+          (question.type === "checkbox" && !value))
+      )
+        throw new Error("Complete required question: " + question.label);
+      if (
+        question.photoMode === "required" &&
+        !record.photos.some((p) => p.questionId === question.id)
+      )
+        throw new Error("Add a photograph for: " + question.label);
+    }
+    for (const a of record.actions) {
+      required(a.description, "Corrective action description", 4000);
+      required(a.assigneeName, "Corrective action assignee");
+      if (!a.dueAt)
+        throw new Error("Add a due date for each corrective action.");
+    }
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(record.date))
+      throw new Error("Choose an operational date.");
+    const mark = epoch;
+    busy = true;
+    notice("Generating your PDF on this device…");
+    try {
+      const done = clone(record);
+      done.status = "completed_on_device";
+      done.submittedAt = new Date().toISOString();
+      done.submissionVersion = 1;
+      done.photos = done.photos.filter(
+        (p) =>
+          !p.questionId ||
+          done.snapshot.questions.some(
+            (q) => q.id === p.questionId && visible(q),
+          ),
+      );
+      const blob = await window.MinePDF.createRecordPDF(done, {
+        companyName: settings.companyName,
+        siteName: settings.siteName,
+        timeZone: settings.timeZone,
+        actions: done.actions,
+        submissionLabel: "Completed on device",
+        profileName: (name) => name,
+        actionDateOnly: true,
+      });
+      if (mark !== epoch) return;
+      const person = done.authorName
+        .normalize("NFKC")
+        .replace(/[^\p{L}\p{N}_-]+/gu, "_")
+        .slice(0, 60);
+      const filename =
+        window.MinePDF.filename(done).replace(/\.pdf$/, "-") +
+        person +
+        "-" +
+        dateName() +
+        ".pdf";
+      prepared = { blob, filename, record: done };
+      delivery();
+      notice("PDF ready. This has not sent email or uploaded to SharePoint.");
+    } finally {
+      if (mark === epoch) busy = false;
+    }
+  }
+  function download(blob, filename) {
+    const url = URL.createObjectURL(blob);
+    urls.add(url);
+    const a = n("a", { href: url, download: filename });
+    document.body.append(a);
+    a.click();
+    a.remove();
+  }
+  function delivery() {
+    const c = $("app");
+    c.replaceChildren(
+      txt("div", "03 · Save & share", { className: "step" }),
+      txt("span", "PDF generated on device", { className: "tag" }),
+      txt("h1", "Your report is ready."),
+      txt(
+        "p",
+        prepared.record.authorName + " · " + prepared.record.authorPosition,
+      ),
+      txt("p", prepared.filename, { className: "mono" }),
+      txt(
+        "p",
+        "Generation is not email delivery or SharePoint upload. Save/share this PDF before clearing the report.",
+        { className: "warn" },
+      ),
+    );
+    const file = new File([prepared.blob], prepared.filename, {
+      type: "application/pdf",
+    });
+    let sharing = false;
+    try {
+      sharing = !!navigator.share && !!navigator.canShare?.({ files: [file] });
+    } catch {}
+    const share = btn("Share PDF — Outlook / Save to Files", async () => {
+      try {
+        await navigator.share({
+          files: [file],
+          title: "Mine Operations report",
+        });
+        notice(
+          "Share sheet closed. Check the chosen app or Files; the dashboard cannot confirm email delivery.",
+        );
+      } catch (e) {
+        if (e.name === "AbortError") {
+          notice("Sharing cancelled. Your PDF is still available here.");
+          return;
+        }
+        throw new Error(
+          "This browser could not share the PDF. Use Download PDF, then attach it manually in Outlook.",
+        );
+      }
+    });
+    share.disabled = !sharing;
+    c.append(
+      n(
+        "section",
+        { className: "panel" },
+        n(
+          "div",
+          { className: "buttons" },
+          share,
+          btn(
+            "Download PDF",
+            () => {
+              download(prepared.blob, prepared.filename);
+              notice(
+                "PDF download started. Check Safari downloads/Files before clearing.",
+              );
+            },
+            "secondary",
+          ),
+        ),
+        txt(
+          "p",
+          sharing
+            ? "Choose Outlook from the iPhone share sheet, check the attachment and recipient, then Send. Save to Files is also available. Outlook must be installed and signed in."
+            : "File sharing is unavailable here. Download the PDF, then use Outlook → New mail → Attach file.",
+          { className: "hint" },
+        ),
+        field(
+          "Email recipient",
+          inp("recipient", settings[record.kind + "Email"], "email", {
+            maxLength: 254,
+          }),
+        ),
+        btn(
+          "Open email — attach downloaded PDF",
+          () => {
+            const recipient = c
+              .querySelector('[name="recipient"]')
+              .value.trim();
+            if (!/^[^\s<>@,;]+@[^\s<>@,;]+\.[^\s<>@,;]+$/.test(recipient))
+              throw new Error("Enter a valid email recipient.");
+            location.href =
+              "mailto:" +
+              encodeURIComponent(recipient) +
+              "?subject=" +
+              encodeURIComponent("Mine Operations report") +
+              "&body=" +
+              encodeURIComponent(
+                "Please attach the report PDF before sending.",
+              );
+          },
+          "secondary",
+        ),
+        txt(
+          "p",
+          "The email link cannot attach your PDF. Sharing cannot preselect Outlook or guarantee a recipient; check both yourself.",
+          { className: "hint" },
+        ),
+      ),
+      n(
+        "section",
+        { className: "panel" },
+        txt("h2", "Upload to SharePoint"),
+        txt(
+          "p",
+          "Open your permitted folder, sign in with your own company account, then Upload → Files and choose the saved PDF.",
+        ),
+        field(
+          "SharePoint folder URL",
+          inp("sharepoint", settings.sharepointUrl, "url", { maxLength: 3000 }),
+        ),
+        btn(
+          "Open SharePoint folder",
+          () => {
+            const input = c.querySelector('[name="sharepoint"]');
+            const url = sharepointURL(input.value);
+            settings.sharepointUrl = url;
+            window.open(url, "_blank", "noopener,noreferrer");
+          },
+          "secondary",
+        ),
+        txt(
+          "p",
+          "The URL grants no access. You need write permission. This app does not upload the report or verify that an upload succeeded.",
+          { className: "hint" },
+        ),
+      ),
+      n(
+        "div",
+        { className: "buttons" },
+        btn(
+          "Edit this report",
+          () => {
+            prepared = null;
+            revoke();
+            editor();
+          },
+          "secondary",
+        ),
+        btn("Clear report / finish", finish, "danger"),
+      ),
+    );
+  }
+  function sharepointURL(value) {
+    let u;
+    try {
+      u = new URL(value);
+    } catch {
+      throw new Error("Paste your SharePoint HTTPS folder URL.");
+    }
+    if (
+      u.protocol !== "https:" ||
+      u.username ||
+      u.password ||
+      u.port ||
+      !u.hostname.endsWith(".sharepoint.com")
+    )
+      throw new Error(
+        "Use a SharePoint Online HTTPS URL without credentials or a custom port.",
+      );
+    return u.href;
+  }
+  function help() {
+    const c = $("app");
+    c.replaceChildren(
+      txt("h1", "Private report capture"),
+      txt(
+        "p",
+        "Answers, identity and pictures are processed in this page's memory. No server receives them from this application; no IndexedDB, local/session storage, cookies, service worker or analytics is used.",
+      ),
+      txt(
+        "p",
+        "The public website's code and generic templates are visible to others. Your device/OS can retain downloaded PDFs, camera originals, screenshots, shares or browser snapshots; Clear report does not delete those copies.",
+      ),
+      txt(
+        "p",
+        "Use Safari on iPhone over HTTPS. Add the website to Home Screen using Safari → Share → Add to Home Screen. Chrome on iPhone can use the website too; camera/file-sharing behaviour depends on the installed iOS/browser version.",
+      ),
+      txt(
+        "p",
+        "Keep this page open while working. Once loaded it can create a PDF without networking, but offline reload/start is not guaranteed. No history, persistent offline drafts, shared identity, approval engine or live automatic delivery is included in this mobile mode.",
+      ),
+      btn("Back to start", home, "secondary"),
+    );
+  }
+  function validateConfig(value) {
+    if (
+      !value ||
+      value.format !== "mine-mobile-templates-v1" ||
+      !value.settings ||
+      !Array.isArray(value.templates) ||
+      !value.templates.length ||
+      value.templates.length > 30
+    )
+      throw new Error(
+        "Choose a mobile template/config file. Workspace/report backups are not accepted.",
+      );
+    const s = value.settings;
+    const out = {
+      companyName: required(s.companyName, "Company", 100),
+      siteName: required(s.siteName, "Site", 100),
+      timeZone: required(s.timeZone, "Timezone", 100),
+      handoverEmail: required(s.handoverEmail, "Handover email", 254),
+      inspectionEmail: required(s.inspectionEmail, "Inspection email", 254),
+      sharepointUrl: s.sharepointUrl ? sharepointURL(s.sharepointUrl) : "",
+      areas: s.areas,
+      shifts: s.shifts,
+    };
+    new Intl.DateTimeFormat("en", { timeZone: out.timeZone });
+    for (const address of [out.handoverEmail, out.inspectionEmail])
+      if (!/^[^\s<>@,;]+@[^\s<>@,;]+\.[^\s<>@,;]+$/.test(address))
+        throw new Error("Enter valid recipient email addresses.");
+    if (
+      !Array.isArray(out.areas) ||
+      !out.areas.length ||
+      out.areas.length > 100
+    )
+      throw new Error("Configure between 1 and 100 areas.");
+    out.areas = out.areas.map((x) => required(x, "Area", 100));
+    if (
+      !Array.isArray(out.shifts) ||
+      !out.shifts.length ||
+      out.shifts.length > 20
+    )
+      throw new Error("Configure between 1 and 20 shifts.");
+    out.shifts = out.shifts.map((s) => {
+      const item = {
+        name: required(s.name, "Shift name", 100),
+        start: s.start,
+        end: s.end,
+        deadline: s.deadline,
+      };
+      for (const key of ["start", "end", "deadline"])
+        if (!/^(?:[01]\d|2[0-3]):[0-5]\d$/.test(item[key]))
+          throw new Error("Shift times/deadline must be HH:MM.");
+      return item;
+    });
+    const ts = value.templates.map((t) => {
+      if (
+        !["handover", "inspection"].includes(t.kind) ||
+        !Array.isArray(t.questions) ||
+        !t.questions.length ||
+        t.questions.length > 100
+      )
+        throw new Error("Each form needs a kind and 1–100 questions.");
+      const ids = new Set();
+      const questions = t.questions.map((q) => {
+        if (
+          ![
+            "text",
+            "textarea",
+            "select",
+            "number",
+            "date",
+            "checkbox",
+          ].includes(q.type) ||
+          !["none", "optional", "required"].includes(q.photoMode)
+        )
+          throw new Error("Invalid question type or picture rule.");
+        const id = required(q.id, "Question ID", 100);
+        if (
+          !/^[A-Za-z0-9_-]+$/.test(id) ||
+          ["__proto__", "constructor", "prototype"].includes(id)
+        )
+          throw new Error("Use safe, unique question identifiers.");
+        if (ids.has(id)) throw new Error("Question IDs must be unique.");
+        ids.add(id);
+        const options =
+          q.type === "select"
+            ? (q.options || []).map((x) => required(x, "Option", 200))
+            : [];
+        if (q.type === "select" && (!options.length || options.length > 100))
+          throw new Error("Select questions need 1–100 options.");
+        const condition = q.condition
+          ? {
+              question: required(
+                q.condition.question,
+                "Condition question",
+                100,
+              ),
+              equals: String(q.condition.equals ?? "").slice(0, 200),
+            }
+          : null;
+        if (condition && !ids.has(condition.question))
+          throw new Error("Conditions must refer to an earlier question.");
+        if (condition?.question === id)
+          throw new Error("A question cannot depend on itself.");
+        return {
+          id,
+          label: required(q.label, "Question label", 500),
+          type: q.type,
+          required: !!q.required,
+          photoMode: q.photoMode,
+          options,
+          condition,
+        };
+      });
+      return {
+        id: required(t.id, "Template ID", 100),
+        name: required(t.name, "Template name", 100),
+        kind: t.kind,
+        position: required(t.position, "Position", 100),
+        department: required(t.department, "Department", 100),
+        version:
+          Number.isSafeInteger(t.version) && t.version > 0 ? t.version : 1,
+        questions,
+      };
+    });
+    if (new Set(ts.map((t) => t.id)).size !== ts.length)
+      throw new Error("Template IDs must be unique.");
+    return { format: value.format, settings: out, templates: ts };
+  }
+  function config() {
+    configDraft = {
+      format: "mine-mobile-templates-v1",
+      settings: clone(settings),
+      templates: clone(templates),
+    };
+    configView();
+  }
+  function configView() {
+    const c = $("app");
+    c.replaceChildren(
+      txt("h1", "Templates & delivery"),
+      txt(
+        "p",
+        "Configuration changes stay in this session. Export a template/config file to reuse them. It contains no report answers, pictures or profiles; a configured company URL/template may itself be confidential.",
+        { className: "warn" },
+      ),
+    );
+    const s = configDraft.settings;
+    const form = n(
+      "form",
+      { autocomplete: "off" },
+      field(
+        "Company",
+        inp("company", s.companyName, "text", {
+          required: true,
+          maxLength: 100,
+        }),
+      ),
+      field(
+        "Site / workspace",
+        inp("site", s.siteName, "text", { required: true, maxLength: 100 }),
+      ),
+      field(
+        "Timezone",
+        inp("zone", s.timeZone, "text", { required: true, maxLength: 100 }),
+      ),
+      field("Areas — one per line", area("areas", s.areas.join("\n"))),
+      field(
+        "Shifts — JSON",
+        area("shifts", JSON.stringify(s.shifts, null, 2), {
+          className: "mono",
+        }),
+      ),
+      field(
+        "Handover email",
+        inp("handoverEmail", s.handoverEmail, "email", { required: true }),
+      ),
+      field(
+        "Inspection email",
+        inp("inspectionEmail", s.inspectionEmail, "email", { required: true }),
+      ),
+      field(
+        "SharePoint folder URL",
+        inp("sharepointUrl", s.sharepointUrl, "url", { maxLength: 3000 }),
+      ),
+    );
+    function capture() {
+      Object.assign(s, {
+        companyName: form.elements.company.value,
+        siteName: form.elements.site.value,
+        timeZone: form.elements.zone.value,
+        areas: form.elements.areas.value.split("\n").filter((x) => x.trim()),
+        shifts: JSON.parse(form.elements.shifts.value),
+        handoverEmail: form.elements.handoverEmail.value,
+        inspectionEmail: form.elements.inspectionEmail.value,
+        sharepointUrl: form.elements.sharepointUrl.value.trim(),
+      });
+    }
+    const list = n(
+      "section",
+      { className: "panel" },
+      txt("h2", "Form builder"),
+    );
+    for (const t of configDraft.templates)
+      list.append(
+        n(
+          "div",
+          { className: "panel" },
+          txt("h3", t.name),
+          txt("p", t.questions.length + " questions · " + t.kind, {
+            className: "hint",
+          }),
+          n(
+            "div",
+            { className: "buttons" },
+            btn(
+              "Edit " + t.name,
+              () => {
+                capture();
+                templateEditor(t);
+              },
+              "secondary",
+            ),
+            btn(
+              "Remove " + t.name,
+              () => {
+                if (configDraft.templates.length === 1)
+                  throw new Error("Keep at least one template.");
+                capture();
+                configDraft.templates = configDraft.templates.filter(
+                  (x) => x.id !== t.id,
+                );
+                configView();
+              },
+              "danger",
+            ),
+          ),
+        ),
+      );
+    list.append(
+      btn(
+        "Add template",
+        () => {
+          capture();
+          const t = {
+            id: uid(),
+            name: "New inspection",
+            position: "Inspection Officer",
+            department: "Mining",
+            kind: "inspection",
+            version: 1,
+            questions: [q("Findings", "textarea", true)],
+          };
+          configDraft.templates.push(t);
+          templateEditor(t);
+        },
+        "secondary",
+      ),
+    );
+    form.append(list, n("button", { type: "submit" }, "Apply configuration"));
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      run(() => {
+        capture();
+        const valid = validateConfig(configDraft);
+        settings = valid.settings;
+        templates = valid.templates;
+        configDraft = null;
+        home();
+        notice(
+          "Configuration applied for this session. Export configuration to reuse it.",
+        );
+      });
+    });
+    const file = inp("configfile", "", "file", {
+      accept: ".json,application/json",
+    });
+    file.addEventListener("change", () =>
+      run(async () => {
+        const f = file.files[0];
+        if (!f) return;
+        if (f.size > 1024 * 1024)
+          throw new Error("Configuration file must be at most 1 MB.");
+        const valid = validateConfig(JSON.parse(await f.text()));
+        configDraft = valid;
+        configView();
+        notice(
+          "Configuration loaded for review. Apply it to use these templates.",
+        );
+      }),
+    );
+    c.append(
+      form,
+      n(
+        "section",
+        { className: "panel" },
+        field("Import template/config file", file),
+        btn(
+          "Export configuration only",
+          () => {
+            capture();
+            const valid = validateConfig(configDraft);
+            download(
+              new Blob([JSON.stringify(valid, null, 2)], {
+                type: "application/json",
+              }),
+              "Mining-Mobile-Templates-" + dateName() + ".json",
+            );
+            notice(
+              "Configuration file downloaded; it contains no report data.",
+            );
+          },
+          "secondary",
+        ),
+      ),
+      btn(
+        "Discard settings / back",
+        () => {
+          configDraft = null;
+          home();
+        },
+        "secondary",
+      ),
+    );
+  }
+  function templateEditor(t) {
+    const c = $("app");
+    c.replaceChildren(txt("h1", "Edit template"));
+    const f = n(
+      "form",
+      { autocomplete: "off" },
+      field(
+        "Template name",
+        inp("name", t.name, "text", { required: true, maxLength: 100 }),
+      ),
+      field("Form type", sel("kind", ["handover", "inspection"], t.kind)),
+      field(
+        "Position",
+        inp("position", t.position, "text", { required: true }),
+      ),
+      field(
+        "Department",
+        inp("department", t.department, "text", { required: true }),
+      ),
+    );
+    const list = n("div", {});
+    function draw() {
+      list.replaceChildren(
+        ...t.questions.map((q, i) => {
+          const block = n(
+            "section",
+            { className: "question" },
+            txt("h3", "Question " + (i + 1)),
+            field(
+              "Question label",
+              inp("label", q.label, "text", {
+                maxLength: 500,
+                oninput: (e) => (q.label = e.target.value),
+              }),
+            ),
+          );
+          const type = sel(
+            "type",
+            ["text", "textarea", "select", "number", "date", "checkbox"],
+            q.type,
+          );
+          type.addEventListener("change", (e) => (q.type = e.target.value));
+          const mode = sel(
+            "photoMode",
+            [
+              { value: "none", label: "Disabled" },
+              { value: "optional", label: "Optional" },
+              { value: "required", label: "Required" },
+            ],
+            q.photoMode,
+          );
+          mode.addEventListener(
+            "change",
+            (e) => (q.photoMode = e.target.value),
+          );
+          const options = area("options", q.options.join("\n"), {
+            oninput: (e) =>
+              (q.options = e.target.value.split("\n").filter((x) => x.trim())),
+          });
+          const parent = sel(
+            "parent",
+            [
+              { value: "", label: "Always visible" },
+              ...t.questions
+                .slice(0, i)
+                .map((p) => ({ value: p.id, label: p.label })),
+            ],
+            q.condition?.question || "",
+          );
+          const equals = inp("equals", q.condition?.equals || "", "text", {
+            maxLength: 200,
+          });
+          const conditional = () => {
+            q.condition = parent.value
+              ? { question: parent.value, equals: equals.value }
+              : null;
+          };
+          parent.addEventListener("change", conditional);
+          equals.addEventListener("input", conditional);
+          block.append(
+            field("Question type", type),
+            field(
+              "Required answer",
+              inp("required", "", "checkbox", {
+                checked: q.required,
+                onchange: (e) => (q.required = e.target.checked),
+              }),
+            ),
+            field("Question pictures", mode),
+            field("Select options — one per line", options),
+            field("Show only when question", parent),
+            field("Condition equals", equals),
+            btn(
+              "Remove question",
+              () => {
+                if (t.questions.some((x) => x.condition?.question === q.id))
+                  throw new Error("Remove dependent conditions first.");
+                t.questions = t.questions.filter((x) => x.id !== q.id);
+                draw();
+              },
+              "danger",
+            ),
+          );
+          return block;
+        }),
+      );
+    }
+    draw();
+    f.append(
+      list,
+      btn(
+        "Add question",
+        () => {
+          t.questions.push(q("New question"));
+          draw();
+        },
+        "secondary",
+      ),
+      n("button", { type: "submit" }, "Keep template changes"),
+    );
+    f.addEventListener("submit", (e) => {
+      e.preventDefault();
+      run(() => {
+        Object.assign(t, {
+          name: f.elements.name.value,
+          kind: f.elements.kind.value,
+          position: f.elements.position.value,
+          department: f.elements.department.value,
+        });
+        validateConfig(configDraft);
+        t.version++;
+        configView();
+      });
+    });
+    c.append(f);
+  }
+  window.addEventListener("pagehide", reset);
+  window.addEventListener("pageshow", (e) => {
+    if (e.persisted) {
+      reset();
+      home();
+    }
+  });
+  window.addEventListener("beforeunload", (e) => {
+    if (record) {
+      e.preventDefault();
+      e.returnValue = "";
+    }
+  });
+  home();
+})();
+
+</script>
+</body>
+</html>
