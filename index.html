@@ -1,15 +1,24 @@
 <!doctype html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="referrer" content="no-referrer">
-<meta name="theme-color" content="#101627">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data: blob:; connect-src 'none'; worker-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
-<title>BRAVUS — Mobile Operations</title>
-<style>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="referrer" content="no-referrer" />
+    <meta name="theme-color" content="#101627" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data: blob:; connect-src 'none'; worker-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'"
+    />
+    <title>BRAVUS — On-device Operations</title>
+    <style>
 * {
   box-sizing: border-box;
 }
@@ -253,6 +262,15 @@ summary {
   color: #61708a;
   margin-bottom: 10px;
 }
+.signpad {
+  display: block;
+  width: 100%;
+  height: 180px;
+  border: 2px dashed #8a99ad;
+  border-radius: 8px;
+  touch-action: none;
+  background: white;
+}
 a {
   color: #195f50;
   overflow-wrap: anywhere;
@@ -288,15 +306,26 @@ a:focus-visible {
 }
 
 </style>
-</head>
-<body>
-<header><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0NDAgOTUiIHJvbGU9ImltZyIgYXJpYS1sYWJlbGxlZGJ5PSJicmF2dXMtdGl0bGUiPgogIDx0aXRsZSBpZD0iYnJhdnVzLXRpdGxlIj5CUkFWVVM8L3RpdGxlPgogIDwhLS0gVHlwb2dyYXBoaWMgcmVwcm9kdWN0aW9uIGluc3BpcmVkIGJ5IHRoZSB1c2VyJ3Mgc2NyZWVuc2hvdC4gT2ZmaWNpYWwgdmVjdG9yIGFydHdvcmsgY291bGQgbm90IGJlIHJldHJpZXZlZDsgdGhpcyBpcyBub3QgYW4gYXV0aGVudGljYXRlZCBvZmZpY2lhbCBsb2dvIGFzc2V0LiAtLT4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iYnJhdnVzLXNpbHZlciIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNmZmZmZmYiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIwLjM2IiBzdG9wLWNvbG9yPSIjZjRmNGY2Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMC42OCIgc3RvcC1jb2xvcj0iI2IzYjZiYyIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNmZmZmZmYiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgPC9kZWZzPgogIDx0ZXh0IHg9IjQiIHk9Ijc1IiBmaWxsPSJ1cmwoI2JyYXZ1cy1zaWx2ZXIpIiBmb250LWZhbWlseT0iQXJpYWwgQmxhY2ssIEFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9Ijg2IiBmb250LXdlaWdodD0iOTAwIiBsZXR0ZXItc3BhY2luZz0iLTMiIHRleHRMZW5ndGg9IjQyNSIgbGVuZ3RoQWRqdXN0PSJzcGFjaW5nQW5kR2x5cGhzIj5CUkFWVVM8L3RleHQ+Cjwvc3ZnPgo=" alt="BRAVUS"><span>Mine Operations Hub<small>Mobile · Report capture</small></span></header>
-<div class="privacy">On-device processing · No report history · No background uploads</div>
-<div id="notice" role="status" aria-live="polite" hidden></div>
-<main id="app"></main>
-<footer>Mobile Edition 1.0 · Names are declared attribution, not verified login.<br>Downloaded PDFs and OS shares remain outside this dashboard.</footer>
-<noscript>Enable JavaScript to complete forms and generate PDFs.</noscript>
-<script>
+  </head>
+  <body>
+    <header>
+      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0NDAgOTUiIHJvbGU9ImltZyIgYXJpYS1sYWJlbGxlZGJ5PSJicmF2dXMtdGl0bGUiPgogIDx0aXRsZSBpZD0iYnJhdnVzLXRpdGxlIj5CUkFWVVM8L3RpdGxlPgogIDwhLS0gVHlwb2dyYXBoaWMgcmVwcm9kdWN0aW9uIGluc3BpcmVkIGJ5IHRoZSB1c2VyJ3Mgc2NyZWVuc2hvdC4gT2ZmaWNpYWwgdmVjdG9yIGFydHdvcmsgY291bGQgbm90IGJlIHJldHJpZXZlZDsgdGhpcyBpcyBub3QgYW4gYXV0aGVudGljYXRlZCBvZmZpY2lhbCBsb2dvIGFzc2V0LiAtLT4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iYnJhdnVzLXNpbHZlciIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNmZmZmZmYiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIwLjM2IiBzdG9wLWNvbG9yPSIjZjRmNGY2Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMC42OCIgc3RvcC1jb2xvcj0iI2IzYjZiYyIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNmZmZmZmYiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgPC9kZWZzPgogIDx0ZXh0IHg9IjQiIHk9Ijc1IiBmaWxsPSJ1cmwoI2JyYXZ1cy1zaWx2ZXIpIiBmb250LWZhbWlseT0iQXJpYWwgQmxhY2ssIEFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9Ijg2IiBmb250LXdlaWdodD0iOTAwIiBsZXR0ZXItc3BhY2luZz0iLTMiIHRleHRMZW5ndGg9IjQyNSIgbGVuZ3RoQWRqdXN0PSJzcGFjaW5nQW5kR2x5cGhzIj5CUkFWVVM8L3RleHQ+Cjwvc3ZnPgo=" alt="BRAVUS" /><span
+        >Mine Operations Hub<small
+          >GitHub Pages · Mobile &amp; laptop capture</small
+        ></span
+      >
+    </header>
+    <div class="privacy">
+      On-device processing · No report history · No background uploads
+    </div>
+    <div id="notice" role="status" aria-live="polite" hidden></div>
+    <main id="app"></main>
+    <footer>
+      On-device Edition 2.1 · Names are declared attribution, not verified
+      login.<br />Downloaded PDFs and OS shares remain outside this dashboard.
+    </footer>
+    <noscript>Enable JavaScript to complete forms and generate PDFs.</noscript>
+    <script>
 "use strict";
 /* Mine Operations browser PDF export. No network, external fonts or print dialog.
    Western text remains selectable. Other scripts are drawn with Chrome's installed
@@ -821,6 +850,24 @@ a:focus-visible {
     field("Status", label(record.status));
     field(options.submissionLabel || "Submitted", date(record.submittedAt));
     field("Submission version", record.submissionVersion ?? 0);
+    if (record.snapshot.source) {
+      field(
+        "Source form",
+        record.snapshot.source.id +
+          " · revision " +
+          record.snapshot.source.revision,
+      );
+      field(
+        "Source control",
+        record.snapshot.source.documentCode +
+          " · " +
+          record.snapshot.source.date,
+      );
+      text(
+        "Private source questions captured in browser report layout; source Word pagination/layout is not reproduced by this edition.",
+        { size: 8 },
+      );
+    }
     if (record.recipient) field("Incoming recipient", name(record.recipient));
     section("Responses");
     const answers = record.answers || {},
@@ -927,6 +974,44 @@ a:focus-visible {
             "\n" +
             (review.note || ""),
         );
+    }
+    if (record.signature) {
+      section("Handwritten sign-off");
+      for (const [index, signature] of [
+        record.signature,
+        record.secondSignature,
+      ]
+        .filter(Boolean)
+        .entries()) {
+        const image = await readableImage(
+          signature.data,
+          "Handwritten signature",
+        );
+        ensure(140);
+        field(
+          index ? "Second signatory (declared)" : "Signed by (declared)",
+          signature.name,
+        );
+        field(
+          signature.timeSource === "device"
+            ? "Signature time from device clock"
+            : "Signature time",
+          date(signature.at),
+        );
+        const factor = Math.min(250 / image.width, 80 / image.height);
+        drawImage(
+          image,
+          MARGIN,
+          cursor,
+          image.width * factor,
+          image.height * factor,
+        );
+        cursor += image.height * factor + 10;
+      }
+      text(
+        "Handwritten ink and device time are recorded with self-declared attribution; this static report does not verify an account or certify a digital signature.",
+        { size: 8 },
+      );
     }
     let logo;
     if (options.logoDataUrl)
@@ -1076,6 +1161,88 @@ a:focus-visible {
   window.MinePDF = Object.freeze({ createRecordPDF, filename });
 })();
 
+/* RFC 5322/MIME Outlook draft export. This prepares a file; it never sends mail. */
+(() => {
+  "use strict";
+  const address = /^[^\s<>@,;]+@[^\s<>@,;]+\.[^\s<>@,;]+$/;
+  const encode = (bytes) => {
+    let value = "";
+    for (let offset = 0; offset < bytes.length; offset += 32768)
+      value += String.fromCharCode(...bytes.subarray(offset, offset + 32768));
+    return btoa(value);
+  };
+  const wrapped = (value) => value.match(/.{1,76}/g)?.join("\r\n") || "";
+  function subjectHeader(subject) {
+    if (
+      typeof subject !== "string" ||
+      /[\r\n]/.test(subject) ||
+      subject.length > 500
+    )
+      throw new Error("Email subject contains invalid header data.");
+    const parts = [];
+    let run = "";
+    for (const char of subject) {
+      if (new TextEncoder().encode(run + char).length > 42) {
+        parts.push("=?UTF-8?B?" + encode(new TextEncoder().encode(run)) + "?=");
+        run = "";
+      }
+      run += char;
+    }
+    if (run)
+      parts.push("=?UTF-8?B?" + encode(new TextEncoder().encode(run)) + "?=");
+    return parts.join("\r\n ");
+  }
+  async function createDraft({ from, to, subject, body, pdfBlob, filename }) {
+    if (!address.test(from || "") || !address.test(to || ""))
+      throw new Error("Enter valid sender and recipient email addresses.");
+    if (!(pdfBlob instanceof Blob) || pdfBlob.size > 120 * 1024 * 1024)
+      throw new Error("Provide a PDF attachment no larger than 120 MB.");
+    if (
+      typeof filename !== "string" ||
+      !filename.endsWith(".pdf") ||
+      filename.length > 180 ||
+      /[\r\n/\\]/.test(filename)
+    )
+      throw new Error("The PDF attachment filename is invalid.");
+    const bytes = new Uint8Array(await pdfBlob.arrayBuffer());
+    if (new TextDecoder().decode(bytes.subarray(0, 5)) !== "%PDF-")
+      throw new Error("The attachment is not a PDF.");
+    const boundary = "mine_" + crypto.randomUUID().replaceAll("-", "");
+    const fallback = filename.replace(/[^a-zA-Z0-9_. -]/g, "_");
+    const extended = encodeURIComponent(filename).replace(
+      /[!'()*]/g,
+      (char) => "%" + char.charCodeAt(0).toString(16).toUpperCase(),
+    );
+    const content = [
+      "X-Unsent: 1",
+      "MIME-Version: 1.0",
+      "From: " + from,
+      "To: " + to,
+      "Subject: " + subjectHeader(subject),
+      "Date: " + new Date().toUTCString(),
+      `Content-Type: multipart/mixed; boundary="${boundary}"`,
+      "",
+      "This is a multipart MIME email draft.",
+      "--" + boundary,
+      "Content-Type: text/plain; charset=UTF-8",
+      "Content-Transfer-Encoding: base64",
+      "",
+      wrapped(encode(new TextEncoder().encode(String(body)))),
+      "--" + boundary,
+      `Content-Type: application/pdf; name="${fallback}"`,
+      "Content-Transfer-Encoding: base64",
+      "Content-Disposition: attachment;",
+      ` filename*=UTF-8''${extended}`,
+      "",
+      wrapped(encode(bytes)),
+      "--" + boundary + "--",
+      "",
+    ].join("\r\n");
+    return new Blob([content], { type: "message/rfc822" });
+  }
+  window.MineEmail = Object.freeze({ createDraft });
+})();
+
 "use strict";
 (() => {
   const $ = (id) => document.getElementById(id);
@@ -1094,6 +1261,7 @@ a:focus-visible {
     ],
     handoverEmail: "Massab.Abrar@bravus.com.au",
     inspectionEmail: "Massab.Abrar@bravus.com.au",
+    senderEmail: "Massab.Abrar@bravus.com.au",
     sharepointUrl: "",
   };
   function q(
@@ -1119,6 +1287,9 @@ a:focus-visible {
     "OCE",
     "Mining Supervisor",
     "Drill & Blast Supervisor",
+    "Dozer Push Supervisor",
+    "Pump Supervisor",
+    "Infrastructure Supervisor",
   ];
   let templates = titles.map((position) => ({
     id: uid(),
@@ -1163,12 +1334,31 @@ a:focus-visible {
       q("Findings and observations", "textarea", true),
     ],
   });
+  for (const position of titles.slice(3))
+    templates.push({
+      id: uid(),
+      name: position + " inspection — configurable starter",
+      position,
+      department: position.includes("Blast") ? "Drill & Blast" : "Mining",
+      kind: "inspection",
+      version: 1,
+      questions: [
+        q("Location / equipment inspected", "text", true),
+        q("Workplace condition", "select", true, "optional", [
+          "Acceptable",
+          "Requires attention",
+          "Not applicable",
+        ]),
+        q("Inspection findings and follow-up", "textarea", true),
+      ],
+    });
   let identity = null,
     record = null,
     prepared = null,
     busy = false,
     epoch = 0,
-    configDraft = null;
+    configDraft = null,
+    pads = [];
   const urls = new Set();
   function n(tag, attrs = {}, ...children) {
     const el = document.createElement(tag);
@@ -1258,8 +1448,13 @@ a:focus-visible {
     for (const url of urls) URL.revokeObjectURL(url);
     urls.clear();
   }
+  function disposePads() {
+    for (const pad of pads) pad.dispose();
+    pads = [];
+  }
   function reset() {
     epoch++;
+    disposePads();
     record = null;
     prepared = null;
     identity = null;
@@ -1378,6 +1573,8 @@ a:focus-visible {
           reviews: [],
           status: "in_progress",
           submissionVersion: 0,
+          signatureStrokes: [],
+          secondSignatureStrokes: [],
         };
         editor();
       });
@@ -1388,6 +1585,11 @@ a:focus-visible {
         "p",
         "No report is saved in browser storage or uploaded in the background. Reload/closing can lose unsaved work. Keep the page open until the PDF is saved.",
         { className: "warn" },
+      ),
+      txt(
+        "p",
+        "GitHub Pages edition: names and positions are self-declared. This public mode has no verified login or owner-only template editing. Starter inspections must be configured; import approved forms privately for their actual questions.",
+        { className: "hint" },
       ),
       n(
         "div",
@@ -1526,7 +1728,102 @@ a:focus-visible {
     draw();
     return wrap;
   }
+  function signaturePad(label, strokes) {
+    const canvas = n("canvas", {
+      className: "signpad",
+      "aria-label": label,
+      role: "img",
+    });
+    const ctx = canvas.getContext("2d");
+    let active = null;
+    function draw() {
+      const r = canvas.getBoundingClientRect(),
+        factor = Math.min(devicePixelRatio || 1, 2);
+      canvas.width = Math.max(
+        100,
+        Math.min(1500, Math.round(r.width * factor)),
+      );
+      canvas.height = Math.max(
+        40,
+        Math.min(700, Math.round(r.height * factor)),
+      );
+      ctx.fillStyle = "white";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.strokeStyle = "#101627";
+      ctx.lineWidth = 2.3 * factor;
+      ctx.lineCap = "round";
+      ctx.lineJoin = "round";
+      for (const stroke of strokes) {
+        if (!stroke.length) continue;
+        ctx.beginPath();
+        ctx.moveTo(stroke[0].x * canvas.width, stroke[0].y * canvas.height);
+        for (const p of stroke.slice(1))
+          ctx.lineTo(p.x * canvas.width, p.y * canvas.height);
+        ctx.stroke();
+      }
+    }
+    const point = (e) => {
+      const r = canvas.getBoundingClientRect();
+      return {
+        x: Math.max(0, Math.min(1, (e.clientX - r.left) / r.width)),
+        y: Math.max(0, Math.min(1, (e.clientY - r.top) / r.height)),
+      };
+    };
+    canvas.addEventListener("pointerdown", (e) => {
+      if (busy) return;
+      e.preventDefault();
+      active = [point(e)];
+      strokes.push(active);
+      canvas.setPointerCapture(e.pointerId);
+      draw();
+    });
+    canvas.addEventListener("pointermove", (e) => {
+      if (!active) return;
+      e.preventDefault();
+      if (active.length < 10000) active.push(point(e));
+      draw();
+    });
+    canvas.addEventListener("pointerup", (e) => {
+      if (active) active.push(point(e));
+      active = null;
+      try {
+        canvas.releasePointerCapture(e.pointerId);
+      } catch {}
+      draw();
+    });
+    canvas.addEventListener("pointercancel", () => (active = null));
+    const observer = new ResizeObserver(draw);
+    observer.observe(canvas);
+    const pad = {
+      canvas,
+      serialize: () => {
+        const points = strokes.flat();
+        if (points.length < 3) return null;
+        const xs = points.map((p) => p.x),
+          ys = points.map((p) => p.y);
+        if (
+          (Math.max(...xs) - Math.min(...xs)) * canvas.width < 10 ||
+          (Math.max(...ys) - Math.min(...ys)) * canvas.height < 3
+        )
+          return null;
+        draw();
+        return canvas.toDataURL("image/png");
+      },
+      clear: () => {
+        strokes.length = 0;
+        draw();
+      },
+      dispose: () => {
+        observer.disconnect();
+        active = null;
+        canvas.width = canvas.height = 1;
+      },
+    };
+    pads.push(pad);
+    return pad;
+  }
   function editor() {
+    disposePads();
     const c = $("app");
     c.replaceChildren(
       txt("div", "02 · Complete form", { className: "step" }),
@@ -1540,6 +1837,18 @@ a:focus-visible {
         { className: "warn" },
       ),
     );
+    if (record.snapshot.source)
+      c.append(
+        txt(
+          "p",
+          "Privately imported " +
+            record.snapshot.source.id +
+            " · source revision " +
+            record.snapshot.source.revision +
+            ". All questions and auxiliary fields are captured; this edition uses a readable report PDF layout. The protected edition produces the source Word-style matrix layout.",
+          { className: "warn" },
+        ),
+      );
     const form = n("form", { autocomplete: "off" });
     form.append(
       n(
@@ -1624,7 +1933,11 @@ a:focus-visible {
           question.id,
           question.type === "checkbox" ? "" : record.answers[question.id] || "",
           question.type,
-          { maxLength: 10000, checked: !!record.answers[question.id] },
+          {
+            maxLength: 10000,
+            checked: !!record.answers[question.id],
+            ...(question.type === "number" ? { step: "any" } : {}),
+          },
         );
       const section = n(
         "section",
@@ -1749,6 +2062,46 @@ a:focus-visible {
       ),
     );
     drawActions();
+    const primaryPad = signaturePad(
+      "Handwritten signature",
+      record.signatureStrokes,
+    );
+    const signSection = n(
+      "section",
+      { className: "panel" },
+      txt("h2", "Sign this report"),
+      txt(
+        "p",
+        "Sign with your finger, mouse or pen. PDF time comes from this device; your declared name is not authenticated.",
+        { className: "hint" },
+      ),
+      primaryPad.canvas,
+      btn("Clear signature", primaryPad.clear, "secondary"),
+    );
+    if (record.snapshot.signOffSlots === 2) {
+      const second = signaturePad(
+        "Second handwritten signature",
+        record.secondSignatureStrokes,
+      );
+      signSection.append(
+        field(
+          "Second signatory name" +
+            (record.snapshot.secondSignatureRequired ? " *" : " (optional)"),
+          inp("secondSigner", record.secondSigner || "", "text", {
+            maxLength: 100,
+            oninput: (e) => (record.secondSigner = e.target.value.trim()),
+          }),
+        ),
+        second.canvas,
+        btn("Clear second signature", second.clear, "secondary"),
+        txt(
+          "p",
+          "A second signature is declared by the people using this device; there is no separate witness authentication.",
+          { className: "hint" },
+        ),
+      );
+    }
+    form.append(signSection);
     form.append(n("button", { type: "submit" }, "Complete & generate PDF"));
     form.addEventListener("submit", (e) => {
       e.preventDefault();
@@ -1789,6 +2142,23 @@ a:focus-visible {
     }
     if (!/^\d{4}-\d{2}-\d{2}$/.test(record.date))
       throw new Error("Choose an operational date.");
+    const signature = pads[0]?.serialize();
+    if (!signature)
+      throw new Error(
+        "Draw your handwritten signature before generating the PDF.",
+      );
+    const secondSignature = pads[1]?.serialize();
+    if (
+      record.snapshot.secondSignatureRequired &&
+      (!secondSignature || !record.secondSigner)
+    )
+      throw new Error(
+        "Add the second signatory name and handwritten signature.",
+      );
+    if (secondSignature && !record.secondSigner)
+      throw new Error(
+        "Add the second signatory name or clear the second signature.",
+      );
     const mark = epoch;
     busy = true;
     notice("Generating your PDF on this device…");
@@ -1796,6 +2166,19 @@ a:focus-visible {
       const done = clone(record);
       done.status = "completed_on_device";
       done.submittedAt = new Date().toISOString();
+      done.signature = {
+        data: signature,
+        name: done.authorName,
+        at: done.submittedAt,
+        timeSource: "device",
+      };
+      if (secondSignature)
+        done.secondSignature = {
+          data: secondSignature,
+          name: done.secondSigner,
+          at: done.submittedAt,
+          timeSource: "device",
+        };
       done.submissionVersion = 1;
       done.photos = done.photos.filter(
         (p) =>
@@ -1825,6 +2208,7 @@ a:focus-visible {
         dateName() +
         ".pdf";
       prepared = { blob, filename, record: done };
+      disposePads();
       delivery();
       notice("PDF ready. This has not sent email or uploaded to SharePoint.");
     } finally {
@@ -1914,6 +2298,52 @@ a:focus-visible {
           inp("recipient", settings[record.kind + "Email"], "email", {
             maxLength: 254,
           }),
+        ),
+        field(
+          "Requested sender email",
+          inp("sender", settings.senderEmail, "email", { maxLength: 254 }),
+        ),
+        btn(
+          "Prepare Outlook draft with PDF",
+          async () => {
+            const mark = epoch,
+              current = prepared;
+            const from = c.querySelector('[name="sender"]').value.trim();
+            const to = c.querySelector('[name="recipient"]').value.trim();
+            if (
+              !confirm(
+                "Prepare a draft requesting sender " +
+                  from +
+                  " and recipient " +
+                  to +
+                  "? Outlook must authorise that sender; review both before Send.",
+              )
+            )
+              return;
+            const draft = await window.MineEmail.createDraft({
+              from,
+              to,
+              subject:
+                "Mine Operations " +
+                prepared.record.kind +
+                " — " +
+                prepared.record.authorName,
+              body: "Please review the attached signed report PDF before sending.",
+              pdfBlob: prepared.blob,
+              filename: prepared.filename,
+            });
+            if (mark !== epoch || prepared !== current) return;
+            download(draft, prepared.filename.replace(/\.pdf$/, ".eml"));
+            notice(
+              "Outlook draft downloaded with the signed PDF attached. Open in compatible desktop Outlook, verify sender/recipient/attachment and Send. No email was sent by the dashboard.",
+            );
+          },
+          "secondary",
+        ),
+        txt(
+          "p",
+          "Desktop Outlook draft compatibility varies. On iPhone use Share PDF or Save to Files and manually attach. Editing the requested sender does not grant mailbox permission.",
+          { className: "hint" },
         ),
         btn(
           "Open email — attach downloaded PDF",
@@ -2018,6 +2448,10 @@ a:focus-visible {
       ),
       txt(
         "p",
+        "This GitHub Pages edition has no genuine username/password access or enforceable owner-only editing. Use the protected cloud edition when those controls are required. Do not upload company forms, imported configurations or reports to the public repository.",
+      ),
+      txt(
+        "p",
         "Use Safari on iPhone over HTTPS. Add the website to Home Screen using Safari → Share → Add to Home Screen. Chrome on iPhone can use the website too; camera/file-sharing behaviour depends on the installed iOS/browser version.",
       ),
       txt(
@@ -2026,6 +2460,182 @@ a:focus-visible {
       ),
       btn("Back to start", home, "secondary"),
     );
+  }
+  function sourceTemplate(d) {
+    if (
+      !d ||
+      !/^FRM-[0-9]{3}$/.test(d.id || "") ||
+      !Array.isArray(d.questions) ||
+      !Array.isArray(d.blocks) ||
+      d.questions.length < 1 ||
+      d.questions.length > 100
+    )
+      throw new Error(
+        "Choose an extracted private source-form Definition JSON, not a Word file or report backup.",
+      );
+    const mapped = new Map(),
+      seen = new Set(),
+      questions = [];
+    for (const key of ["dumpTimesQuestion", "jsaReviewDateQuestion"])
+      if (d[key] && !d.questions.some((q) => q.key === d[key]))
+        throw new Error("Source auxiliary field refers to a missing question.");
+    if (d.secondSignatureRequired && d.signOffSlots !== 2)
+      throw new Error("Source second sign-off requires two signature slots.");
+    const safe = (key) =>
+      /^[A-Za-z0-9_-]+$/.test(key) &&
+      !["__proto__", "constructor", "prototype"].includes(key);
+    for (const original of d.questions) {
+      if (!safe(original.key || "") || mapped.has(original.key))
+        throw new Error("Source questions need unique safe keys.");
+      mapped.set(original.key, original);
+    }
+    const add = (
+      id,
+      label,
+      type = "text",
+      requiredAnswer = false,
+      photoMode = "none",
+      options = [],
+    ) => {
+      if (!safe(id) || questions.some((q) => q.id === id))
+        throw new Error("Duplicate or unsafe auxiliary source key.");
+      questions.push({
+        id,
+        label,
+        type,
+        required: requiredAnswer,
+        photoMode,
+        options,
+        condition: null,
+      });
+    };
+    if (d.details?.crew) add("source_crew", "Crew", "text", true);
+    if (d.details?.location) add("source_location", "Location", "text", true);
+    if (d.details?.time) add("source_time", "Inspection time", "time", true);
+    let section = "",
+      gasIndex = 0;
+    for (const block of d.blocks) {
+      if (block.kind === "section") section = String(block.title || "");
+      else if (block.kind === "question") {
+        const original = mapped.get(block.key);
+        if (!original || seen.has(block.key))
+          throw new Error(
+            "Source layout must contain each question exactly once.",
+          );
+        seen.add(block.key);
+        const label =
+          (section ? section + " · " : "") +
+          (original.number ? original.number + ". " : "") +
+          String(original.label || "");
+        const type = original.type || "compliance";
+        if (
+          ![
+            "compliance",
+            "select",
+            "text",
+            "textarea",
+            "date",
+            "time",
+            "number",
+          ].includes(type)
+        )
+          throw new Error("Unsupported source question type; import rejected.");
+        const options =
+          type === "compliance" ? ["Y", "N", "N/A"] : original.options || [];
+        add(
+          original.key,
+          label,
+          type === "compliance" ? "select" : type,
+          original.required !== false,
+          original.photoMode || "optional",
+          options,
+        );
+        add("comment_" + original.key, "Comments — " + label, "textarea");
+        if (d.dumpTimesQuestion === original.key) {
+          const slots = d.dumpTimeSlots ?? 3;
+          if (!Number.isInteger(slots) || slots < 0 || slots > 10)
+            throw new Error("Invalid dump time slots.");
+          for (let i = 1; i <= slots; i++)
+            add(
+              "source_dump_" + i,
+              "Dump inspection time " + i + " — " + label,
+              "time",
+            );
+        }
+        if (d.jsaReviewDateQuestion === original.key)
+          add("source_jsa_review_date", "JSA review date — " + label, "date");
+      } else if (block.kind === "gas") {
+        gasIndex++;
+        const key = String(block.key || "gas_" + gasIndex);
+        if (!safe(key)) throw new Error("Invalid gas table key.");
+        const rows = block.rows ?? 2;
+        if (!Number.isInteger(rows) || rows < 1 || rows > 10)
+          throw new Error("Invalid source gas reading rows.");
+        for (let row = 1; row <= rows; row++)
+          for (const [suffix, label, type] of [
+            ["time", "Time", "time"],
+            ["oxygen", "O2 %", "number"],
+            ["co", "CO ppm", "number"],
+            ["h2s", "H2S ppm", "number"],
+          ])
+            add(
+              "source_" + key + "_" + row + "_" + suffix,
+              (section ? section + " · " : "") +
+                "Gas reading " +
+                row +
+                " — " +
+                label,
+              type,
+            );
+      } else
+        throw new Error(
+          "Unrecognised source layout block; refusing an incomplete conversion.",
+        );
+    }
+    if (seen.size !== mapped.size)
+      throw new Error("Source layout omitted questions; import rejected.");
+    const slots = d.temperatureSlots || 0;
+    if (!Number.isInteger(slots) || slots < 0 || slots > 5)
+      throw new Error("Invalid source temperature slots.");
+    for (let row = 1; row <= slots; row++) {
+      add(
+        "source_temperature_time_" + row,
+        "Spon Com reading " + row + " — time",
+        "time",
+      );
+      add(
+        "source_temperature_" + row,
+        "Spon Com reading " + row + " — temperature (°C)",
+        "number",
+      );
+    }
+    if (d.temperatureGuidance)
+      add(
+        "source_temperature_context",
+        "Temperature guidance: " + String(d.temperatureGuidance),
+        "textarea",
+      );
+    if (d.additionalComments)
+      add("source_additional_comments", "Additional comments", "textarea");
+    return {
+      id: d.id,
+      name: d.id + " — " + required(d.name, "Source template name", 85),
+      position: required(d.position, "Source position"),
+      department: String(d.position).includes("Blast")
+        ? "Drill & Blast"
+        : "Mining",
+      kind: "inspection",
+      version: Number.isSafeInteger(d.version) ? d.version : 1,
+      signOffSlots: d.signOffSlots === 2 ? 2 : 1,
+      secondSignatureRequired: !!d.secondSignatureRequired,
+      source: {
+        id: d.id,
+        revision: d.sourceRevision ?? d.version ?? 1,
+        date: d.sourceDate || "",
+        documentCode: d.documentCode || "",
+      },
+      questions,
+    };
   }
   function validateConfig(value) {
     if (
@@ -2046,12 +2656,21 @@ a:focus-visible {
       timeZone: required(s.timeZone, "Timezone", 100),
       handoverEmail: required(s.handoverEmail, "Handover email", 254),
       inspectionEmail: required(s.inspectionEmail, "Inspection email", 254),
+      senderEmail: required(
+        s.senderEmail || "Massab.Abrar@bravus.com.au",
+        "Requested sender email",
+        254,
+      ),
       sharepointUrl: s.sharepointUrl ? sharepointURL(s.sharepointUrl) : "",
       areas: s.areas,
       shifts: s.shifts,
     };
     new Intl.DateTimeFormat("en", { timeZone: out.timeZone });
-    for (const address of [out.handoverEmail, out.inspectionEmail])
+    for (const address of [
+      out.handoverEmail,
+      out.inspectionEmail,
+      out.senderEmail,
+    ])
       if (!/^[^\s<>@,;]+@[^\s<>@,;]+\.[^\s<>@,;]+$/.test(address))
         throw new Error("Enter valid recipient email addresses.");
     if (
@@ -2084,9 +2703,9 @@ a:focus-visible {
         !["handover", "inspection"].includes(t.kind) ||
         !Array.isArray(t.questions) ||
         !t.questions.length ||
-        t.questions.length > 100
+        t.questions.length > 300
       )
-        throw new Error("Each form needs a kind and 1–100 questions.");
+        throw new Error("Each form needs a kind and 1–300 questions.");
       const ids = new Set();
       const questions = t.questions.map((q) => {
         if (
@@ -2096,6 +2715,7 @@ a:focus-visible {
             "select",
             "number",
             "date",
+            "time",
             "checkbox",
           ].includes(q.type) ||
           !["none", "optional", "required"].includes(q.photoMode)
@@ -2148,6 +2768,19 @@ a:focus-visible {
         version:
           Number.isSafeInteger(t.version) && t.version > 0 ? t.version : 1,
         questions,
+        signOffSlots: t.signOffSlots === 2 ? 2 : 1,
+        secondSignatureRequired:
+          t.signOffSlots === 2 && !!t.secondSignatureRequired,
+        ...(t.source
+          ? {
+              source: {
+                id: required(t.source.id, "Source form ID", 100),
+                revision: String(t.source.revision ?? "").slice(0, 40),
+                date: String(t.source.date || "").slice(0, 40),
+                documentCode: String(t.source.documentCode || "").slice(0, 100),
+              },
+            }
+          : {}),
       };
     });
     if (new Set(ts.map((t) => t.id)).size !== ts.length)
@@ -2170,6 +2803,11 @@ a:focus-visible {
         "p",
         "Configuration changes stay in this session. Export a template/config file to reuse them. It contains no report answers, pictures or profiles; a configured company URL/template may itself be confidential.",
         { className: "warn" },
+      ),
+      txt(
+        "p",
+        "Editing here affects only this browser session. GitHub Pages cannot enforce owner-only template permissions. Privately imported source-form PDFs use this edition's report layout, not the protected server's Word-style matrix.",
+        { className: "hint" },
       ),
     );
     const s = configDraft.settings;
@@ -2207,6 +2845,10 @@ a:focus-visible {
         inp("inspectionEmail", s.inspectionEmail, "email", { required: true }),
       ),
       field(
+        "Requested sender email",
+        inp("senderEmail", s.senderEmail, "email", { required: true }),
+      ),
+      field(
         "SharePoint folder URL",
         inp("sharepointUrl", s.sharepointUrl, "url", { maxLength: 3000 }),
       ),
@@ -2220,6 +2862,7 @@ a:focus-visible {
         shifts: JSON.parse(form.elements.shifts.value),
         handoverEmail: form.elements.handoverEmail.value,
         inspectionEmail: form.elements.inspectionEmail.value,
+        senderEmail: form.elements.senderEmail.value,
         sharepointUrl: form.elements.sharepointUrl.value.trim(),
       });
     }
@@ -2302,13 +2945,44 @@ a:focus-visible {
     const file = inp("configfile", "", "file", {
       accept: ".json,application/json",
     });
+    const sourceFile = inp("sourcefile", "", "file", {
+      accept: ".json,application/json",
+      multiple: true,
+    });
+    sourceFile.addEventListener("change", () =>
+      run(async () => {
+        capture();
+        const mark = epoch,
+          currentDraft = configDraft;
+        const next = clone(configDraft);
+        const imported = [];
+        for (const f of sourceFile.files) {
+          if (f.size > 1024 * 1024)
+            throw new Error("Source form must be at most 1 MB.");
+          imported.push(sourceTemplate(JSON.parse(await f.text())));
+        }
+        if (mark !== epoch || currentDraft !== configDraft) return;
+        for (const t of imported) {
+          next.templates = next.templates.filter((old) => old.id !== t.id);
+          next.templates.push(t);
+        }
+        configDraft = validateConfig(next);
+        configView();
+        notice(
+          "Private forms loaded into this session only. Review and Apply configuration. Keep source files and configuration exports out of public GitHub uploads.",
+        );
+      }),
+    );
     file.addEventListener("change", () =>
       run(async () => {
+        const mark = epoch,
+          currentDraft = configDraft;
         const f = file.files[0];
         if (!f) return;
         if (f.size > 1024 * 1024)
           throw new Error("Configuration file must be at most 1 MB.");
         const valid = validateConfig(JSON.parse(await f.text()));
+        if (mark !== epoch || currentDraft !== configDraft) return;
         configDraft = valid;
         configView();
         notice(
@@ -2322,6 +2996,7 @@ a:focus-visible {
         "section",
         { className: "panel" },
         field("Import template/config file", file),
+        field("Import private source-form JSON", sourceFile),
         btn(
           "Export configuration only",
           () => {
@@ -2369,6 +3044,23 @@ a:focus-visible {
         "Department",
         inp("department", t.department, "text", { required: true }),
       ),
+      field(
+        "Signature slots",
+        sel(
+          "signOffSlots",
+          [
+            { value: "1", label: "One signatory" },
+            { value: "2", label: "Two signatories" },
+          ],
+          String(t.signOffSlots || 1),
+        ),
+      ),
+      field(
+        "Require second signature",
+        inp("secondRequired", "", "checkbox", {
+          checked: !!t.secondSignatureRequired,
+        }),
+      ),
     );
     const list = n("div", {});
     function draw() {
@@ -2388,7 +3080,15 @@ a:focus-visible {
           );
           const type = sel(
             "type",
-            ["text", "textarea", "select", "number", "date", "checkbox"],
+            [
+              "text",
+              "textarea",
+              "select",
+              "number",
+              "date",
+              "time",
+              "checkbox",
+            ],
             q.type,
           );
           type.addEventListener("change", (e) => (q.type = e.target.value));
@@ -2478,6 +3178,8 @@ a:focus-visible {
           kind: f.elements.kind.value,
           position: f.elements.position.value,
           department: f.elements.department.value,
+          signOffSlots: Number(f.elements.signOffSlots.value),
+          secondSignatureRequired: f.elements.secondRequired.checked,
         });
         validateConfig(configDraft);
         t.version++;
@@ -2503,5 +3205,5 @@ a:focus-visible {
 })();
 
 </script>
-</body>
+  </body>
 </html>

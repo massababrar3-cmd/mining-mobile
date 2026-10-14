@@ -1,52 +1,54 @@
-BRAVUS — MINE OPERATIONS HUB — MOBILE EDITION 1.0
+BRAVUS — MINE OPERATIONS HUB — GITHUB PAGES / ON-DEVICE EDITION 2.1
 
-IPHONE PR OPEN:
-1. Is package ko public HTTPS static website par publish karein. GitHub Pages free
-   option hai. GitHub repository > Settings > Pages > Deploy from a branch >
-   mobile-pages > / (root) > Save. Sirf mobile-site ki files us branch mein hain.
-2. GitHub jab actual published link dikhaye, us link ko iPhone Safari mein kholein.
-   Downloaded HTML ko Files/Quick Look mein kholna supported deployment nahi.
-3. Safari > Share > Add to Home Screen optional hai. Pehle start screen par karein.
-4. First Name, Last Name, template, job title aur department set karke Start report.
-5. Answers fill karein. Take a photo se native camera, Choose pictures se file/photo
-   selection use karein. JPEG/PNG/WebP, max 12 MB source, max 12 photos supported.
-   HEIC directly supported nahi; JPEG/Most Compatible use karein.
-6. Complete & generate PDF dabayein. PDF device par banti hai; yeh delivery nahi.
-7. Share PDF — Outlook / Save to Files se share sheet kholein. Outlook select karein,
-   account/recipient/attachment check karein aur Send dabayein. Outlook app signed in
-   honi chahiye. Agar file share supported nahi to Download PDF > Outlook > Attach.
-8. Open email link PDF attach nahi karta. Us mein manually downloaded PDF attach karein.
-9. SharePoint folder URL paste karein > Open SharePoint folder > apne account se
-   sign in > Upload > Files > saved PDF. Account ko write access chahiye.
-10. Clear report / finish se dashboard ka report/photo state clear hota hai. Pehle
-    PDF save karein; Files/Outlook/SharePoint copies clear nahi hotin.
+FREE WEBSITE / NO DEVICE INSTALLATION:
+1. Extract Mining-Operations-GitHub-Pages-2.1.zip.
+2. Create a SEPARATE public GitHub repository for ONLY these four files:
+   index.html, .nojekyll, robots.txt, OPEN-ON-IPHONE.txt.
+   Code > Add file > Upload files > Commit changes.
+   Do not upload the ZIP as the website and do not upload the full Software repo.
+3. Settings > Pages > Deploy from a branch > main > / (root) > Save.
+4. Wait for GitHub to show a successful deployment and actual published URL.
+   Open that same HTTPS link in Windows Chrome or iPhone Safari/Chrome.
+   Safari > Share > Add to Home Screen is optional. No Node.js is required.
+5. Enter First Name/Last Name and select a handover/inspection. Starter inspections
+   are configurable generic templates, not the supplied company Word forms.
+6. To use company questions: Templates & delivery settings > Import private
+   source-form JSON > choose privately supplied FRM-*.json files > Apply.
+   The questions stay in this browser session. Never upload these JSON files,
+   private configuration exports or completed reports to the public repository.
+7. Start report > answers/comments > take/choose JPEG/PNG/WebP photos.
+   HEIC needs conversion or Most Compatible camera format. Max 12 photos/report.
+8. Draw your signature with finger/mouse/pen. Second signature is supported when
+   configured/imported; required second sign-off needs its own declared name.
+9. Complete & generate PDF. PDF includes answers/pictures/signatures, declared
+   personnel and time from the device clock. Filename includes DD-MM-YYYY.
+10. iPhone: Share PDF > Outlook or Save to Files. Check recipient, PDF and Send.
+    If file sharing is unsupported, Download PDF and manually attach in Outlook.
+11. Windows: Prepare Outlook draft with PDF > check requested sender/recipient >
+    download .eml > open in compatible desktop Outlook > inspect attachment > Send.
+    Outlook version compatibility remains device testing. If not editable/openable,
+    Download PDF > Outlook > New mail > Attach file. Sender edits grant no permission.
+12. SharePoint: paste permitted HTTPS folder URL > Open SharePoint folder > company
+    login > Upload > Files > saved PDF. No automatic send/upload receipt is provided.
+13. Clear report / finish only after saving/sharing. Reload/close loses current work.
 
-PRIVATE REPORTS / NO HISTORY:
-- Report answers/photos/identity sirf current page ki memory mein hain. No IndexedDB,
-  local/session storage, report cookies, service worker, telemetry or background upload.
-- Page reload/close/navigation se report lost ho sakti hai. iOS tab eviction bhi work
-  lose kar sakti hai. Saved PDF/OS camera originals/screenshots/browser snapshots
-  dashboard ke control mein nahi; unhein company policy ke mutabiq handle karein.
-- Once loaded PDF offline generate ho sakti hai, lekin offline reload/start guaranteed
-  nahi. Persistent drafts/history aapki request ke mutabiq is version mein nahi hain.
-- Website code, generic forms, branding public hain. Reports website/GitHub par nahi
-  bheji jatin. Website loading par host ko usual connection/IP logs mil sakte hain.
-- Share sheet and manually selected Outlook/SharePoint intentionally data receive
-  karte hain. Dashboard actual send/upload receipt verify nahi karta.
-- Local names verified Microsoft accounts/authentication nahi hain.
-
-TEMPLATES:
-Templates & delivery settings mein form builder, per-question pictures, conditional
-required answers, remove/add template, emails, areas, shift times/deadlines/timezone
-aur SharePoint folder URL edit karein. Changes session-only hain. Export configuration
-only se templates/settings file save aur Import se reuse karein. Export mein reports,
-photos ya profiles nahi. Custom templates/URLs sensitive hon to protected Files mein
-rakhein; public repository mein upload na karein. Desktop report backups import nahi.
-Corrective actions current report PDF mein include hotay hain, historical tracking nahi.
-Previous shift review ek declared response hai; previous records fetch/verify nahi hote.
-
-TEST LIMITS:
-Cloud automated tests device-emulated browser/PDF/share fixtures ko verify karte hain.
-Actual iPhone Safari/Chrome, camera/HEIC conversion, Outlook share sheet, Home Screen,
-Files association aur company inbox/SharePoint upload physical testing pending hain.
-Use the actually published GitHub Pages URL; a guessed link is not proof of deployment.
+THIS STATIC EDITION:
+- No verified username/password access or enforceable owner-only template editing.
+  Use the separate protected cloud edition when those controls are required.
+- 8 generic handover positions, 5 position-specific starter inspection masters and
+  a general inspection; privately import your five company source forms per session.
+- Source import preserves every check/comment, gas table reading, dump inspection
+  time, JSA review date, temperature fields and signature slots. PDF uses readable
+  report layout, not the protected edition's original Word-style matrix/font layout.
+- Reports, names, ink and photos remain in page memory. No storage/cookies/report
+  database/background uploads. Reload/close/page navigation clears report state.
+  Saved PDFs, camera originals, OS shares and snapshots are outside the dashboard.
+- Templates/settings can be exported privately, without report answers/identity.
+  Configuration changes affect only this browser session; preserve a protected
+  export to reuse. Company questions/destinations can themselves be confidential.
+- Once loaded, PDF generation can work offline; offline restart is not guaranteed.
+- Public code and generic templates are public; host gets normal connection logs.
+  Name/signature/device clock do not authenticate a person or certify a signature.
+- Camera, Safari/Chrome, native Outlook share/EML support and actual SharePoint
+  upload require device/company acceptance tests. Linux Chromium tests are not
+  iPhone certification. No email/SharePoint live delivery is claimed.
