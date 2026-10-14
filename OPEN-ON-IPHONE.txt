@@ -1,54 +1,40 @@
-BRAVUS — MINE OPERATIONS HUB — GITHUB PAGES / ON-DEVICE EDITION 2.1
+BRAVUS — GITHUB PAGES / ON-DEVICE EDITION 2.2
 
-FREE WEBSITE / NO DEVICE INSTALLATION:
-1. Extract Mining-Operations-GitHub-Pages-2.1.zip.
-2. Create a SEPARATE public GitHub repository for ONLY these four files:
-   index.html, .nojekyll, robots.txt, OPEN-ON-IPHONE.txt.
-   Code > Add file > Upload files > Commit changes.
-   Do not upload the ZIP as the website and do not upload the full Software repo.
-3. Settings > Pages > Deploy from a branch > main > / (root) > Save.
-4. Wait for GitHub to show a successful deployment and actual published URL.
-   Open that same HTTPS link in Windows Chrome or iPhone Safari/Chrome.
-   Safari > Share > Add to Home Screen is optional. No Node.js is required.
-5. Enter First Name/Last Name and select a handover/inspection. Starter inspections
-   are configurable generic templates, not the supplied company Word forms.
-6. To use company questions: Templates & delivery settings > Import private
-   source-form JSON > choose privately supplied FRM-*.json files > Apply.
-   The questions stay in this browser session. Never upload these JSON files,
-   private configuration exports or completed reports to the public repository.
-7. Start report > answers/comments > take/choose JPEG/PNG/WebP photos.
-   HEIC needs conversion or Most Compatible camera format. Max 12 photos/report.
-8. Draw your signature with finger/mouse/pen. Second signature is supported when
-   configured/imported; required second sign-off needs its own declared name.
-9. Complete & generate PDF. PDF includes answers/pictures/signatures, declared
-   personnel and time from the device clock. Filename includes DD-MM-YYYY.
-10. iPhone: Share PDF > Outlook or Save to Files. Check recipient, PDF and Send.
-    If file sharing is unsupported, Download PDF and manually attach in Outlook.
-11. Windows: Prepare Outlook draft with PDF > check requested sender/recipient >
-    download .eml > open in compatible desktop Outlook > inspect attachment > Send.
-    Outlook version compatibility remains device testing. If not editable/openable,
-    Download PDF > Outlook > New mail > Attach file. Sender edits grant no permission.
-12. SharePoint: paste permitted HTTPS folder URL > Open SharePoint folder > company
-    login > Upload > Files > saved PDF. No automatic send/upload receipt is provided.
-13. Clear report / finish only after saving/sharing. Reload/close loses current work.
+UPDATE EXISTING WEBSITE:
+1. Download Mining-Operations-GitHub-Pages-2.2.zip and Extract All on your laptop.
+2. Open your public mining-mobile repository, branch main.
+3. Code > Add file > Upload files > upload/replace index.html > Commit changes.
+   For a new website, upload all four extracted files at the repository root.
+4. Settings > Pages > Deploy from a branch > main > / (root). Await success.
+5. Open GitHub's Visit site link. Refresh and check footer: On-device Edition 2.2.
 
-THIS STATIC EDITION:
-- No verified username/password access or enforceable owner-only template editing.
-  Use the separate protected cloud edition when those controls are required.
-- 8 generic handover positions, 5 position-specific starter inspection masters and
-  a general inspection; privately import your five company source forms per session.
-- Source import preserves every check/comment, gas table reading, dump inspection
-  time, JSA review date, temperature fields and signature slots. PDF uses readable
-  report layout, not the protected edition's original Word-style matrix/font layout.
-- Reports, names, ink and photos remain in page memory. No storage/cookies/report
-  database/background uploads. Reload/close/page navigation clears report state.
-  Saved PDFs, camera originals, OS shares and snapshots are outside the dashboard.
-- Templates/settings can be exported privately, without report answers/identity.
-  Configuration changes affect only this browser session; preserve a protected
-  export to reuse. Company questions/destinations can themselves be confidential.
-- Once loaded, PDF generation can work offline; offline restart is not guaranteed.
-- Public code and generic templates are public; host gets normal connection logs.
-  Name/signature/device clock do not authenticate a person or certify a signature.
-- Camera, Safari/Chrome, native Outlook share/EML support and actual SharePoint
-  upload require device/company acceptance tests. Linux Chromium tests are not
-  iPhone certification. No email/SharePoint live delivery is claimed.
+OPERATE ON LAPTOP / IPHONE:
+1. Open the HTTPS website in Windows Chrome or iPhone Safari. No installation.
+2. Enter First Name / Surname and choose the relevant inspection or handover.
+   FRM-224 Mining, FRM-447 Dozer Push, FRM-440 Pump, FRM-441 Infrastructure,
+   and FRM-431 Drill & Blast load automatically. No JSON import is required.
+3. Start report > complete required details, compliance answers and comments.
+4. Use Take a photo / Choose pictures; camera permissions depend on the device.
+5. Draw your signature. Optional/required second sign-off has its own name.
+6. Complete & generate PDF > Download PDF. Source inspection PDFs use the original
+   Bravus logo, embedded Lato fonts, source colours, column proportions, Y/N/N/A
+   tables, source identifiers and sign-off/evidence. Long answers/photos add pages.
+7. Windows: Prepare Outlook draft with PDF > check sender/recipient > download EML >
+   open in compatible Outlook > check attachment > Send. If unsupported, manually
+   attach the downloaded PDF to a new Outlook message. No automatic send.
+8. iPhone: Share PDF > Outlook or Save to Files, then attach/send in Outlook.
+9. SharePoint: configure permitted folder > Open SharePoint folder > company login >
+   Upload > Files > select saved PDF. No automatic upload.
+10. Save/share before Clear report / finish. Closing/reloading loses unsaved work.
+
+PRIVACY / LIMITS:
+- Inspection questions, company template branding and website code are public.
+- Entered personnel, answers, photos, signatures and PDFs are processed in memory.
+  No report history, cookies, browser database, upload connection or analytics.
+- Downloaded/shared files, camera originals and OS/browser snapshots remain outside
+  these page-memory controls. The host receives normal website connection logs.
+- Names and device time are declared; there is no real login or owner-only control.
+- Session template edits include revised/new questions in exported source-style PDFs.
+- PDF is a programmatic recreation of Word styling, not an identical Word-rendering
+  engine. Evidence and content alter pagination. Check your actual printed reports.
+- Actual iPhone camera/Outlook and live SharePoint delivery need device acceptance.
