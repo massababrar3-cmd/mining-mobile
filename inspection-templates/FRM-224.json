@@ -1,0 +1,1041 @@
+{
+  "id": "FRM-224",
+  "name": "Supervisor Daily Inspection Form",
+  "position": "Mining Supervisor",
+  "kind": "inspection",
+  "siteName": "Carmichael Coal Mine",
+  "version": 1,
+  "sourceRevision": 10,
+  "sourceDate": "21/08/2026",
+  "documentCode": "CCM-ITP-HS-000224_10",
+  "sourceSha256": "00d4f3a5aaa11f15487bb9f5eba6cfa44e6dd31a5bc03a3f390055286a635a05",
+  "font": "Lato",
+  "bodyFontSize": 8,
+  "headingColour": "C3A385",
+  "sectionColour": "E7DACE",
+  "signOffSlots": 2,
+  "secondSignatureRequired": false,
+  "questions": [
+    {
+      "key": "rom_and_rejects_1",
+      "number": "1",
+      "label": "Is all correct signage and delineation adequately installed?",
+      "section": "ROM and Rejects",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Is all correct signage and delineation adequately installed?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "rom_and_rejects_2",
+      "number": "2",
+      "label": "Is coal type allocated to the correct stockpile?",
+      "section": "ROM and Rejects",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Is coal type allocated to the correct stockpile?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "rom_and_rejects_3",
+      "number": "3",
+      "label": "Is the coal bin bump stop free of build up at the ROM bins?",
+      "section": "ROM and Rejects",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Is the coal bin bump stop free of build up at the ROM ",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "b",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "ins?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "rom_and_rejects_4",
+      "number": "4",
+      "label": "Are the hooper wing tyres square?",
+      "section": "ROM and Rejects",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Are the hooper wing tyres square?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "rom_and_rejects_5",
+      "number": "5",
+      "label": "Are bump stop tyres aligned correctly with ROM bins?",
+      "section": "ROM and Rejects",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Are bump stop tyres aligned correctly with ROM bins",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "rom_and_rejects_6",
+      "number": "6",
+      "label": "Are floor conditions suitable for loading equipment (e.g. soft spots)?",
+      "section": "ROM and Rejects",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Are floor conditions suitable for loading equipment (",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "e.g. s",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "oft ",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "s",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "pots)",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "rom_and_rejects_7",
+      "number": "7",
+      "label": "Is coal stockpile under cab height of loading unit?",
+      "section": "ROM and Rejects",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Is coal stockpile under cab height of loading unit? ",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "rom_and_rejects_8",
+      "number": "8",
+      "label": "Is there any spontaneous combustion present?",
+      "section": "ROM and Rejects",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Is there any spontaneous combustion present?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "rom_and_rejects_9",
+      "number": "9",
+      "label": "Are the stockpile safety/high risk bunds compliant?",
+      "section": "ROM and Rejects",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Are the stockpile ",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "s",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "afety/",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "hi",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "gh ",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "r",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "isk ",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "b",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "unds compliant?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "rom_and_rejects_10",
+      "number": "10",
+      "label": "Is coal loading sequence/plan available and understood?",
+      "section": "ROM and Rejects",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Is ",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "coal loading sequence/plan available and understood?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "rom_and_rejects_11",
+      "number": "11",
+      "label": "Is there appropriate traffic management in place?",
+      "section": "ROM and Rejects",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Is there appropriate traffic management in place?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "ramps__circuits__dumps_12",
+      "number": "12",
+      "label": "Are batters to design?",
+      "section": "Ramps/ Circuits/ Dumps",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Are batters to design?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "ramps__circuits__dumps_13",
+      "number": "13",
+      "label": "Are all redundant intersections/roads bunded off?",
+      "section": "Ramps/ Circuits/ Dumps",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Are all redundant intersections/roads bunded off?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "ramps__circuits__dumps_14",
+      "number": "14",
+      "label": "Are lighting plants adequately positioned and bunded?",
+      "section": "Ramps/ Circuits/ Dumps",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Are lighting plants adequately positioned and bunded?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "ramps__circuits__dumps_15",
+      "number": "15",
+      "label": "Are sumps/pumps demarcated?",
+      "section": "Ramps/ Circuits/ Dumps",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Are sumps/pumps demarcated?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "ramps__circuits__dumps_16",
+      "number": "16",
+      "label": "Is the bench height sufficient?",
+      "section": "Ramps/ Circuits/ Dumps",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Is the bench height sufficient?",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": " ",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "ramps__circuits__dumps_17",
+      "number": "17",
+      "label": "Are the circuit/dig floor conditions/housekeeping adequate?",
+      "section": "Ramps/ Circuits/ Dumps",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Are the circuit/dig floor conditions/housekeeping adequate?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "ramps__circuits__dumps_18",
+      "number": "18",
+      "label": "Are road conditions adequate?",
+      "section": "Ramps/ Circuits/ Dumps",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Are road conditions adequate?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "ramps__circuits__dumps_19",
+      "number": "19",
+      "label": "Is there a LV park up bay at the digs and the dumps? With the correct signage?",
+      "section": "Ramps/ Circuits/ Dumps",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Is there a LV park up bay at the digs and the dumps? With the correct signage?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "ramps__circuits__dumps_20",
+      "number": "20",
+      "label": "Are roads the correct width for the largest machine utilising the road? (Single lane 1.5 times largest truck – double lane 3.5 times largest truck)",
+      "section": "Ramps/ Circuits/ Dumps",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Are roads the correct width for the largest machine utilising the road? (Single lane 1.5 times largest truck – double lane 3.5 times largest truck)",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "ramps__circuits__dumps_21",
+      "number": "21",
+      "label": "Is there any material on the roads or in the rills that could cause tyre damage?",
+      "section": "Ramps/ Circuits/ Dumps",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Is there any material on the roads or in the rills that could cause tyre damage?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "ramps__circuits__dumps_22",
+      "number": "22",
+      "label": "Are the Safety Bunds/ Edge protection compliant? Height greater than or equal to 3m where drop-off heights are greater than 5m directly along the road edge.",
+      "section": "Ramps/ Circuits/ Dumps",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Are the Safety Bunds/ Edge protection compliant? ",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "\n",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "Height greater than or equal to 3m where drop-off heights are greater than 5m directly along the road edge.",
+          "bold": true,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "ramps__circuits__dumps_23",
+      "number": "23",
+      "label": "Is all correct signage and delineation adequately installed?",
+      "section": "Ramps/ Circuits/ Dumps",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Is all correct signage and delineation adequately installed?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "ramps__circuits__dumps_24",
+      "number": "24",
+      "label": "Are tip heads square in shape to prevent reversing over the tip head?",
+      "section": "Ramps/ Circuits/ Dumps",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Are tip heads square in shape to prevent reversing over the ",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "t",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "ip ",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "h",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "ead?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "ramps__circuits__dumps_25",
+      "number": "25",
+      "label": "Is the tip head bunding 2m minimum?",
+      "section": "Ramps/ Circuits/ Dumps",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Is the tip",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": " ",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "head bunding 2m minimum?",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": " ",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "ramps__circuits__dumps_26",
+      "number": "26",
+      "label": "Are there any cracks or slumping within work areas?",
+      "section": "Ramps/ Circuits/ Dumps",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Are there any cracks or slumping within work areas? ",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "ramps__circuits__dumps_27",
+      "number": "27",
+      "label": "Supervisors to inspect their respective dumps a minimum three (3) times per shift.",
+      "section": "Ramps/ Circuits/ Dumps",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Supervisors to inspect their respective dumps a minimum three (3) times per shift.",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "ramps__circuits__dumps_28",
+      "number": "28",
+      "label": "Is there compliant separation between trucks and the dozer? (Refer to WI-3010, Section 4)",
+      "section": "Ramps/ Circuits/ Dumps",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Is there compliant separation between ",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "t",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "rucks and the ",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "d",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "ozer? (Refer to WI-3010",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": ",",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": " Section 4)",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "ramps__circuits__dumps_29",
+      "number": "29",
+      "label": "Where a narrow dump (under 40m wide) is in operation, and we are running under a JSA, are all controls being followed? (Refer to SOP-034, Section 7.2)",
+      "section": "Ramps/ Circuits/ Dumps",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Where a narrow dump (",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "u",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "nder 40m wide) is in operation, and we are running under a JSA",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": ",",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": " are all controls being followed",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "?",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": " (",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "R",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "efer to SOP-034",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": ",",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": " Section 7.2)",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "ramps__circuits__dumps_30",
+      "number": "30",
+      "label": "Is there any water ponding at base of dump?",
+      "section": "Ramps/ Circuits/ Dumps",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Is there any water ponding at base of dump?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "ramps__circuits__dumps_31",
+      "number": "31",
+      "label": "Are all geotechnical standoffs being adhered to?",
+      "section": "Ramps/ Circuits/ Dumps",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Are all geotech",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "nical ",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "standoffs being adhered to?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "risk_management_32",
+      "number": "32",
+      "label": "Is there any other spontaneous combustion present excluding ROM and rejects?",
+      "section": "Risk Management",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Is there any other spontaneous combustion present excluding ROM and ",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "r",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "ejects?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "risk_management_33",
+      "number": "33",
+      "label": "Are there any geotechnical hazards?",
+      "section": "Risk Management",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Are there any geotechnical hazards?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "risk_management_34",
+      "number": "34",
+      "label": "Is a JSA required for the operation?",
+      "section": "Risk Management",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Is a JSA required for the operation?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "risk_management_35",
+      "number": "35",
+      "label": "If there is a JSA in place, is it current and being adhered to?",
+      "section": "Risk Management",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "If there ",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "is a",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": " JSA in place, is it current and being adhered to?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "risk_management_36",
+      "number": "36",
+      "label": "When is the review date required for updating the JSA?",
+      "section": "Risk Management",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "When is the review date required for updating the JSA",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "refuelling_bay_37",
+      "number": "37",
+      "label": "Are fuel bay road conditions adequate?",
+      "section": "Refuelling Bay",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Are fuel bay road conditions adequate?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "refuelling_bay_38",
+      "number": "38",
+      "label": "Is the segregation bunding in place and adequate?",
+      "section": "Refuelling Bay",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Is the segregation bunding in place and adequate?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "refuelling_bay_39",
+      "number": "39",
+      "label": "Is the correct signage in place?",
+      "section": "Refuelling Bay",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Is the correct signage in place? ",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "kind": "section",
+      "title": "ROM and Rejects"
+    },
+    {
+      "kind": "question",
+      "key": "rom_and_rejects_1"
+    },
+    {
+      "kind": "question",
+      "key": "rom_and_rejects_2"
+    },
+    {
+      "kind": "question",
+      "key": "rom_and_rejects_3"
+    },
+    {
+      "kind": "question",
+      "key": "rom_and_rejects_4"
+    },
+    {
+      "kind": "question",
+      "key": "rom_and_rejects_5"
+    },
+    {
+      "kind": "question",
+      "key": "rom_and_rejects_6"
+    },
+    {
+      "kind": "question",
+      "key": "rom_and_rejects_7"
+    },
+    {
+      "kind": "question",
+      "key": "rom_and_rejects_8"
+    },
+    {
+      "kind": "question",
+      "key": "rom_and_rejects_9"
+    },
+    {
+      "kind": "question",
+      "key": "rom_and_rejects_10"
+    },
+    {
+      "kind": "question",
+      "key": "rom_and_rejects_11"
+    },
+    {
+      "kind": "section",
+      "title": "Ramps/ Circuits/ Dumps"
+    },
+    {
+      "kind": "question",
+      "key": "ramps__circuits__dumps_12"
+    },
+    {
+      "kind": "question",
+      "key": "ramps__circuits__dumps_13"
+    },
+    {
+      "kind": "question",
+      "key": "ramps__circuits__dumps_14"
+    },
+    {
+      "kind": "question",
+      "key": "ramps__circuits__dumps_15"
+    },
+    {
+      "kind": "question",
+      "key": "ramps__circuits__dumps_16"
+    },
+    {
+      "kind": "question",
+      "key": "ramps__circuits__dumps_17"
+    },
+    {
+      "kind": "question",
+      "key": "ramps__circuits__dumps_18"
+    },
+    {
+      "kind": "question",
+      "key": "ramps__circuits__dumps_19"
+    },
+    {
+      "kind": "question",
+      "key": "ramps__circuits__dumps_20"
+    },
+    {
+      "kind": "question",
+      "key": "ramps__circuits__dumps_21"
+    },
+    {
+      "kind": "question",
+      "key": "ramps__circuits__dumps_22"
+    },
+    {
+      "kind": "question",
+      "key": "ramps__circuits__dumps_23"
+    },
+    {
+      "kind": "question",
+      "key": "ramps__circuits__dumps_24"
+    },
+    {
+      "kind": "question",
+      "key": "ramps__circuits__dumps_25"
+    },
+    {
+      "kind": "question",
+      "key": "ramps__circuits__dumps_26"
+    },
+    {
+      "kind": "question",
+      "key": "ramps__circuits__dumps_27"
+    },
+    {
+      "kind": "question",
+      "key": "ramps__circuits__dumps_28"
+    },
+    {
+      "kind": "question",
+      "key": "ramps__circuits__dumps_29"
+    },
+    {
+      "kind": "question",
+      "key": "ramps__circuits__dumps_30"
+    },
+    {
+      "kind": "question",
+      "key": "ramps__circuits__dumps_31"
+    },
+    {
+      "kind": "section",
+      "title": "Risk Management"
+    },
+    {
+      "kind": "question",
+      "key": "risk_management_32"
+    },
+    {
+      "kind": "question",
+      "key": "risk_management_33"
+    },
+    {
+      "kind": "question",
+      "key": "risk_management_34"
+    },
+    {
+      "kind": "question",
+      "key": "risk_management_35"
+    },
+    {
+      "kind": "question",
+      "key": "risk_management_36"
+    },
+    {
+      "kind": "section",
+      "title": "Refuelling Bay"
+    },
+    {
+      "kind": "question",
+      "key": "refuelling_bay_37"
+    },
+    {
+      "kind": "question",
+      "key": "refuelling_bay_38"
+    },
+    {
+      "kind": "question",
+      "key": "refuelling_bay_39"
+    }
+  ],
+  "temperatureSlots": 5,
+  "dumpTimesQuestion": "ramps__circuits__dumps_27",
+  "jsaReviewDateQuestion": "risk_management_36",
+  "details": {
+    "crew": true,
+    "shift": true,
+    "location": true,
+    "time": false
+  },
+  "additionalComments": true,
+  "dumpTimeSlots": 3,
+  "temperatureGuidance": "Supervisors to record Spon Com temperature Three (3) times per shift. Or Five 5 times for a Level 2 TARP."
+}

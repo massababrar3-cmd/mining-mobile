@@ -1,0 +1,930 @@
+{
+  "id": "FRM-431",
+  "name": "Drill and Blast Supervisor Daily Inspection Form",
+  "position": "Drill & Blast Supervisor",
+  "kind": "inspection",
+  "siteName": "Carmichael Coal Mine",
+  "version": 1,
+  "sourceRevision": 2,
+  "sourceDate": "25/02/2026",
+  "documentCode": "CCM-FRM-HS-000418_2",
+  "sourceSha256": "c55c4a996f5313c2a2599eac0be3a978bb79969e0153f1baef24bb36f291e58d",
+  "font": "Lato",
+  "bodyFontSize": 8,
+  "headingColour": "C3A385",
+  "sectionColour": "E7DACE",
+  "signOffSlots": 1,
+  "secondSignatureRequired": false,
+  "questions": [
+    {
+      "key": "drilling_operations_1",
+      "number": "1",
+      "label": "Is the drill working off the correct design?",
+      "section": "Drilling Operations",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Is the drill working off the correct design?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "drilling_operations_2",
+      "number": "2",
+      "label": "Is the drill set up correctly, on correct grade, jacks extended?",
+      "section": "Drilling Operations",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Is the drill set up correctly, on correct grade, jacks extended?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "drilling_operations_3",
+      "number": "3",
+      "label": "Is the drill operating on the correct angle?",
+      "section": "Drilling Operations",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Is the drill operating on the correct angle?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "drilling_operations_4",
+      "number": "4",
+      "label": "Is there sufficient tail room for the drill?",
+      "section": "Drilling Operations",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Is there sufficient tail room for the drill?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "drilling_operations_5",
+      "number": "5",
+      "label": "Is the drill utilising water whilst drilling?",
+      "section": "Drilling Operations",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Is the drill utilising water whilst drilling?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "drilling_operations_6",
+      "number": "6",
+      "label": "Is dust being adequately suppressed?",
+      "section": "Drilling Operations",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Is dust being adequately suppressed?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "drilling_operations_7",
+      "number": "7",
+      "label": "Is there any gas on the bench?",
+      "section": "Drilling Operations",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Is there any gas on the bench?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "drilling_operations_8",
+      "number": "8",
+      "label": "Is the driller utilising a gas monitor?",
+      "section": "Drilling Operations",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Is the driller utilising a gas monitor?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "drilling_operations_9",
+      "number": "9",
+      "label": "Is there evidence of water pooling on the pattern?",
+      "section": "Drilling Operations",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Is there evidence of water pooling on the pattern?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "drilling_operations_10",
+      "number": "10",
+      "label": "Is there evidence of cracking, soft spots or other floor issues requiring rectification?",
+      "section": "Drilling Operations",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Is there evidence of cracking, soft spots or other floor issues requiring rectification?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "drilling_operations_11",
+      "number": "11",
+      "label": "Are there activities above or below that may affect the work area?",
+      "section": "Drilling Operations",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Are there activities above or below that may affect the work area?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "drilling_operations_12",
+      "number": "12",
+      "label": "Are the bunds suitable for the work area and adjacent activities?",
+      "section": "Drilling Operations",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Are the bunds suitable for the work area and adjacent activities?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "drilling_operations_13",
+      "number": "13",
+      "label": "Are catch bunds less than 50% full?",
+      "section": "Drilling Operations",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Are catch bunds less than 50% full?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "drilling_operations_14",
+      "number": "14",
+      "label": "Have any lighting plants installed for the area been installed correctly?Is it bunded on 3 sides? Has it been set up correctly with all outriggers lowered?Are the lights facing away from oncoming traffic to not obscure vision?",
+      "section": "Drilling Operations",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Have any lighting plants installed for the area been installed correctly?",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "\n",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "Is it bunded on 3 sides? ",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "\n",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "Has it been set up correctly with all outriggers lowered?",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "\n",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "Are the lights facing away from oncoming traffic to not obscure vision?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "drilling_operations_15",
+      "number": "15",
+      "label": "Has the entrance been “Controlled” to no greater than ten (10) metres in width?",
+      "section": "Drilling Operations",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Has the entrance been “Controlled” to no greater than ten (10) metres in width?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "drilling_operations_16",
+      "number": "16",
+      "label": "Is the correct signage in place, visible and clean?",
+      "section": "Drilling Operations",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Is the correct signage in place, visible and clean?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "drilling_operations_17",
+      "number": "17",
+      "label": "Are correct call-up procedures being used?",
+      "section": "Drilling Operations",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Are correct call-up procedures being used?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "drilling_operations_18",
+      "number": "18",
+      "label": "Are all vehicles parked in a designated area or fundamentally stable?",
+      "section": "Drilling Operations",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Are all vehicles parked in a designated area or fundamentally stable?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "drilling_operations_19",
+      "number": "19",
+      "label": "Are there any concerns by the drilling crew?",
+      "section": "Drilling Operations",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Are there any concerns by the drilling crew?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "drilling_operations_20",
+      "number": "20",
+      "label": "Is a JSA required for hazards present on the bench? If so, is it in date and controls being adhered to?",
+      "section": "Drilling Operations",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Is a JSA required for hazards present on the bench? If so, is it in date and controls being adhered to?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "drilling_operations_21",
+      "number": "21",
+      "label": "If maintenance activities are occurring, is there sufficient shade?",
+      "section": "Drilling Operations",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "If maintenance activities are occurring, is there sufficient shade? ",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "blast_crew_operations_1",
+      "number": "1",
+      "label": "Does the blast crew have the blast design for the shot?",
+      "section": "Blast Crew Operations",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Does the blast crew have the blast design for the shot?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "blast_crew_operations_2",
+      "number": "2",
+      "label": "Are there any holes that require redrilling?",
+      "section": "Blast Crew Operations",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Are there any holes that require redrilling?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "blast_crew_operations_3",
+      "number": "3",
+      "label": "Are the bunds suitable for the work area and adjacent activities?",
+      "section": "Blast Crew Operations",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Are the bunds suitable for the work area and adjacent activities?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "blast_crew_operations_4",
+      "number": "4",
+      "label": "Are catch bunds less than 50% full?",
+      "section": "Blast Crew Operations",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Are catch bunds less than 50% full?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "blast_crew_operations_5",
+      "number": "5",
+      "label": "Has the entrance been “Controlled” to no greater than ten (10) metres in width?",
+      "section": "Blast Crew Operations",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Has the entrance been “Controlled” to no greater than ten (10) metres in width?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "blast_crew_operations_6",
+      "number": "6",
+      "label": "Is flagging / fencing in place to be installed when blast crew leave the area?",
+      "section": "Blast Crew Operations",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Is flagging / fencing in place to be installed when blast crew leave the area?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "blast_crew_operations_7",
+      "number": "7",
+      "label": "Is the correct signage in place, visible and clean?",
+      "section": "Blast Crew Operations",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Is the correct signage in place, visible and clean?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "blast_crew_operations_8",
+      "number": "8",
+      "label": "Are correct call-up procedures being used?",
+      "section": "Blast Crew Operations",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Are correct call-up procedures being used?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "blast_crew_operations_9",
+      "number": "9",
+      "label": "Are all vehicles parked in a designated area or fundamentally stable?",
+      "section": "Blast Crew Operations",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Are all vehicles parked in a designated area or fundamentally stable?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "blast_crew_operations_10",
+      "number": "10",
+      "label": "Has all equipment been pre-started?",
+      "section": "Blast Crew Operations",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Has all equipment been pre-started?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "blast_crew_operations_11",
+      "number": "11",
+      "label": "Is there a TMP for the work area?",
+      "section": "Blast Crew Operations",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Is there a TMP for the work area?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "blast_crew_operations_12",
+      "number": "12",
+      "label": "Can the MPU/Stemming operators explain the TMP and loading route?",
+      "section": "Blast Crew Operations",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Can the MPU/Stemming operators explain the TMP and loading route?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "blast_crew_operations_13",
+      "number": "13",
+      "label": "Are there spotters being used for equipment reversing around holes?",
+      "section": "Blast Crew Operations",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Are there spotters being used for equipment reversing around holes?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "blast_crew_operations_14",
+      "number": "14",
+      "label": "Is the hole ID etc easily identifiable to MPU operator?",
+      "section": "Blast Crew Operations",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Is the hole ID etc easily identifiable to MPU operator?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "blast_crew_operations_15",
+      "number": "15",
+      "label": "Is there any gas on the bench? Is the blast crew utilising a gas monitor?",
+      "section": "Blast Crew Operations",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Is there any gas on the bench? Is the blast crew utilising a gas monitor?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "blast_crew_operations_16",
+      "number": "16",
+      "label": "Is IE/HE placed next to peg prior to priming?",
+      "section": "Blast Crew Operations",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Is IE/HE placed next to peg prior to priming?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "blast_crew_operations_17",
+      "number": "17",
+      "label": "Are all downlines and tails secured to a peg?",
+      "section": "Blast Crew Operations",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Are all downlines ",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "and tails ",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "secured to a peg?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "blast_crew_operations_18",
+      "number": "18",
+      "label": "Have all holes been stemmed on the day they were loaded?",
+      "section": "Blast Crew Operations",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Have all holes been stemmed on the day they were loaded?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "blast_crew_operations_19",
+      "number": "19",
+      "label": "Has the MPU operator completed the loading data for each hole?",
+      "section": "Blast Crew Operations",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Has the MPU operator completed the loading data for each hole?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "blast_crew_operations_20",
+      "number": "20",
+      "label": "Has the shotfirers daily load log been completed?",
+      "section": "Blast Crew Operations",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Has the shotfirers daily load log been completed?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "blast_crew_operations_21",
+      "number": "21",
+      "label": "Have cup weights been taken as required?",
+      "section": "Blast Crew Operations",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Have cup weights been taken as required?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "blast_crew_operations_22",
+      "number": "22",
+      "label": "Are there any concerns by the blast crew?",
+      "section": "Blast Crew Operations",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Are there any concerns by the blast crew?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "blast_crew_operations_23",
+      "number": "23",
+      "label": "Is a JSA required for hazards present on the bench? If so, is it in date and controls being adhered to?",
+      "section": "Blast Crew Operations",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Is a JSA required for hazards present on the bench? If so, is it in date and controls being adhered to?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "kind": "section",
+      "title": "Drilling Operations"
+    },
+    {
+      "kind": "question",
+      "key": "drilling_operations_1"
+    },
+    {
+      "kind": "question",
+      "key": "drilling_operations_2"
+    },
+    {
+      "kind": "question",
+      "key": "drilling_operations_3"
+    },
+    {
+      "kind": "question",
+      "key": "drilling_operations_4"
+    },
+    {
+      "kind": "question",
+      "key": "drilling_operations_5"
+    },
+    {
+      "kind": "question",
+      "key": "drilling_operations_6"
+    },
+    {
+      "kind": "question",
+      "key": "drilling_operations_7"
+    },
+    {
+      "kind": "question",
+      "key": "drilling_operations_8"
+    },
+    {
+      "kind": "gas",
+      "key": "gas_1",
+      "title": "Drilling Operations — Gas Readings",
+      "rows": 2
+    },
+    {
+      "kind": "question",
+      "key": "drilling_operations_9"
+    },
+    {
+      "kind": "question",
+      "key": "drilling_operations_10"
+    },
+    {
+      "kind": "question",
+      "key": "drilling_operations_11"
+    },
+    {
+      "kind": "question",
+      "key": "drilling_operations_12"
+    },
+    {
+      "kind": "question",
+      "key": "drilling_operations_13"
+    },
+    {
+      "kind": "question",
+      "key": "drilling_operations_14"
+    },
+    {
+      "kind": "question",
+      "key": "drilling_operations_15"
+    },
+    {
+      "kind": "question",
+      "key": "drilling_operations_16"
+    },
+    {
+      "kind": "question",
+      "key": "drilling_operations_17"
+    },
+    {
+      "kind": "question",
+      "key": "drilling_operations_18"
+    },
+    {
+      "kind": "question",
+      "key": "drilling_operations_19"
+    },
+    {
+      "kind": "question",
+      "key": "drilling_operations_20"
+    },
+    {
+      "kind": "question",
+      "key": "drilling_operations_21"
+    },
+    {
+      "kind": "section",
+      "title": "Blast Crew Operations"
+    },
+    {
+      "kind": "question",
+      "key": "blast_crew_operations_1"
+    },
+    {
+      "kind": "question",
+      "key": "blast_crew_operations_2"
+    },
+    {
+      "kind": "question",
+      "key": "blast_crew_operations_3"
+    },
+    {
+      "kind": "question",
+      "key": "blast_crew_operations_4"
+    },
+    {
+      "kind": "question",
+      "key": "blast_crew_operations_5"
+    },
+    {
+      "kind": "question",
+      "key": "blast_crew_operations_6"
+    },
+    {
+      "kind": "question",
+      "key": "blast_crew_operations_7"
+    },
+    {
+      "kind": "question",
+      "key": "blast_crew_operations_8"
+    },
+    {
+      "kind": "question",
+      "key": "blast_crew_operations_9"
+    },
+    {
+      "kind": "question",
+      "key": "blast_crew_operations_10"
+    },
+    {
+      "kind": "question",
+      "key": "blast_crew_operations_11"
+    },
+    {
+      "kind": "question",
+      "key": "blast_crew_operations_12"
+    },
+    {
+      "kind": "question",
+      "key": "blast_crew_operations_13"
+    },
+    {
+      "kind": "question",
+      "key": "blast_crew_operations_14"
+    },
+    {
+      "kind": "question",
+      "key": "blast_crew_operations_15"
+    },
+    {
+      "kind": "gas",
+      "key": "gas_2",
+      "title": "Blast Crew Operations — Gas Readings",
+      "rows": 2
+    },
+    {
+      "kind": "question",
+      "key": "blast_crew_operations_16"
+    },
+    {
+      "kind": "question",
+      "key": "blast_crew_operations_17"
+    },
+    {
+      "kind": "question",
+      "key": "blast_crew_operations_18"
+    },
+    {
+      "kind": "question",
+      "key": "blast_crew_operations_19"
+    },
+    {
+      "kind": "question",
+      "key": "blast_crew_operations_20"
+    },
+    {
+      "kind": "question",
+      "key": "blast_crew_operations_21"
+    },
+    {
+      "kind": "question",
+      "key": "blast_crew_operations_22"
+    },
+    {
+      "kind": "question",
+      "key": "blast_crew_operations_23"
+    }
+  ],
+  "temperatureSlots": 0,
+  "dumpTimesQuestion": null,
+  "jsaReviewDateQuestion": null,
+  "details": {
+    "crew": false,
+    "shift": false,
+    "location": true,
+    "time": true
+  },
+  "additionalComments": false,
+  "dumpTimeSlots": 0,
+  "temperatureGuidance": ""
+}

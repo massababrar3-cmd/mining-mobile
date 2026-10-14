@@ -1,0 +1,791 @@
+{
+  "id": "FRM-447",
+  "name": "Dozer Push Supervisor Daily Inspection Form",
+  "position": "Dozer Push Supervisor",
+  "kind": "inspection",
+  "siteName": "Carmichael Coal Mine",
+  "version": 1,
+  "sourceRevision": 0,
+  "sourceDate": "5/12/2025",
+  "documentCode": "CCM-FRM-HS-000082_0",
+  "sourceSha256": "7e4e43d62c74c1107811e2247013a1bfd2d8b835ad7d3eb654677cb71b58010d",
+  "font": "Lato",
+  "bodyFontSize": 8,
+  "headingColour": "C3A385",
+  "sectionColour": "E7DACE",
+  "signOffSlots": 2,
+  "secondSignatureRequired": false,
+  "questions": [
+    {
+      "key": "risk_management_1",
+      "number": "1",
+      "label": "Have all workers completed a JSA/Take 5?",
+      "section": "Risk Management",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Have all workers completed a JSA/Take 5?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "risk_management_2",
+      "number": "2",
+      "label": "Have all dozer push operators completed their prestart inspection?",
+      "section": "Risk Management",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Have all dozer push operators completed their prestart inspection?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "risk_management_3",
+      "number": "3",
+      "label": "Have all OCE required controls been implemented?",
+      "section": "Risk Management",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Have all OCE required controls been implemented?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "risk_management_4",
+      "number": "4",
+      "label": "Have all Geotech hazards been included within the plan/ delineated for the work area?",
+      "section": "Risk Management",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Have all Geotech hazards been included within the",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": " p",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "lan/",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": " ",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "delineated for the work area?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "dozer_push_work_area_5",
+      "number": "5",
+      "label": "Have the limits of the push been set? (Survey pegs or GPS file).",
+      "section": "Dozer Push Work Area",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Have the limits of the push been set? (",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "S",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "urvey pegs or GPS file)",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": ".",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "dozer_push_work_area_6",
+      "number": "6",
+      "label": "Has the pivot point/line been delineated? (Survey pegs or GPS file).",
+      "section": "Dozer Push Work Area",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Has the pivot point/line been delineated? (",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "S",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "urvey pegs or GPS file)",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": ".",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "dozer_push_work_area_7",
+      "number": "7",
+      "label": "Are dozers pushing from the front to the back to minimise carry and push distance?",
+      "section": "Dozer Push Work Area",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Are dozers pushing from the front to the back to minimise carry and push distance?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "dozer_push_work_area_8",
+      "number": "8",
+      "label": "Have slots been established that are no higher than the dozers blade?",
+      "section": "Dozer Push Work Area",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Have slots been established that are no higher than the dozers blade?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "dozer_push_work_area_9",
+      "number": "9",
+      "label": "Are dozers stitching in the slots as the advance?",
+      "section": "Dozer Push Work Area",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Are dozers stitching in the slots as the advance?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "dozer_push_work_area_10",
+      "number": "10",
+      "label": "Are the dozers pushing with a full blade? (Optimum loading).",
+      "section": "Dozer Push Work Area",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Are the dozers pushing with a full blade? (",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "O",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "ptimum loading)",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": ".",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "dozer_push_work_area_11",
+      "number": "11",
+      "label": "Is there one slot separation between adjacent dozers pushing?",
+      "section": "Dozer Push Work Area",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Is there one slot separation between adjacent dozers pushing?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "dozer_push_work_area_12",
+      "number": "12",
+      "label": "Is there an emergency access path to the dozer push that is accessible?",
+      "section": "Dozer Push Work Area",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Is there an emergency access path to the dozer push that is accessible?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "dozer_push_work_area_13",
+      "number": "13",
+      "label": "Are the dozers pushing evenly to the correct RL? (Correct staircase development).",
+      "section": "Dozer Push Work Area",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Are the dozers pushing evenly to the correct RL? (",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "C",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "orrect staircase development)",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": ".",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "dozer_push_work_area_14",
+      "number": "14",
+      "label": "Is a dozer completing ripping of hard ground ripping within the slot line?",
+      "section": "Dozer Push Work Area",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Is a dozer completing ripping of hard ground ripping within the slot line?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "dozer_push_work_area_15",
+      "number": "15",
+      "label": "Is there adequate lighting set up for night time activities?",
+      "section": "Dozer Push Work Area",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Is there adequate lighting set up for night",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": " ",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "time activities?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "excavator_support_16",
+      "number": "16",
+      "label": "Is the excavator maintaining batter compliance? (Survey pegs or GPS file).",
+      "section": "Excavator Support",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Is the excavator maintaining batter compliance? (",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "S",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "urvey pegs or GPS file)",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": ".",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "excavator_support_17",
+      "number": "17",
+      "label": "Is the wall stable and is the excavator positioned so that there is no chance of material striking the excavator?",
+      "section": "Excavator Support",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Is the wall stable and is the excavator positioned so that there is no chance of material striking the excavator?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "excavator_support_18",
+      "number": "18",
+      "label": "Is the excavator removing hangup and progressively cutting down the wall?",
+      "section": "Excavator Support",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Is the excavator removing hangup and progressively cutting down the wall?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "excavator_support_19",
+      "number": "19",
+      "label": "Is the excavator positioned out of the direct path of a reversing dozer?",
+      "section": "Excavator Support",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Is the excavator positioned out of the direct path of a reversing dozer?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "excavator_support_20",
+      "number": "20",
+      "label": "Is excavator is positioned with a clear retreat path available?",
+      "section": "Excavator Support",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Is excavator is positioned with a clear retreat path available?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "excavator_support_21",
+      "number": "21",
+      "label": "Is the excavator spoiling material so there is no risk of drop off or damage to dozers that are reversing?",
+      "section": "Excavator Support",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Is the excavator spoiling material so there is no risk of drop off or damage to dozers that are reversing?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "excavator_support_22",
+      "number": "22",
+      "label": "Is there adequate lighting set up for night time activities?",
+      "section": "Excavator Support",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Is there adequate lighting set up for night time activities?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "dozer_push_abnormal_circumstances_23",
+      "number": "23",
+      "label": "When working above or below a spoil dump or body of water, is the dozer completing a double push? (Leave a blade of dirt at the end of the push and push over with the next blade).",
+      "section": "Dozer Push Abnormal Circumstances",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "When working above or below a spoil dump or body of water, is the dozer completing a double push? (Leave a blade of dirt at the end of the push and push over with the next blade)",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": ".",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "dozer_push_abnormal_circumstances_24",
+      "number": "24",
+      "label": "Is the dozer working at greater than 450 to any edge, drop off or void?",
+      "section": "Dozer Push Abnormal Circumstances",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Is the dozer working at greater than 450 to any edge, drop off or void?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "dozer_push_abnormal_circumstances_25",
+      "number": "25",
+      "label": "Is there no more than 1 dozer at the face while pushing into water?",
+      "section": "Dozer Push Abnormal Circumstances",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Is there no more than 1 dozer at the face while pushing into water?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "dozer_push_abnormal_circumstances_26",
+      "number": "26",
+      "label": "Are the dozer operators bridging over wet materials with competent materials?",
+      "section": "Dozer Push Abnormal Circumstances",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Are the dozer operators bridging over wet materials with competent materials?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "parking_and_signage_27",
+      "number": "27",
+      "label": "Is there a designated parking area in place?",
+      "section": "Parking and Signage",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Is there a designated parking area in place?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "parking_and_signage_28",
+      "number": "28",
+      "label": "Have dozers been correctly parked within the parking area?",
+      "section": "Parking and Signage",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Have dozers been correctly parked within the parking area?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "parking_and_signage_29",
+      "number": "29",
+      "label": "Is there a separation bund for LV/HV?",
+      "section": "Parking and Signage",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Is there a separation bund for LV/HV?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "parking_and_signage_30",
+      "number": "30",
+      "label": "Have all LVs been correctly parked within the parking area??",
+      "section": "Parking and Signage",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Have all LVs been correctly parked within the parking area??",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "parking_and_signage_31",
+      "number": "31",
+      "label": "Is there suitable bunding installed?",
+      "section": "Parking and Signage",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Is there suitable bunding installed?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "parking_and_signage_32",
+      "number": "32",
+      "label": "Are the dozers parking correctly for refuelling activities?",
+      "section": "Parking and Signage",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Are the dozers parking correctly for refuelling activities?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "parking_and_signage_33",
+      "number": "33",
+      "label": "Are all required call-up signs in place?",
+      "section": "Parking and Signage",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Are all required call-up signs in place? ",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "kind": "section",
+      "title": "Risk Management"
+    },
+    {
+      "kind": "question",
+      "key": "risk_management_1"
+    },
+    {
+      "kind": "question",
+      "key": "risk_management_2"
+    },
+    {
+      "kind": "question",
+      "key": "risk_management_3"
+    },
+    {
+      "kind": "question",
+      "key": "risk_management_4"
+    },
+    {
+      "kind": "section",
+      "title": "Dozer Push Work Area"
+    },
+    {
+      "kind": "question",
+      "key": "dozer_push_work_area_5"
+    },
+    {
+      "kind": "question",
+      "key": "dozer_push_work_area_6"
+    },
+    {
+      "kind": "question",
+      "key": "dozer_push_work_area_7"
+    },
+    {
+      "kind": "question",
+      "key": "dozer_push_work_area_8"
+    },
+    {
+      "kind": "question",
+      "key": "dozer_push_work_area_9"
+    },
+    {
+      "kind": "question",
+      "key": "dozer_push_work_area_10"
+    },
+    {
+      "kind": "question",
+      "key": "dozer_push_work_area_11"
+    },
+    {
+      "kind": "question",
+      "key": "dozer_push_work_area_12"
+    },
+    {
+      "kind": "question",
+      "key": "dozer_push_work_area_13"
+    },
+    {
+      "kind": "question",
+      "key": "dozer_push_work_area_14"
+    },
+    {
+      "kind": "question",
+      "key": "dozer_push_work_area_15"
+    },
+    {
+      "kind": "section",
+      "title": "Excavator Support"
+    },
+    {
+      "kind": "question",
+      "key": "excavator_support_16"
+    },
+    {
+      "kind": "question",
+      "key": "excavator_support_17"
+    },
+    {
+      "kind": "question",
+      "key": "excavator_support_18"
+    },
+    {
+      "kind": "question",
+      "key": "excavator_support_19"
+    },
+    {
+      "kind": "question",
+      "key": "excavator_support_20"
+    },
+    {
+      "kind": "question",
+      "key": "excavator_support_21"
+    },
+    {
+      "kind": "question",
+      "key": "excavator_support_22"
+    },
+    {
+      "kind": "section",
+      "title": "Dozer Push Abnormal Circumstances"
+    },
+    {
+      "kind": "question",
+      "key": "dozer_push_abnormal_circumstances_23"
+    },
+    {
+      "kind": "question",
+      "key": "dozer_push_abnormal_circumstances_24"
+    },
+    {
+      "kind": "question",
+      "key": "dozer_push_abnormal_circumstances_25"
+    },
+    {
+      "kind": "question",
+      "key": "dozer_push_abnormal_circumstances_26"
+    },
+    {
+      "kind": "section",
+      "title": "Parking and Signage"
+    },
+    {
+      "kind": "question",
+      "key": "parking_and_signage_27"
+    },
+    {
+      "kind": "question",
+      "key": "parking_and_signage_28"
+    },
+    {
+      "kind": "question",
+      "key": "parking_and_signage_29"
+    },
+    {
+      "kind": "question",
+      "key": "parking_and_signage_30"
+    },
+    {
+      "kind": "question",
+      "key": "parking_and_signage_31"
+    },
+    {
+      "kind": "question",
+      "key": "parking_and_signage_32"
+    },
+    {
+      "kind": "question",
+      "key": "parking_and_signage_33"
+    }
+  ],
+  "temperatureSlots": 0,
+  "dumpTimesQuestion": null,
+  "jsaReviewDateQuestion": null,
+  "details": {
+    "crew": true,
+    "shift": true,
+    "location": false,
+    "time": false
+  },
+  "additionalComments": true,
+  "dumpTimeSlots": 0,
+  "temperatureGuidance": ""
+}

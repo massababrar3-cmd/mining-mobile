@@ -1,0 +1,1169 @@
+{
+  "id": "FRM-441",
+  "name": "Infrastructure Supervisor Daily Inspection Form",
+  "position": "Infrastructure Supervisor",
+  "kind": "inspection",
+  "siteName": "Carmichael Coal Mine",
+  "version": 1,
+  "sourceRevision": 0,
+  "sourceDate": "31/03/2025",
+  "documentCode": "CCM-FRM-HS-000051_0",
+  "sourceSha256": "33d9aee23a1cd9d36f723f34774b9fe1dcabdaa42e0c2f2f0b698172d503023d",
+  "font": "Lato",
+  "bodyFontSize": 8,
+  "headingColour": "C3A385",
+  "sectionColour": "E7DACE",
+  "signOffSlots": 2,
+  "secondSignatureRequired": false,
+  "questions": [
+    {
+      "key": "risk_management_1",
+      "number": "1",
+      "label": "Have you completed the correct risk management for the task you are about to complete? E.g. JSA, TMP, Take 5.",
+      "section": "Risk Management",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Have you completed the correct risk management for the task you are about to complete?",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": " ",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "E.g. JSA, TMP, Take 5.",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "risk_management_2",
+      "number": "2",
+      "label": "Do you have all required permits for the task you are about to complete?",
+      "section": "Risk Management",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Do you have all required permits for the task you are about to complete?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "drainage_3",
+      "number": "3",
+      "label": "Has drainage been installed for the work area?",
+      "section": "Drainage",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Has drainage been installed for the work area?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "drainage_4",
+      "number": "4",
+      "label": "Have water softeners or another method of slowing water been installed every 100m to prevent erosion?",
+      "section": "Drainage",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Have water ",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "softeners",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": " or another method of slowing water been installed every 100m to prevent erosion?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "drainage_5",
+      "number": "5",
+      "label": "Have any pipes installed under roads been buried a minimum of 1000mm deep?",
+      "section": "Drainage",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Have any pipes installed under roads been buried a minimum of 1000mm deep?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "drainage_6",
+      "number": "6",
+      "label": "Have the ends of pipes been cleaned out?",
+      "section": "Drainage",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Have the ends of pipes been cleaned out?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "drainage_7",
+      "number": "7",
+      "label": "Have drainage slots have been installed in bunds (50m apart, <1m wide against traffic flow)?",
+      "section": "Drainage",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Have drainage slots have been installed in bunds",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": " ",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "(50m apart, <1m wide against traffic flow)",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "drainage_8",
+      "number": "8",
+      "label": "Have trenches been bunded to prevent vehicle access?",
+      "section": "Drainage",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Have trenches been bunded to prevent vehicle access?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "drainage_9",
+      "number": "9",
+      "label": "Has the water been drained to allow material to dry out?",
+      "section": "Drainage",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Has the water been drained to allow material to dry out?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "drainage_10",
+      "number": "10",
+      "label": "If digging out a drain, has the dumping of wet material been communicated to the dump dozer?",
+      "section": "Drainage",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "If digging out a drain, has the dumping of wet material been communicated to the dump dozer?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "bunding_11",
+      "number": "11",
+      "label": "Are the bunds being installed the correct size and height?",
+      "section": "Bunding",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Are the bunds being installed the correct size and height?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "bunding_12",
+      "number": "12",
+      "label": "Have high risk bunds been installed around any 5m drop offs or high impact area?",
+      "section": "Bunding",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Have high risk bunds been installed around any 5m drop offs or high impact area?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "bunding_13",
+      "number": "13",
+      "label": "Have drainage slots have been installed in bunds (50m apart, <1m wide against traffic flow)?",
+      "section": "Bunding",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Have drainage slots have been installed in bunds",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": " ",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "(50m apart, <1m wide against traffic flow)",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "bunding_14",
+      "number": "14",
+      "label": "Have all trapezoidal bunds been squared off on top?",
+      "section": "Bunding",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Have all trapezoidal bunds been squared off on top?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "bunding_15",
+      "number": "15",
+      "label": "Is the bund angle correct?",
+      "section": "Bunding",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Is the bund angle correct?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "intersection_construction_16",
+      "number": "16",
+      "label": "Has FRM-391 Intersection Design Approval Form been completed for new intersections?",
+      "section": "Intersection Construction",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Has",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": " FRM-391",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": " Intersection Design Approval Form been completed for new intersections",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "parking_and_signage_17",
+      "number": "17",
+      "label": "Is there a designated parking area in place?",
+      "section": "Parking and Signage",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Is there a designated parking area in place?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "parking_and_signage_18",
+      "number": "18",
+      "label": "Is there signage indicating direction of traffic flow?",
+      "section": "Parking and Signage",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Is there signage indicating direction of traffic flow?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "parking_and_signage_19",
+      "number": "19",
+      "label": "Is there a separation bund for LV/HV?",
+      "section": "Parking and Signage",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Is there a separation bund for LV/HV?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "parking_and_signage_20",
+      "number": "20",
+      "label": "Are the HV parking bays 5m apart and separated by delineators?",
+      "section": "Parking and Signage",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Are the HV parking bays 5m apart and separated by delineators?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "parking_and_signage_21",
+      "number": "21",
+      "label": "Has a hump been installed?",
+      "section": "Parking and Signage",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Has a hump been installed?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "parking_and_signage_22",
+      "number": "22",
+      "label": "Is there light vehicle parking signage on either side of the go line?",
+      "section": "Parking and Signage",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Is there light vehicle parking signage on either side of the go line?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "parking_and_signage_23",
+      "number": "23",
+      "label": "Are the HV and LV vehicles parked separate?",
+      "section": "Parking and Signage",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Are the HV and LV vehicles parked separate?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "parking_and_signage_24",
+      "number": "24",
+      "label": "Is there suitable bunding installed?",
+      "section": "Parking and Signage",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Is there suitable bunding installed?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "crib_hut_25",
+      "number": "25",
+      "label": "For a New or Relocatable Building have both New or Relocatable Building and Tie Down forms been completed?",
+      "section": "Crib Hut",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "For a New or Relocatable Building have both New or Relocatable Building and Tie Down forms been completed? ",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "crib_hut_26",
+      "number": "26",
+      "label": "General works:",
+      "section": "Crib Hut",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "General works:",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "crib_hut_26_1",
+      "number": "",
+      "label": "TMP and controls in place and effective?",
+      "section": "Crib Hut",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "TMP and controls in place and effective? ",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "crib_hut_26_2",
+      "number": "",
+      "label": "Are suitable tooling, PPE, materials and equipment available and being used?",
+      "section": "Crib Hut",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Are suitable tooling, PPE, materials and equipment available and being used? ",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "crib_hut_26_3",
+      "number": "",
+      "label": "Is the housekeeping satisfactory?",
+      "section": "Crib Hut",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Is the housekeeping satisfactory?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "plumbing_27",
+      "number": "27",
+      "label": "Does plumber have all required tools, equipment and materials to work safely?",
+      "section": "Plumbing",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Does plumber have all required tools, equipment and materials to work safely?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "plumbing_28",
+      "number": "28",
+      "label": "Are any permits required for works and if so, are they in place?",
+      "section": "Plumbing",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Are any permits required for works and if so",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": ",",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": " a",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "r",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "e they in place?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "plumbing_29",
+      "number": "29",
+      "label": "Have all waste materials been disposed of correctly?",
+      "section": "Plumbing",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Have all waste materials been disposed of correctly?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "plumbing_30",
+      "number": "30",
+      "label": "Is the housekeeping satisfactory?",
+      "section": "Plumbing",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Is the housekeeping satisfactory?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "plumbing_31",
+      "number": "31",
+      "label": "Have plumbers conducted weekly inspection on water filters, taps, toilet systems?",
+      "section": "Plumbing",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Have",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": " ",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "p",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "lumbers conducted weekly inspection on water filters, taps, toilet systems?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "carpentry_32",
+      "number": "32",
+      "label": "Do you have all required permits for the task you are about to complete?",
+      "section": "Carpentry",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Do you have all required permits for the task you are about to complete?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "carpentry_33",
+      "number": "33",
+      "label": "Has sufficient backing/support been installed to support any equipment mounted to walls?",
+      "section": "Carpentry",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Has sufficient backing/support been installed to support any equipment mounted to walls?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "carpentry_34",
+      "number": "34",
+      "label": "Are all electric tools in current test date?",
+      "section": "Carpentry",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Are all electric tools in current test date?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "carpentry_35",
+      "number": "35",
+      "label": "Are all workers wearing suitable PPE for the activity?",
+      "section": "Carpentry",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Are all workers wearing suitable PPE for the activity?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "carpentry_36",
+      "number": "36",
+      "label": "Have all waste materials been disposed of correctly (including wrapping in plastic to prevent dust generation)?",
+      "section": "Carpentry",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Have all waste materials been disposed of correctly",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": " ",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "(including wrapping in plastic to prevent dust generation)",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "carpentry_37",
+      "number": "37",
+      "label": "All timber and materials neatly stacked?",
+      "section": "Carpentry",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "All timber and materials neatly stacked?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "carpentry_38",
+      "number": "38",
+      "label": "No nails or screws protruding from timbers?",
+      "section": "Carpentry",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "No nails or screws protruding from timbers?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "carpentry_39",
+      "number": "39",
+      "label": "Is the housekeeping satisfactory?",
+      "section": "Carpentry",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Is the housekeeping satisfactory?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "concrete_40",
+      "number": "40",
+      "label": "Has the correct reinforcing steel been installed per the design?",
+      "section": "Concrete",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Has the correct reinforcing steel been installed per the design?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "concrete_41",
+      "number": "41",
+      "label": "Has all steel been correctly secured/tied with sufficient overlap per design?",
+      "section": "Concrete",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Has all steel been correctly secured/tied with sufficient overlap per design?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "concrete_42",
+      "number": "42",
+      "label": "Are all trenches / footings barricaded to prevent falls?",
+      "section": "Concrete",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Are all trenches / footings barricaded to prevent falls?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "concrete_43",
+      "number": "43",
+      "label": "Star pickets and steel bars capped as required?",
+      "section": "Concrete",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Star pickets and steel bars capped as required?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "concrete_44",
+      "number": "44",
+      "label": "Have all waste materials been disposed of correctly?",
+      "section": "Concrete",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": " ",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "Have all waste materials been disposed of correctly?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "concrete_45",
+      "number": "45",
+      "label": "Concrete waste segregated for disposal?",
+      "section": "Concrete",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Concrete waste segregated for disposal?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "concrete_46",
+      "number": "46",
+      "label": "All form work neatly stacked?",
+      "section": "Concrete",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "All form work neatly stacked?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "concrete_47",
+      "number": "47",
+      "label": "No nails or screws are protruding from timbers?",
+      "section": "Concrete",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "No nails or screws ",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "are ",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "protruding from timbers?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "concrete_48",
+      "number": "48",
+      "label": "Is the housekeeping satisfactory?",
+      "section": "Concrete",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Is the housekeeping satisfactory?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "kind": "section",
+      "title": "Risk Management"
+    },
+    {
+      "kind": "question",
+      "key": "risk_management_1"
+    },
+    {
+      "kind": "question",
+      "key": "risk_management_2"
+    },
+    {
+      "kind": "section",
+      "title": "Drainage"
+    },
+    {
+      "kind": "question",
+      "key": "drainage_3"
+    },
+    {
+      "kind": "question",
+      "key": "drainage_4"
+    },
+    {
+      "kind": "question",
+      "key": "drainage_5"
+    },
+    {
+      "kind": "question",
+      "key": "drainage_6"
+    },
+    {
+      "kind": "question",
+      "key": "drainage_7"
+    },
+    {
+      "kind": "question",
+      "key": "drainage_8"
+    },
+    {
+      "kind": "question",
+      "key": "drainage_9"
+    },
+    {
+      "kind": "question",
+      "key": "drainage_10"
+    },
+    {
+      "kind": "section",
+      "title": "Bunding"
+    },
+    {
+      "kind": "question",
+      "key": "bunding_11"
+    },
+    {
+      "kind": "question",
+      "key": "bunding_12"
+    },
+    {
+      "kind": "question",
+      "key": "bunding_13"
+    },
+    {
+      "kind": "question",
+      "key": "bunding_14"
+    },
+    {
+      "kind": "question",
+      "key": "bunding_15"
+    },
+    {
+      "kind": "section",
+      "title": "Intersection Construction"
+    },
+    {
+      "kind": "question",
+      "key": "intersection_construction_16"
+    },
+    {
+      "kind": "section",
+      "title": "Parking and Signage"
+    },
+    {
+      "kind": "question",
+      "key": "parking_and_signage_17"
+    },
+    {
+      "kind": "question",
+      "key": "parking_and_signage_18"
+    },
+    {
+      "kind": "question",
+      "key": "parking_and_signage_19"
+    },
+    {
+      "kind": "question",
+      "key": "parking_and_signage_20"
+    },
+    {
+      "kind": "question",
+      "key": "parking_and_signage_21"
+    },
+    {
+      "kind": "question",
+      "key": "parking_and_signage_22"
+    },
+    {
+      "kind": "question",
+      "key": "parking_and_signage_23"
+    },
+    {
+      "kind": "question",
+      "key": "parking_and_signage_24"
+    },
+    {
+      "kind": "section",
+      "title": "Crib Hut"
+    },
+    {
+      "kind": "question",
+      "key": "crib_hut_25"
+    },
+    {
+      "kind": "question",
+      "key": "crib_hut_26"
+    },
+    {
+      "kind": "question",
+      "key": "crib_hut_26_1"
+    },
+    {
+      "kind": "question",
+      "key": "crib_hut_26_2"
+    },
+    {
+      "kind": "question",
+      "key": "crib_hut_26_3"
+    },
+    {
+      "kind": "section",
+      "title": "Plumbing"
+    },
+    {
+      "kind": "question",
+      "key": "plumbing_27"
+    },
+    {
+      "kind": "question",
+      "key": "plumbing_28"
+    },
+    {
+      "kind": "question",
+      "key": "plumbing_29"
+    },
+    {
+      "kind": "question",
+      "key": "plumbing_30"
+    },
+    {
+      "kind": "question",
+      "key": "plumbing_31"
+    },
+    {
+      "kind": "section",
+      "title": "Carpentry"
+    },
+    {
+      "kind": "question",
+      "key": "carpentry_32"
+    },
+    {
+      "kind": "question",
+      "key": "carpentry_33"
+    },
+    {
+      "kind": "question",
+      "key": "carpentry_34"
+    },
+    {
+      "kind": "question",
+      "key": "carpentry_35"
+    },
+    {
+      "kind": "question",
+      "key": "carpentry_36"
+    },
+    {
+      "kind": "question",
+      "key": "carpentry_37"
+    },
+    {
+      "kind": "question",
+      "key": "carpentry_38"
+    },
+    {
+      "kind": "question",
+      "key": "carpentry_39"
+    },
+    {
+      "kind": "section",
+      "title": "Concrete"
+    },
+    {
+      "kind": "question",
+      "key": "concrete_40"
+    },
+    {
+      "kind": "question",
+      "key": "concrete_41"
+    },
+    {
+      "kind": "question",
+      "key": "concrete_42"
+    },
+    {
+      "kind": "question",
+      "key": "concrete_43"
+    },
+    {
+      "kind": "question",
+      "key": "concrete_44"
+    },
+    {
+      "kind": "question",
+      "key": "concrete_45"
+    },
+    {
+      "kind": "question",
+      "key": "concrete_46"
+    },
+    {
+      "kind": "question",
+      "key": "concrete_47"
+    },
+    {
+      "kind": "question",
+      "key": "concrete_48"
+    }
+  ],
+  "temperatureSlots": 0,
+  "dumpTimesQuestion": null,
+  "jsaReviewDateQuestion": null,
+  "details": {
+    "crew": true,
+    "shift": true,
+    "location": false,
+    "time": false
+  },
+  "additionalComments": true,
+  "dumpTimeSlots": 0,
+  "temperatureGuidance": ""
+}

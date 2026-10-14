@@ -1,0 +1,885 @@
+{
+  "id": "FRM-440",
+  "name": "Pump Supervisor Daily Inspection Form",
+  "position": "Pump Supervisor",
+  "kind": "inspection",
+  "siteName": "Carmichael Coal Mine",
+  "version": 1,
+  "sourceRevision": 0,
+  "sourceDate": "31/03/2025",
+  "documentCode": "CCM-FRM-HS-000050_0",
+  "sourceSha256": "5a75d99ce8cac56bf13624b8bd051151d3f417cd31ffaa75ea4b44ec16bc5cf9",
+  "font": "Lato",
+  "bodyFontSize": 8,
+  "headingColour": "C3A385",
+  "sectionColour": "E7DACE",
+  "signOffSlots": 2,
+  "secondSignatureRequired": false,
+  "questions": [
+    {
+      "key": "risk_management_1",
+      "number": "1",
+      "label": "Have you completed the correct risk management for the task you are about to complete?",
+      "section": "Risk Management",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Have you completed the correct risk management for the task you are about to complete?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "risk_management_2",
+      "number": "2",
+      "label": "Do you have all required permits for the task you are about to complete?",
+      "section": "Risk Management",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Do you have all required permits for the task you are about to complete?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "sumps_3",
+      "number": "3",
+      "label": "Have suitable bunds been constructed around the sump?",
+      "section": "Sumps",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Have suitable bunds been constructed around the sump?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "sumps_4",
+      "number": "4",
+      "label": "Are the bunds still suitable for the current water level or do they need to be raised?",
+      "section": "Sumps",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Are the bunds still suitable for the current water level or do they need to be raised?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "sumps_5",
+      "number": "5",
+      "label": "Has the depth of the sump been dug to sufficient depth for the suction of the pump?",
+      "section": "Sumps",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Has the depth of the sump been dug to sufficient depth for the suction of the pump?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "sumps_6",
+      "number": "6",
+      "label": "Have area trenches been excavated to divert water to the sump?",
+      "section": "Sumps",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Have area trenches been excavated to divert water to the sump?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "sumps_7",
+      "number": "7",
+      "label": "Has the sump been picked up by survey and added to the machine file?",
+      "section": "Sumps",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Has the sump been picked up by survey and added to the machine file?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "sumps_8",
+      "number": "8",
+      "label": "Has a lighting plant been installed for the area?Is it bunded on 3 sides? Has it been set up correctly with all outriggers lowered?Are the lights facing away from oncoming traffic to not obscure vision?",
+      "section": "Sumps",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Has a lighting plant been installed for the area?",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "\n",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "Is it bunded on 3 sides? ",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "\n",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "Has it been set up correctly with all outriggers lowered?",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "\n",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "Are the lights facing away from oncoming traffic to not obscure vision?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "pipe_connections_9",
+      "number": "9",
+      "label": "Are suitable slings and equipment available to move the pipe into location?",
+      "section": "Pipe Connections",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Are suitable slings and equipment available to move the pipe into location?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "pipe_connections_10",
+      "number": "10",
+      "label": "Have all pipes been dragged to the correct location?",
+      "section": "Pipe Connections",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Have all pipes been dragged to the correct location?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "pipe_connections_11",
+      "number": "11",
+      "label": "Is the correct tooling available to connect pipework?",
+      "section": "Pipe Connections",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Is the correct tooling available to connect pipework?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "pipe_connections_12",
+      "number": "12",
+      "label": "Has the pipe been inspected for evidence of damage?",
+      "section": "Pipe Connections",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Has the pipe been inspected for evidence of damage?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "pipe_connections_13",
+      "number": "13",
+      "label": "Have any breathers been checked for signs of leaks?",
+      "section": "Pipe Connections",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Have any breathers been checked for signs of leaks?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "pipe_connections_14",
+      "number": "14",
+      "label": "Have pipes been buried a minimum of 1,000mm below any roadways?",
+      "section": "Pipe Connections",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Have pipes been buried a minimum of 1,000mm below any roadways?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "pipe_connections_15",
+      "number": "15",
+      "label": "Has the approach to any trenches been ramped up to prevent pipe kinking and damage?",
+      "section": "Pipe Connections",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Has the approach to any trenches been ramped up to prevent pipe kinking and damage?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "pipe_connections_16",
+      "number": "16",
+      "label": "Has sufficient slack been left in the pipe to prevent stress from temperature shrinking or stretching?",
+      "section": "Pipe Connections",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Has sufficient slack been left in the pipe to prevent stress from temperature shrinking or stretching?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "pipe_connections_17",
+      "number": "17",
+      "label": "Have the flanges been inspected for obvious damage that would cause leaks?",
+      "section": "Pipe Connections",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Have the flanges been inspected for obvious damage that would cause leaks?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "pipe_connections_18",
+      "number": "18",
+      "label": "Have the flanges been correctly aligned?",
+      "section": "Pipe Connections",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Have the flanges been correctly aligned?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "pipe_connections_19",
+      "number": "19",
+      "label": "Have supports or dirt mounds been installed under pipes that elevate to connect to pumps to remove ongoing stress?",
+      "section": "Pipe Connections",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Have supports or dirt mounds been installed under pipes that elevate to connect to pumps to remove ongoing stress?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "pipe_connections_20",
+      "number": "20",
+      "label": "Have the bolts been tightened up correctly (evenly and follow opposite corners)?",
+      "section": "Pipe Connections",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Have the bolts been tightened up correctly (evenly and follow opposite corners",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": ")?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "pumps_21",
+      "number": "21",
+      "label": "Has the pad for the pump been constructed level and suitable for the size of the pump?",
+      "section": "Pumps",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Has the pad for the pump been constructed level and suitable for the size of the pump?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "pumps_22",
+      "number": "22",
+      "label": "Has the area surrounding the pump been flattened to remove trip hazards?",
+      "section": "Pumps",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Has the area surrounding the pump been flattened to remove trip hazards?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "pumps_23",
+      "number": "23",
+      "label": "Has an area been set up for the turning circle of the service vehicle to access?",
+      "section": "Pumps",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Has an area been set up for the turning circle of the service vehicle to access?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "pumps_24",
+      "number": "24",
+      "label": "Is the pump suction head installed in sufficient water to prevent sucking air / mud?",
+      "section": "Pumps",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Is the pump suction head installed in sufficient water to prevent sucking air",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": " ",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "/",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": " ",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "mud?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "pumps_25",
+      "number": "25",
+      "label": "Have bunds been constructed at least 1m high to prevent access to any open edges?",
+      "section": "Pumps",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Have bunds been constructed at least 1m high to prevent access to any open edges?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "pumps_26",
+      "number": "26",
+      "label": "Has a life ring / flotation device been installed?",
+      "section": "Pumps",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Has a life ring / flotation device been installed?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "pumps_27",
+      "number": "27",
+      "label": "Has a fuel pod been installed at least 5m from the pump?",
+      "section": "Pumps",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Has a fuel pod been installed at least 5m from the pump?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "pumps_28",
+      "number": "28",
+      "label": "Has the fuel line been buried?",
+      "section": "Pumps",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Has the fuel line been buried?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "pumps_29",
+      "number": "29",
+      "label": "Is there evidence of fuel or oil leaks that require rectification?",
+      "section": "Pumps",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Is there evidence of fuel or oil leaks that require rectification?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "pumps_30",
+      "number": "30",
+      "label": "Has the pump had a pre-start inspection completed?",
+      "section": "Pumps",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Has the pump had a pre-start inspection completed? ",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "pumps_31",
+      "number": "31",
+      "label": "Is the pump or piping leaking water that requires rectification?",
+      "section": "Pumps",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Is the pump or piping leaking water that requires rectification?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "fill_points_32",
+      "number": "32",
+      "label": "Has the pad for the stand pipe been constructed level and suitable for the size?",
+      "section": "Fill Points",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Has the pad for the stand pipe been constructed level and suitable for the size?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "fill_points_33",
+      "number": "33",
+      "label": "Has the standpipe been installed at the correct height for the trucks?",
+      "section": "Fill Points",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Has the standpipe been installed at the correct height for the trucks?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "fill_points_34",
+      "number": "34",
+      "label": "Has a flexible sock been installed on the stand pipe discharge point?",
+      "section": "Fill Points",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Has a flexible sock been installed on the stand pipe discharge point?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "fill_points_35",
+      "number": "35",
+      "label": "Has drainage been installed for the overflow of the stand pipe?",
+      "section": "Fill Points",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Has drainage been installed for the overflow of the stand pipe?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "fill_points_36",
+      "number": "36",
+      "label": "Have bunds been constructed to prevent access to any open edges (high risk bunding required on crests of highwalls)?",
+      "section": "Fill Points",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Have bunds been constructed to prevent access to any open edges (high risk bunding required on crests of highwalls)",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "fill_points_37",
+      "number": "37",
+      "label": "Have open edges been bunded off?",
+      "section": "Fill Points",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Have open edges been bunded off?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "fill_points_38",
+      "number": "38",
+      "label": "Has a life ring / flotation device been installed?",
+      "section": "Fill Points",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Has a life ring / flotation device been installed?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    },
+    {
+      "key": "fill_points_39",
+      "number": "39",
+      "label": "Has a lighting plant been installed for the area?Is it bunded on 3 sides? Has it been set up correctly with all outriggers lowered?Are the lights facing away from oncoming traffic to not obscure vision?",
+      "section": "Fill Points",
+      "required": true,
+      "photoMode": "optional",
+      "runs": [
+        {
+          "text": "Has a lighting plant been installed for the area?",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "\n",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "Is it bunded on 3 sides? ",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "\n",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "Has it been set up correctly with all outriggers lowered?",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "\n",
+          "bold": false,
+          "superscript": false
+        },
+        {
+          "text": "Are the lights facing away from oncoming traffic to not obscure vision?",
+          "bold": false,
+          "superscript": false
+        }
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "kind": "section",
+      "title": "Risk Management"
+    },
+    {
+      "kind": "question",
+      "key": "risk_management_1"
+    },
+    {
+      "kind": "question",
+      "key": "risk_management_2"
+    },
+    {
+      "kind": "section",
+      "title": "Sumps"
+    },
+    {
+      "kind": "question",
+      "key": "sumps_3"
+    },
+    {
+      "kind": "question",
+      "key": "sumps_4"
+    },
+    {
+      "kind": "question",
+      "key": "sumps_5"
+    },
+    {
+      "kind": "question",
+      "key": "sumps_6"
+    },
+    {
+      "kind": "question",
+      "key": "sumps_7"
+    },
+    {
+      "kind": "question",
+      "key": "sumps_8"
+    },
+    {
+      "kind": "section",
+      "title": "Pipe Connections"
+    },
+    {
+      "kind": "question",
+      "key": "pipe_connections_9"
+    },
+    {
+      "kind": "question",
+      "key": "pipe_connections_10"
+    },
+    {
+      "kind": "question",
+      "key": "pipe_connections_11"
+    },
+    {
+      "kind": "question",
+      "key": "pipe_connections_12"
+    },
+    {
+      "kind": "question",
+      "key": "pipe_connections_13"
+    },
+    {
+      "kind": "question",
+      "key": "pipe_connections_14"
+    },
+    {
+      "kind": "question",
+      "key": "pipe_connections_15"
+    },
+    {
+      "kind": "question",
+      "key": "pipe_connections_16"
+    },
+    {
+      "kind": "question",
+      "key": "pipe_connections_17"
+    },
+    {
+      "kind": "question",
+      "key": "pipe_connections_18"
+    },
+    {
+      "kind": "question",
+      "key": "pipe_connections_19"
+    },
+    {
+      "kind": "question",
+      "key": "pipe_connections_20"
+    },
+    {
+      "kind": "section",
+      "title": "Pumps"
+    },
+    {
+      "kind": "question",
+      "key": "pumps_21"
+    },
+    {
+      "kind": "question",
+      "key": "pumps_22"
+    },
+    {
+      "kind": "question",
+      "key": "pumps_23"
+    },
+    {
+      "kind": "question",
+      "key": "pumps_24"
+    },
+    {
+      "kind": "question",
+      "key": "pumps_25"
+    },
+    {
+      "kind": "question",
+      "key": "pumps_26"
+    },
+    {
+      "kind": "question",
+      "key": "pumps_27"
+    },
+    {
+      "kind": "question",
+      "key": "pumps_28"
+    },
+    {
+      "kind": "question",
+      "key": "pumps_29"
+    },
+    {
+      "kind": "question",
+      "key": "pumps_30"
+    },
+    {
+      "kind": "question",
+      "key": "pumps_31"
+    },
+    {
+      "kind": "section",
+      "title": "Fill Points"
+    },
+    {
+      "kind": "question",
+      "key": "fill_points_32"
+    },
+    {
+      "kind": "question",
+      "key": "fill_points_33"
+    },
+    {
+      "kind": "question",
+      "key": "fill_points_34"
+    },
+    {
+      "kind": "question",
+      "key": "fill_points_35"
+    },
+    {
+      "kind": "question",
+      "key": "fill_points_36"
+    },
+    {
+      "kind": "question",
+      "key": "fill_points_37"
+    },
+    {
+      "kind": "question",
+      "key": "fill_points_38"
+    },
+    {
+      "kind": "question",
+      "key": "fill_points_39"
+    }
+  ],
+  "temperatureSlots": 0,
+  "dumpTimesQuestion": null,
+  "jsaReviewDateQuestion": null,
+  "details": {
+    "crew": true,
+    "shift": true,
+    "location": false,
+    "time": false
+  },
+  "additionalComments": true,
+  "dumpTimeSlots": 0,
+  "temperatureGuidance": ""
+}
