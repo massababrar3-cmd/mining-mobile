@@ -1,40 +1,79 @@
-BRAVUS — GITHUB PAGES / ON-DEVICE EDITION 2.2
+BRAVUS — GITHUB PAGES / ON-DEVICE EDITION 2.3 (UPDATE FROM 2.2)
 
-UPDATE EXISTING WEBSITE:
-1. Download Mining-Operations-GitHub-Pages-2.2.zip and Extract All on your laptop.
-2. Open your public mining-mobile repository, branch main.
-3. Code > Add file > Upload files > upload/replace index.html > Commit changes.
-   For a new website, upload all four extracted files at the repository root.
-4. Settings > Pages > Deploy from a branch > main > / (root). Await success.
-5. Open GitHub's Visit site link. Refresh and check footer: On-device Edition 2.2.
+UPDATE YOUR EXISTING WEBSITE — NO SOFTWARE INSTALLATION REQUIRED
+1. Save/export any report still open in the old 2.2 dashboard BEFORE refreshing.
+   Version 2.2 did not save drafts. Updating cannot recover an already-lost draft.
+2. Download Mining-Operations-GitHub-Pages-2.3.zip. Select Download raw file in
+   GitHub if the ZIP preview appears, then use Windows Extract All.
+3. Open your public mining-mobile repository > Code > Add file > Upload files.
+4. Upload the EXTRACTED index.html AND sw.js into the repository ROOT, replacing
+   old versions. Also include .nojekyll, robots.txt and this instructions file.
+   Do not upload the ZIP itself or place these inside an extra folder.
+5. Select Commit changes. Keep Settings > Pages > Deploy from a branch > main
+   and / (root). Wait for the Pages build/deployment to succeed in Actions.
+6. Open Settings > Pages > Visit site on laptop Chrome or iPhone Safari.
+   Expected URL: https://massababrar3-cmd.github.io/mining-mobile/
+   Use your actual Visit site address if different; deployment is not verified here.
+7. Open online and check footer: On-device Edition 2.3 (update from 2.2).
+   Wait for Offline website ready on this browser. If an older cached version
+   appears, save current work, close other dashboard tabs, reopen ONLINE and
+   refresh again. Do NOT clear website data to update: this deletes local drafts.
+8. iPhone: optionally Safari > Share > Add to Home Screen. Browser/Home Screen
+   storage behaviour varies; use the same entry point for reliable draft access.
+   Test recovery in the exact Safari/Home Screen context you will use.
 
-OPERATE ON LAPTOP / IPHONE:
-1. Open the HTTPS website in Windows Chrome or iPhone Safari. No installation.
-2. Enter First Name / Surname and choose the relevant inspection or handover.
-   FRM-224 Mining, FRM-447 Dozer Push, FRM-440 Pump, FRM-441 Infrastructure,
-   and FRM-431 Drill & Blast load automatically. No JSON import is required.
-3. Start report > complete required details, compliance answers and comments.
-4. Use Take a photo / Choose pictures; camera permissions depend on the device.
-5. Draw your signature. Optional/required second sign-off has its own name.
-6. Complete & generate PDF > Download PDF. Source inspection PDFs use the original
-   Bravus logo, embedded Lato fonts, source colours, column proportions, Y/N/N/A
-   tables, source identifiers and sign-off/evidence. Long answers/photos add pages.
-7. Windows: Prepare Outlook draft with PDF > check sender/recipient > download EML >
-   open in compatible Outlook > check attachment > Send. If unsupported, manually
-   attach the downloaded PDF to a new Outlook message. No automatic send.
-8. iPhone: Share PDF > Outlook or Save to Files, then attach/send in Outlook.
-9. SharePoint: configure permitted folder > Open SharePoint folder > company login >
-   Upload > Files > select saved PDF. No automatic upload.
-10. Save/share before Clear report / finish. Closing/reloading loses unsaved work.
+CREATE / RESUME A DRAFT
+- Enter First Name, Surname / Last Name and private draft PIN/passphrase.
+- New users: choose at least 8 digits or 12 characters, and confirm the PIN.
+- Start report creates a new draft. If drafts exist, explicitly Resume draft
+  or Start new report. Unlock saved drafts lists your drafts only after unlock.
+- Wait for Saved locally after edits. Saving is pending. Save failed requires
+  attention; do not close the page. Offline is a separate connectivity indicator.
+- Refresh or reopen the SAME URL on the SAME device/browser. Enter the same name
+  and PIN > Unlock saved drafts > Resume draft. Photos/signatures are restored.
+- Back to Home saves then locks. If saving fails, navigation is cancelled.
+- Forgotten PINs cannot recover drafts. Clearing browser data, private mode,
+  device policy or browser storage eviction can prevent recovery. No time-limit
+  guarantee or automatic transfer to another device is provided.
 
-PRIVACY / LIMITS:
-- Inspection questions, company template branding and website code are public.
-- Entered personnel, answers, photos, signatures and PDFs are processed in memory.
-  No report history, cookies, browser database, upload connection or analytics.
-- Downloaded/shared files, camera originals and OS/browser snapshots remain outside
-  these page-memory controls. The host receives normal website connection logs.
-- Names and device time are declared; there is no real login or owner-only control.
-- Session template edits include revised/new questions in exported source-style PDFs.
-- PDF is a programmatic recreation of Word styling, not an identical Word-rendering
-  engine. Evidence and content alter pagination. Check your actual printed reports.
-- Actual iPhone camera/Outlook and live SharePoint delivery need device acceptance.
+INSPECTIONS
+- FRM-224 ROM: complete the 11 ROM and Rejects questions; other checks export N/A.
+  Other areas: complete the relevant remaining checks; the 11 ROM checks export N/A.
+- FRM-431: choose Drill Supervisor (21 drilling), Blast Supervisor (23 blasting)
+  or Drill and Blast Supervisor (all 44). Excluded checks remain N/A in PDF.
+  Normal mode requires Reading 1 and 2 (Time, O2 %, CO ppm, H2S ppm) in each
+  applicable gas table; combined supervisors complete both tables.
+- All inspections: Crew A/B/C/D/Other; Other requires a description.
+- All inspections: No access — weather event requires explanation and signature,
+  bypasses inaccessible checklist/readings and labels the PDF as NOT completed.
+- Scope changes may require confirmation and clearing affected data/re-signing.
+
+SETTINGS / DELIVERY
+- Templates & delivery settings > Save settings persists settings in this browser.
+  Configure separate handover/inspection recipients, requested senders and folders.
+  Reset/remove saved settings restores defaults but keeps encrypted drafts.
+  Clear report does not erase saved settings. Never put passwords/tokens here.
+- Generate PDF, download and OPEN the completed PDF before leaving the dashboard.
+- Laptop: Prepare Outlook draft with PDF downloads .eml; compatible Outlook can
+  open it. Review actual From, To and attachment, then select Send.
+  If unsupported/read-only, create a new Outlook email and manually attach PDF.
+- iPhone: Share PDF > Outlook or Save to Files. Verify recipient/attachment, Send.
+- Open email / mailto cannot attach the PDF: attach it manually.
+- SharePoint: Open SharePoint folder > your company login > Upload > Files.
+  Verify the uploaded file. The dashboard does not send/upload automatically.
+- After checking saved/sent/uploaded copies, Clear report / finish permanently
+  deletes the current encrypted draft. Other drafts/settings remain.
+
+PRIVACY
+Only public application assets are cached by the service worker. Unfinished
+reports are encrypted locally with AES-GCM and a PBKDF2 PIN-derived key; PINs
+and keys are not saved. Delivery/template settings are stored without encryption.
+No report upload, analytics or completed-report history is provided. Names/PINs
+are local protection, NOT verified company login or owner-only template control.
+Do NOT upload operational reports/photos, PINs, raw Word forms, private settings,
+credentials, database backups or the full protected/server package to public GitHub.
+Downloaded PDFs/EMLs, camera originals and shared copies remain outside this app.
+Actual iPhone camera/sharing, Outlook version compatibility, live delivery and
+company device/storage policy must be checked on your devices/accounts.
+
+See the separate 13-page English Edition 2.3 Work Instructions PDF for full steps.

@@ -15,7 +15,7 @@
     />
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data: blob:; connect-src 'none'; worker-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'"
+      content="default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'unsafe-inline'; img-src data: blob:; connect-src 'self'; worker-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'"
     />
     <title>BRAVUS — On-device Operations</title>
     <style>
@@ -304,6 +304,35 @@ a:focus-visible {
     font-size: 26px;
   }
 }
+/* Keep focused controls and signatures clear of the sticky status notice. */
+html {
+  scroll-padding-top: 110px;
+}
+.signpad {
+  scroll-margin-top: 110px;
+}
+
+#draft-status {
+  position: sticky;
+  top: 0;
+  z-index: 11;
+  min-height: 38px;
+}
+#draft-status.error {
+  padding: 10px 16px;
+  background: #fbe8e8;
+  color: #852a2a;
+  text-align: center;
+}
+#notice {
+  top: 38px;
+}
+html {
+  scroll-padding-top: 150px;
+}
+.signpad {
+  scroll-margin-top: 150px;
+}
 
 </style>
   </head>
@@ -316,13 +345,21 @@ a:focus-visible {
       >
     </header>
     <div class="privacy">
-      On-device processing · No report history · No background uploads
+      Encrypted local drafts · No completed-report history · No background
+      uploads
     </div>
     <div id="notice" role="status" aria-live="polite" hidden></div>
+    <div id="draft-status" class="privacy" role="status" aria-live="polite">
+      Locked
+    </div>
+    <div id="offline-status" class="privacy" role="status">
+      Preparing offline website…
+    </div>
     <main id="app"></main>
     <footer>
-      On-device Edition 2.2 · Names are declared attribution, not verified
-      login.<br />Downloaded PDFs and OS shares remain outside this dashboard.
+      On-device Edition 2.3 (update from 2.2) · Names are declared attribution,
+      not verified login.<br />Downloaded PDFs and OS shares remain outside this
+      dashboard.
     </footer>
     <noscript>Enable JavaScript to complete forms and generate PDFs.</noscript>
     <script>
@@ -51881,9 +51918,13 @@ window.MineSourceAssets={"definitions":[{"id":"FRM-224","name":"Supervisor Daily
       );
       const rows = [
         ["Date", r.date, "Supervisor", a.name],
-        ...(d.details.crew || d.details.shift
-          ? [["Crew", r.crew, "Shift", r.shift]]
-          : []),
+        ["Crew", r.crew, "Shift", r.shift],
+        [
+          "Area",
+          record.area,
+          "Supervisor type",
+          record.supervisorType || record.authorPosition,
+        ],
         ...(d.details.location || d.details.time
           ? [
               d.details.time
@@ -51958,6 +51999,13 @@ window.MineSourceAssets={"definitions":[{"id":"FRM-224","name":"Supervisor Daily
       y += 8;
     }
     details();
+    if (record.accessStatus === "weather") {
+      heading(
+        "Inspection not completed — no access due to weather event",
+        true,
+      );
+      plainBlock("Weather event / inaccessible areas", record.noAccessReason);
+    }
     tableMode = d.kind === "inspection";
     if (tableMode) matrixHeader();
     for (const block of d.blocks) {
@@ -51980,12 +52028,19 @@ window.MineSourceAssets={"definitions":[{"id":"FRM-224","name":"Supervisor Daily
         for (let i = 0; i < block.rows; i++) {
           ensure(20);
           const v = r.gas[block.key]?.[i];
+          const skipped =
+            record.accessStatus === "weather" ||
+            (d.id === "FRM-431" &&
+              ((block.key === "gas_1" &&
+                record.supervisorType === "Blast Supervisor") ||
+                (block.key === "gas_2" &&
+                  record.supervisorType === "Drill Supervisor")));
           [
             "Reading " + (i + 1),
-            v?.time || "",
-            v?.o2 || "",
-            v?.co || "",
-            v?.h2s || "",
+            skipped ? "N/A" : v?.time || "",
+            skipped ? "N/A" : v?.o2 || "",
+            skipped ? "N/A" : v?.co || "",
+            skipped ? "N/A" : v?.h2s || "",
           ].forEach((s, j) => {
             line(x + j * cw, y, cw, 20);
             cellText(s, x + j * cw + 4, y + 5, cw - 8);
@@ -52442,7 +52497,7 @@ window.MineSourceAssets={"definitions":[{"id":"FRM-224","name":"Supervisor Daily
         date: /^\d{4}-\d{2}-\d{2}$/.test(record.date)
           ? record.date.split("-").reverse().join("/")
           : record.date,
-        crew: answers.source_crew || "",
+        crew: answers.source_crew || record.crew || "",
         shift: record.shift?.name || "",
         location: answers.source_location || record.area || "",
         time: answers.source_time || "",
@@ -52607,6 +52662,292 @@ window.MineSourceAssets={"definitions":[{"id":"FRM-224","name":"Supervisor Daily
 })();
 
 "use strict";
+// Only encrypted unfinished report payloads are persisted. PINs/keys stay in memory.
+(() => {
+  const DB = "mine-on-device-v1",
+    ITERATIONS = 600000;
+  const enc = new TextEncoder(),
+    dec = new TextDecoder();
+  let database, owner, key;
+  function db() {
+    if (!database)
+      database = new Promise((resolve, reject) => {
+        if (!crypto.subtle || !window.indexedDB)
+          return reject(
+            new Error(
+              "Secure local storage requires HTTPS and a supported browser.",
+            ),
+          );
+        const r = indexedDB.open(DB, 1);
+        r.onupgradeneeded = () => {
+          for (const name of ["profiles", "drafts", "config"])
+            r.result.createObjectStore(name, { keyPath: "id" });
+        };
+        r.onsuccess = () => resolve(r.result);
+        r.onerror = () =>
+          reject(
+            new Error(
+              "Local database unavailable. Private browsing or device policy may block storage.",
+            ),
+          );
+        r.onblocked = () =>
+          reject(
+            new Error(
+              "Close other dashboard tabs to initialise local storage.",
+            ),
+          );
+      });
+    return database;
+  }
+  async function transaction(store, mode, action) {
+    const database = await db();
+    return new Promise((resolve, reject) => {
+      const tx = database.transaction(store, mode),
+        object = tx.objectStore(store);
+      let value, error;
+      const result = action(
+        object,
+        (v) => {
+          value = v;
+        },
+        (e) => {
+          error = e;
+          tx.abort();
+        },
+      );
+      tx.oncomplete = () => resolve(value);
+      tx.onabort = tx.onerror = () =>
+        reject(
+          error ||
+            tx.error ||
+            new Error("Local storage failed; the draft was not saved."),
+        );
+    });
+  }
+  const get = (store, id) =>
+    transaction(store, "readonly", (s, done) => {
+      const r = s.get(id);
+      r.onsuccess = () => done(r.result);
+    });
+  const all = (store) =>
+    transaction(store, "readonly", (s, done) => {
+      const r = s.getAll();
+      r.onsuccess = () => done(r.result);
+    });
+  const put = (store, value) =>
+    transaction(store, "readwrite", (s) => s.put(value));
+  function bytes(n) {
+    return crypto.getRandomValues(new Uint8Array(n));
+  }
+  const context = (id) => enc.encode("mine-draft-v1:" + owner + ":" + id);
+  async function encrypt(value, id) {
+    const iv = bytes(12),
+      cipher = await crypto.subtle.encrypt(
+        { name: "AES-GCM", iv, additionalData: context(id) },
+        key,
+        enc.encode(JSON.stringify(value)),
+      );
+    return { iv, cipher };
+  }
+  async function decrypt(value, id) {
+    return JSON.parse(
+      dec.decode(
+        await crypto.subtle.decrypt(
+          { name: "AES-GCM", iv: value.iv, additionalData: context(id) },
+          key,
+          value.cipher,
+        ),
+      ),
+    );
+  }
+  const assertOpen = () => {
+    if (!key || !owner) throw new Error("Unlock your draft PIN first.");
+  };
+  window.MineDrafts = {
+    async open(first, last, pin, confirmation) {
+      const normal = (s) =>
+        s.normalize("NFKC").trim().replace(/\s+/g, " ").toLowerCase();
+      owner = Array.from(
+        new Uint8Array(
+          await crypto.subtle.digest(
+            "SHA-256",
+            enc.encode(JSON.stringify([normal(first), normal(last)])),
+          ),
+        ),
+      )
+        .map((x) => x.toString(16).padStart(2, "0"))
+        .join("");
+      const profile = await get("profiles", owner),
+        salt = profile?.salt || bytes(16);
+      if (!profile && !(/^\d{8,}$/.test(pin) || pin.length >= 12))
+        throw new Error(
+          "Create a PIN of at least 8 digits or a passphrase of at least 12 characters.",
+        );
+      if (pin.length > 256)
+        throw new Error("PIN/passphrase must be at most 256 characters.");
+      if (!profile && pin !== confirmation)
+        throw new Error(
+          "Confirm your new PIN/passphrase. It cannot be recovered if forgotten.",
+        );
+      const material = await crypto.subtle.importKey(
+        "raw",
+        enc.encode(pin),
+        "PBKDF2",
+        false,
+        ["deriveKey"],
+      );
+      key = await crypto.subtle.deriveKey(
+        {
+          name: "PBKDF2",
+          hash: "SHA-256",
+          salt,
+          iterations: profile?.iterations || ITERATIONS,
+        },
+        material,
+        { name: "AES-GCM", length: 256 },
+        false,
+        ["encrypt", "decrypt"],
+      );
+      if (profile) {
+        try {
+          if (
+            (await decrypt(profile, "profile")).check !==
+            "mine-local-profile-v1"
+          )
+            throw Error();
+        } catch {
+          key = null;
+          throw new Error(
+            "Incorrect name or PIN, or damaged local storage. No draft was unlocked.",
+          );
+        }
+      } else {
+        const sealed = await encrypt(
+          { check: "mine-local-profile-v1" },
+          "profile",
+        );
+        await transaction("profiles", "readwrite", (s) =>
+          s.add({ id: owner, salt, iterations: ITERATIONS, ...sealed }),
+        );
+      }
+      return await this.list();
+    },
+    async list() {
+      assertOpen();
+      const result = [];
+      for (const row of await all("drafts"))
+        if (row.owner === owner) {
+          const data = await decrypt(row, row.id);
+          result.push({ ...data, revision: row.revision });
+        }
+      return result.sort((a, b) => b.savedAt.localeCompare(a.savedAt));
+    },
+    async save(payload, revision = 0) {
+      assertOpen();
+      const id = payload.record.id,
+        savedAt = new Date().toISOString();
+      const sealed = await encrypt({ ...payload, savedAt }, id);
+      await transaction("drafts", "readwrite", (s, done, fail) => {
+        const r = s.get(id);
+        r.onsuccess = () => {
+          const old = r.result;
+          if ((old?.revision || 0) !== revision || (old && old.owner !== owner))
+            return fail(
+              new Error(
+                "Draft changed in another tab. Your changes were NOT saved. Keep this tab open and download your PDF before resolving the conflict.",
+              ),
+            );
+          s.put({ id, owner, revision: revision + 1, ...sealed });
+        };
+      });
+      return { revision: revision + 1, savedAt };
+    },
+    async remove(id, revision) {
+      assertOpen();
+      await transaction("drafts", "readwrite", (s, done, fail) => {
+        const r = s.get(id);
+        r.onsuccess = () => {
+          if (
+            r.result &&
+            (r.result.owner !== owner || r.result.revision !== revision)
+          )
+            return fail(
+              new Error(
+                "Draft changed in another tab; unlock again before deleting.",
+              ),
+            );
+          s.delete(id);
+        };
+      });
+    },
+    lock() {
+      key = null;
+      owner = null;
+    },
+    settings: () => get("config", "settings"),
+    saveSettings: (value) => put("config", { id: "settings", value }),
+    removeSettings: () =>
+      transaction("config", "readwrite", (s) => s.delete("settings")),
+  };
+})();
+
+"use strict";
+(() => {
+  function source(r) {
+    return r.snapshot.source?.definition;
+  }
+  function checklist(r, q) {
+    return source(r)?.questions.find((x) => x.key === q.id);
+  }
+  function excluded(r, q) {
+    if (r.kind !== "inspection") return false;
+    if (["source_crew", "source_location", "source_time"].includes(q.id))
+      return false;
+    if (r.accessStatus === "weather") return true;
+    const d = source(r);
+    if (!d) return false;
+    let original = checklist(r, q);
+    if (q.id.startsWith("comment_"))
+      original = d.questions.find((x) => "comment_" + x.key === q.id);
+    if (q.id.startsWith("source_dump_"))
+      original = d.questions.find((x) => x.key === d.dumpTimesQuestion);
+    if (q.id === "source_jsa_review_date")
+      original = d.questions.find((x) => x.key === d.jsaReviewDateQuestion);
+    if (d.id === "FRM-224" && original)
+      return (original.section === "ROM and Rejects") !== (r.area === "ROM");
+    if (d.id === "FRM-431") {
+      if (original?.section === "Drilling Operations")
+        return r.supervisorType === "Blast Supervisor";
+      if (original?.section === "Blast Crew Operations")
+        return r.supervisorType === "Drill Supervisor";
+      if (q.id.startsWith("source_gas_1_"))
+        return r.supervisorType === "Blast Supervisor";
+      if (q.id.startsWith("source_gas_2_"))
+        return r.supervisorType === "Drill Supervisor";
+    }
+    return false;
+  }
+  function required(r, q) {
+    if (excluded(r, q)) return false;
+    if (source(r)?.id === "FRM-431" && q.id.startsWith("source_gas_"))
+      return true;
+    return q.required;
+  }
+  function apply(r) {
+    for (const q of r.snapshot.questions)
+      if (excluded(r, q)) {
+        const original = checklist(r, q);
+        r.answers[q.id] =
+          original && (!original.type || original.type === "compliance")
+            ? "N/A"
+            : "";
+      }
+    r.answers.source_crew = r.crew === "Other" ? r.crewOther : r.crew || "";
+  }
+  window.MineInspectionRules = { excluded, required, apply };
+})();
+
+"use strict";
 (() => {
   const $ = (id) => document.getElementById(id);
   const clone = (x) => structuredClone(x);
@@ -52617,7 +52958,14 @@ window.MineSourceAssets={"definitions":[{"id":"FRM-224","name":"Supervisor Daily
     companyName: "BRAVUS",
     siteName: "Mine Operations",
     timeZone: "Australia/Brisbane",
-    areas: ["North Pit", "Workshop", "Haul Road"],
+    areas: [
+      "North Pit",
+      "Workshop",
+      "Haul Road",
+      "ROM",
+      "Main Pit",
+      "South Pit",
+    ],
     shifts: [
       { name: "Day shift", start: "06:00", end: "18:00", deadline: "18:30" },
       { name: "Night shift", start: "18:00", end: "06:00", deadline: "06:30" },
@@ -52627,6 +52975,8 @@ window.MineSourceAssets={"definitions":[{"id":"FRM-224","name":"Supervisor Daily
     senderEmail: "Massab.Abrar@bravus.com.au",
     sharepointUrl: "",
   };
+  const defaultSettings = clone(settings);
+  const rules = window.MineInspectionRules;
   function q(
     label,
     type = "textarea",
@@ -52723,6 +53073,290 @@ window.MineSourceAssets={"definitions":[{"id":"FRM-224","name":"Supervisor Daily
     configDraft = null,
     pads = [];
   const urls = new Set();
+  let draftRevision = 0,
+    saveTimer,
+    saveTail = Promise.resolve(),
+    dirtyVersion = 0,
+    savedVersion = 0,
+    saveState = "Locked",
+    savedAt = "",
+    newReport,
+    accessBusy = false,
+    defaultTemplates;
+  function updateSaveStatus() {
+    const target = $("draft-status");
+    if (target) {
+      target.textContent =
+        (navigator.onLine ? "" : "Offline · ") +
+        saveState +
+        (savedAt && saveState === "Saved locally"
+          ? " · " + new Date(savedAt).toLocaleTimeString()
+          : "");
+      target.className = saveState === "Save failed" ? "error" : "privacy";
+    }
+  }
+  function scheduleSave() {
+    if (!record) return;
+    dirtyVersion++;
+    saveState = "Saving";
+    updateSaveStatus();
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(() => run(saveDraft), 250);
+  }
+  function saveDraft() {
+    clearTimeout(saveTimer);
+    const task = saveTail
+      .catch(() => {})
+      .then(async () => {
+        if (
+          !record ||
+          (draftRevision > 0 &&
+            dirtyVersion === savedVersion &&
+            saveState !== "Save failed")
+        )
+          return;
+        const version = dirtyVersion,
+          current = record,
+          mark = epoch;
+        saveState = "Saving";
+        updateSaveStatus();
+        try {
+          rules.apply(record);
+          const result = await window.MineDrafts.save(
+            { identity: clone(identity), record: clone(record) },
+            draftRevision,
+          );
+          if (record !== current || epoch !== mark) return;
+          draftRevision = result.revision;
+          savedAt = result.savedAt;
+          savedVersion = version;
+          saveState =
+            savedVersion === dirtyVersion ? "Saved locally" : "Saving";
+          updateSaveStatus();
+        } catch (e) {
+          saveState = "Save failed";
+          updateSaveStatus();
+          throw e;
+        }
+      });
+    saveTail = task;
+    return task;
+  }
+  async function flushDraft() {
+    if (record) await saveDraft();
+  }
+  async function goHome() {
+    if (busy)
+      throw new Error(
+        "Wait for photo/PDF processing before leaving this screen.",
+      );
+    if (record) {
+      try {
+        await flushDraft();
+      } catch (e) {
+        notice(
+          e.message + " Keep this page open; Back to Home was cancelled.",
+          true,
+        );
+        return;
+      }
+    }
+    window.MineDrafts.lock();
+    reset();
+    saveState = "Locked";
+    savedAt = "";
+    updateSaveStatus();
+    home();
+  }
+  async function unlock(form) {
+    if (accessBusy) throw new Error("Wait for PIN verification to finish.");
+    if (busy)
+      throw new Error(
+        "Wait for photo/PDF processing before unlocking another draft.",
+      );
+    accessBusy = true;
+    try {
+      if (record) {
+        await flushDraft();
+        disposePads();
+        record = null;
+        prepared = null;
+        clearTimeout(saveTimer);
+        revoke();
+      }
+      const first = required(form.elements.first.value, "First Name", 60),
+        last = required(form.elements.last.value, "Last Name", 60);
+      window.MineDrafts.lock();
+      const drafts = await window.MineDrafts.open(
+        first,
+        last,
+        form.elements.pin.value,
+        form.elements.confirmPin.value,
+      );
+      form.elements.pin.value = "";
+      form.elements.confirmPin.value = "";
+      saveState = "Unlocked";
+      savedAt = "";
+      updateSaveStatus();
+      return drafts;
+    } finally {
+      accessBusy = false;
+    }
+  }
+  async function draftList() {
+    const rows = await window.MineDrafts.list();
+    const c = $("app");
+    c.replaceChildren(
+      txt("h1", "Your unfinished drafts"),
+      txt(
+        "p",
+        "Drafts are available only on this device/browser. No completed-report history is retained.",
+      ),
+    );
+    for (const row of rows)
+      c.append(
+        n(
+          "section",
+          { className: "panel" },
+          txt("h2", row.record.snapshot.name),
+          txt(
+            "p",
+            row.record.kind +
+              " · " +
+              (row.record.snapshot.source?.id || "Custom form") +
+              " · Last saved " +
+              new Date(row.savedAt).toLocaleString(),
+          ),
+          n(
+            "div",
+            { className: "buttons" },
+            btn("Resume draft", async () => {
+              identity = clone(row.identity);
+              record = clone(row.record);
+              draftRevision = row.revision;
+              dirtyVersion = savedVersion = 0;
+              savedAt = row.savedAt;
+              saveState = "Saved locally";
+              updateSaveStatus();
+              rules.apply(record);
+              editor();
+            }),
+            btn(
+              "Delete draft",
+              async () => {
+                if (
+                  !confirm(
+                    "Permanently delete this encrypted draft? This cannot be undone.",
+                  )
+                )
+                  return;
+                await window.MineDrafts.remove(row.record.id, row.revision);
+                await draftList();
+              },
+              "danger",
+            ),
+          ),
+        ),
+      );
+    c.append(
+      btn("Start new report", async () => {
+        if (
+          !confirm(
+            "Start another report? Existing unfinished drafts will be retained.",
+          )
+        )
+          return;
+        await newReport();
+      }),
+      btn("Back to Home", goHome, "secondary"),
+    );
+  }
+  function changeScope(key, value, control) {
+    const old = record[key];
+    if (old === value) return;
+    if (busy) {
+      control.value = old || "";
+      throw new Error("Wait for photo/PDF processing before changing scope.");
+    }
+    const next = { ...record, [key]: value };
+    const changed = record.snapshot.questions.filter(
+      (q) => rules.excluded(record, q) !== rules.excluded(next, q),
+    );
+    const changedIds = new Set(changed.map((q) => q.id));
+    const hasData =
+      changed.some((q) => {
+        const v = record.answers[q.id];
+        return v !== undefined && v !== "" && !rules.excluded(record, q);
+      }) ||
+      record.photos.some(
+        (p) => changedIds.has(p.questionId) || key === "accessStatus",
+      ) ||
+      (key === "accessStatus" && record.actions.length) ||
+      record.signatureStrokes.length ||
+      record.secondSignatureStrokes.length;
+    if (
+      hasData &&
+      !confirm(
+        "Change inspection scope? Answers, comments and photos in affected sections will be cleared. Weather changes also clear general photos/actions. Signatures must be redrawn. Other details will be kept.",
+      )
+    ) {
+      control.value = old || "";
+      return;
+    }
+    for (const q of changed) delete record.answers[q.id];
+    record.photos = record.photos.filter((p) => !changedIds.has(p.questionId));
+    if (key === "accessStatus") {
+      record.photos = [];
+      record.actions = [];
+      record.noAccessReason = "";
+    }
+    record[key] = value;
+    record.signatureStrokes = [];
+    record.secondSignatureStrokes = [];
+    rules.apply(record);
+    prepared = null;
+    revoke();
+    editor();
+    scheduleSave();
+    if (key === "accessStatus" && value === "weather")
+      $("signature-section")?.scrollIntoView({ block: "center" });
+  }
+  async function initialise() {
+    try {
+      const saved = await window.MineDrafts.settings();
+      if (saved) {
+        const valid = validateConfig(saved.value);
+        settings = valid.settings;
+        templates = valid.templates;
+      }
+    } catch (e) {
+      notice("Saved settings could not be loaded: " + e.message, true);
+    }
+    home();
+    updateSaveStatus();
+    if ("serviceWorker" in navigator && location.protocol !== "file:") {
+      try {
+        const registration = await navigator.serviceWorker.register("./sw.js", {
+          scope: "./",
+        });
+        await navigator.serviceWorker.ready;
+        const label = () => {
+          const el = $("offline-status");
+          if (el)
+            el.textContent =
+              "Offline website ready on this browser · Storage clearing can remove it";
+        };
+        if (registration.active) label();
+        navigator.serviceWorker.addEventListener("controllerchange", label);
+      } catch (e) {
+        const el = $("offline-status");
+        if (el)
+          el.textContent =
+            "Offline reload unavailable — keep page open. " + e.message;
+      }
+    }
+  }
+
   function n(tag, attrs = {}, ...children) {
     const el = document.createElement(tag);
     for (const [key, value] of Object.entries(attrs)) {
@@ -52816,24 +53450,34 @@ window.MineSourceAssets={"definitions":[{"id":"FRM-224","name":"Supervisor Daily
     pads = [];
   }
   function reset() {
+    clearTimeout(saveTimer);
+    draftRevision = 0;
     epoch++;
     disposePads();
     record = null;
     prepared = null;
     identity = null;
     configDraft = null;
+    dirtyVersion = savedVersion = 0;
+    saveState = "Locked";
+    savedAt = "";
+    updateSaveStatus();
     revoke();
     $("notice").hidden = true;
     $("app").replaceChildren();
     busy = false;
   }
-  function finish() {
+  async function finish() {
+    if (busy) throw new Error("Wait for photo/PDF processing before clearing.");
     if (
       !confirm(
-        "Clear this report and its pictures from the dashboard? Save/share the PDF first. Downloaded files and shared copies will remain.",
+        "Permanently delete this encrypted draft and its pictures from the dashboard? Save/share the PDF first. Downloaded files and shared copies will remain.",
       )
     )
       return;
+    await flushDraft();
+    if (record) await window.MineDrafts.remove(record.id, draftRevision);
+    window.MineDrafts.lock();
     reset();
     home();
   }
@@ -52848,6 +53492,11 @@ window.MineSourceAssets={"definitions":[{"id":"FRM-224","name":"Supervisor Daily
         { className: "muted" },
       ),
     );
+    if (record)
+      c.append(
+        btn("Resume active report", () => editor()),
+        btn("Lock drafts", goHome, "secondary"),
+      );
     const form = n(
       "form",
       { autocomplete: "off" },
@@ -52868,6 +53517,34 @@ window.MineSourceAssets={"definitions":[{"id":"FRM-224","name":"Supervisor Daily
             maxLength: 60,
           }),
         ),
+      ),
+      field(
+        "Private draft PIN / passphrase",
+        inp("pin", "", "password", {
+          required: true,
+          maxLength: 256,
+          autocomplete: "off",
+        }),
+      ),
+      field(
+        "Confirm PIN (new users only)",
+        inp("confirmPin", "", "password", {
+          maxLength: 256,
+          autocomplete: "off",
+        }),
+      ),
+      txt(
+        "p",
+        "New users: choose at least 8 digits or a passphrase of at least 12 characters and confirm it. Returning users: enter your existing PIN. Forgotten PINs cannot recover drafts. This is local encryption, not company login.",
+        { className: "hint" },
+      ),
+      btn(
+        "Unlock saved drafts",
+        async () => {
+          await unlock(form);
+          await draftList();
+        },
+        "secondary",
       ),
       field(
         "Report template",
@@ -52900,53 +53577,74 @@ window.MineSourceAssets={"definitions":[{"id":"FRM-224","name":"Supervisor Daily
     });
     form.addEventListener("submit", (e) => {
       e.preventDefault();
-      run(() => {
-        const first = required(form.elements.first.value, "First Name", 60),
-          last = required(form.elements.last.value, "Last Name", 60);
-        identity = {
-          first,
-          last,
-          name: required(first + " " + last, "Full name", 100),
-          position: required(form.elements.position.value, "Job title"),
-          department: required(form.elements.department.value, "Department"),
-        };
-        const t = clone(
-          templates.find((x) => x.id === form.elements.template.value),
-        );
-        record = {
-          id: uid(),
-          kind: t.kind,
-          reference:
-            (t.kind === "handover" ? "HOV" : "INS") +
-            "-M-" +
-            new Date().toISOString().replace(/\D/g, "").slice(0, 14) +
-            "-" +
-            uid().slice(0, 8),
-          snapshot: t,
-          authorName: identity.name,
-          authorPosition: identity.position,
-          authorDepartment: identity.department,
-          date: today(),
-          shift: clone(settings.shifts[0]),
-          area: settings.areas[0],
-          answers: {},
-          photos: [],
-          actions: [],
-          acknowledgements: [],
-          reviews: [],
-          status: "in_progress",
-          submissionVersion: 0,
-          signatureStrokes: [],
-          secondSignatureStrokes: [],
-        };
-        editor();
+      run(async () => {
+        const drafts = await unlock(form);
+        if (drafts.length) {
+          await draftList();
+          notice(
+            "Saved drafts found. Resume one, or explicitly select Start new report.",
+          );
+          return;
+        }
+        await startNew(form);
       });
     });
+    async function startNew(form) {
+      const first = required(form.elements.first.value, "First Name", 60),
+        last = required(form.elements.last.value, "Last Name", 60);
+      identity = {
+        first,
+        last,
+        name: required(first + " " + last, "Full name", 100),
+        position: required(form.elements.position.value, "Job title"),
+        department: required(form.elements.department.value, "Department"),
+      };
+      const t = clone(
+        templates.find((x) => x.id === form.elements.template.value),
+      );
+      record = {
+        id: uid(),
+        kind: t.kind,
+        reference:
+          (t.kind === "handover" ? "HOV" : "INS") +
+          "-M-" +
+          new Date().toISOString().replace(/\D/g, "").slice(0, 14) +
+          "-" +
+          uid().slice(0, 8),
+        snapshot: t,
+        authorName: identity.name,
+        authorPosition: identity.position,
+        authorDepartment: identity.department,
+        date: today(),
+        shift: clone(settings.shifts[0]),
+        area: settings.areas[0],
+        accessStatus: "normal",
+        noAccessReason: "",
+        crew: "",
+        crewOther: "",
+        areaOther: "",
+        supervisorType: "",
+        answers: {},
+        photos: [],
+        actions: [],
+        acknowledgements: [],
+        reviews: [],
+        status: "in_progress",
+        submissionVersion: 0,
+        signatureStrokes: [],
+        secondSignatureStrokes: [],
+      };
+      draftRevision = 0;
+      rules.apply(record);
+      editor();
+      await saveDraft();
+    }
+    newReport = () => startNew(form);
     c.append(
       n("section", { className: "panel" }, form),
       txt(
         "p",
-        "No report is saved in browser storage or uploaded in the background. Reload/closing can lose unsaved work. Keep the page open until the PDF is saved.",
+        "Unfinished reports autosave encrypted on this device/browser after PIN unlock. Wait for Saved locally. Storage clearing/eviction or private browsing can prevent recovery. No background uploads or completed-report history.",
         { className: "warn" },
       ),
       txt(
@@ -52963,6 +53661,7 @@ window.MineSourceAssets={"definitions":[{"id":"FRM-224","name":"Supervisor Daily
     );
   }
   function visible(question, answers = record.answers) {
+    if (rules.excluded(record, question)) return false;
     if (!question.condition) return true;
     const parent = record.snapshot.questions.find(
       (q) => q.id === question.condition.question,
@@ -53039,6 +53738,7 @@ window.MineSourceAssets={"definitions":[{"id":"FRM-224","name":"Supervisor Daily
                 "Remove photo",
                 () => {
                   record.photos = record.photos.filter((x) => x.id !== p.id);
+                  scheduleSave();
                   draw();
                 },
                 "danger",
@@ -53064,6 +53764,7 @@ window.MineSourceAssets={"definitions":[{"id":"FRM-224","name":"Supervisor Daily
           added.push(await readPhoto(file, questionId, questionLabel));
         if (mark !== epoch || currentRecord !== record) return;
         record.photos.push(...added);
+        scheduleSave();
         draw();
         notice("Photo added on this device. Nothing uploaded.");
       } finally {
@@ -53149,12 +53850,16 @@ window.MineSourceAssets={"definitions":[{"id":"FRM-224","name":"Supervisor Daily
     canvas.addEventListener("pointerup", (e) => {
       if (active) active.push(point(e));
       active = null;
+      scheduleSave();
       try {
         canvas.releasePointerCapture(e.pointerId);
       } catch {}
       draw();
     });
-    canvas.addEventListener("pointercancel", () => (active = null));
+    canvas.addEventListener("pointercancel", () => {
+      active = null;
+      scheduleSave();
+    });
     const observer = new ResizeObserver(draw);
     observer.observe(canvas);
     const pad = {
@@ -53174,6 +53879,7 @@ window.MineSourceAssets={"definitions":[{"id":"FRM-224","name":"Supervisor Daily
       },
       clear: () => {
         strokes.length = 0;
+        scheduleSave();
         draw();
       },
       dispose: () => {
@@ -53196,7 +53902,7 @@ window.MineSourceAssets={"definitions":[{"id":"FRM-224","name":"Supervisor Daily
       }),
       txt(
         "p",
-        "Keep this page open. Your answers/pictures exist only in this page until you save the PDF.",
+        "Encrypted draft autosave is active. Check Saved locally before leaving. PIN protection applies after locking or reopening; this is not verified company authentication.",
         { className: "warn" },
       ),
     );
@@ -53252,17 +53958,117 @@ window.MineSourceAssets={"definitions":[{"id":"FRM-224","name":"Supervisor Daily
             ),
           ),
         ),
-        field("Area", sel("area", settings.areas, record.area)),
+        field(
+          "Area",
+          sel(
+            "area",
+            Array.from(
+              new Set([
+                ...settings.areas,
+                record.area,
+                ...(record.snapshot.source?.id === "FRM-431"
+                  ? ["Natural Surface", "Ramp", "Other"]
+                  : []),
+              ]),
+            ),
+            record.area,
+          ),
+        ),
       ),
     );
     form.elements.shift.addEventListener(
       "change",
       (e) => (record.shift = clone(settings.shifts[Number(e.target.value)])),
     );
-    form.elements.area.addEventListener(
-      "change",
-      (e) => (record.area = e.target.value),
+    form.elements.area.addEventListener("change", (e) =>
+      changeScope("area", e.target.value, e.target),
     );
+    if (record.kind === "inspection") {
+      const extras = n("section", { className: "panel" });
+      if (record.snapshot.source?.id === "FRM-431") {
+        const role = sel(
+          "supervisorType",
+          [
+            "",
+            "Drill Supervisor",
+            "Blast Supervisor",
+            "Drill and Blast Supervisor",
+          ],
+          record.supervisorType || "",
+        );
+        role.required = true;
+        role.addEventListener("change", (e) =>
+          changeScope("supervisorType", e.target.value, e.target),
+        );
+        extras.append(field("Supervisor type *", role));
+      }
+      const access = sel(
+        "accessStatus",
+        [
+          { value: "normal", label: "Normal inspection" },
+          { value: "weather", label: "No access — weather event" },
+        ],
+        record.accessStatus || "normal",
+      );
+      access.addEventListener("change", (e) =>
+        changeScope("accessStatus", e.target.value, e.target),
+      );
+      extras.append(field("Inspection access status", access));
+      if (record.accessStatus === "weather")
+        extras.append(
+          field(
+            "Weather event / inaccessible areas *",
+            area("noAccessReason", record.noAccessReason || "", {
+              required: true,
+              oninput: (e) => (record.noAccessReason = e.target.value),
+            }),
+          ),
+          txt(
+            "p",
+            "Inspection not completed — no access due to weather event. Checklist/readings will be N/A. Complete details and sign below.",
+            { className: "warn" },
+          ),
+        );
+      const crew = sel(
+        "crew",
+        ["", "A", "B", "C", "D", "Other"],
+        record.crew || "",
+      );
+      crew.required = true;
+      crew.addEventListener("change", (e) => {
+        record.crew = e.target.value;
+        rules.apply(record);
+        editor();
+        scheduleSave();
+      });
+      extras.append(field("Crew *", crew));
+      if (record.crew === "Other")
+        extras.append(
+          field(
+            "Specify crew *",
+            inp("crewOther", record.crewOther || "", "text", {
+              required: true,
+              maxLength: 100,
+              oninput: (e) => {
+                record.crewOther = e.target.value;
+                rules.apply(record);
+              },
+            }),
+          ),
+        );
+      if (record.area === "Other")
+        extras.append(
+          field(
+            "Specify area *",
+            inp("areaOther", record.areaOther || "", "text", {
+              required: true,
+              maxLength: 100,
+              oninput: (e) => (record.areaOther = e.target.value),
+            }),
+          ),
+        );
+      form.append(extras);
+    }
     if (record.kind === "handover")
       form.append(
         n(
@@ -53279,6 +54085,8 @@ window.MineSourceAssets={"definitions":[{"id":"FRM-224","name":"Supervisor Daily
       );
     const sections = [];
     for (const question of record.snapshot.questions) {
+      if (record.kind === "inspection" && question.id === "source_crew")
+        continue;
       let control;
       if (question.type === "textarea")
         control = area(question.id, record.answers[question.id] || "");
@@ -53305,7 +54113,10 @@ window.MineSourceAssets={"definitions":[{"id":"FRM-224","name":"Supervisor Daily
       const section = n(
         "section",
         { className: "question" },
-        field(question.label + (question.required ? " *" : ""), control),
+        field(
+          question.label + (rules.required(record, question) ? " *" : ""),
+          control,
+        ),
       );
       if (question.photoMode !== "none") {
         section.append(
@@ -53331,7 +54142,7 @@ window.MineSourceAssets={"definitions":[{"id":"FRM-224","name":"Supervisor Daily
       for (const x of sections) {
         const shown = visible(x.question);
         x.section.hidden = !shown;
-        x.control.required = shown && x.question.required;
+        x.control.required = shown && rules.required(record, x.question);
         x.control.disabled = !shown;
       }
     }
@@ -53378,6 +54189,7 @@ window.MineSourceAssets={"definitions":[{"id":"FRM-224","name":"Supervisor Daily
               "Remove action",
               () => {
                 record.actions = record.actions.filter((x) => x.id !== a.id);
+                scheduleSave();
                 drawActions();
               },
               "danger",
@@ -53419,6 +54231,7 @@ window.MineSourceAssets={"definitions":[{"id":"FRM-224","name":"Supervisor Daily
               progress: [],
             });
             drawActions();
+            scheduleSave();
           },
           "secondary",
         ),
@@ -53464,6 +54277,11 @@ window.MineSourceAssets={"definitions":[{"id":"FRM-224","name":"Supervisor Daily
         ),
       );
     }
+    signSection.id = "signature-section";
+    if (record.accessStatus === "weather") {
+      for (const panel of form.querySelectorAll(".panel"))
+        if (panel.querySelector("h2")) panel.hidden = true;
+    }
     form.append(signSection);
     form.append(n("button", { type: "submit" }, "Complete & generate PDF"));
     form.addEventListener("submit", (e) => {
@@ -53475,17 +54293,40 @@ window.MineSourceAssets={"definitions":[{"id":"FRM-224","name":"Supervisor Daily
       n(
         "div",
         { className: "buttons" },
+        btn("Back to Home", goHome, "secondary"),
+        btn(
+          "Templates & delivery settings",
+          async () => {
+            await flushDraft();
+            config();
+          },
+          "secondary",
+        ),
         btn("Clear report / finish", finish, "danger"),
       ),
     );
   }
   async function generate() {
     if (busy) throw new Error("Wait for photo processing to finish.");
+    rules.apply(record);
+    if (record.kind === "inspection") {
+      required(record.crew, "Crew");
+      if (record.crew === "Other") required(record.crewOther, "Specify crew");
+      if (record.area === "Other") required(record.areaOther, "Specify area");
+      if (record.snapshot.source?.id === "FRM-431")
+        required(record.supervisorType, "Supervisor type");
+      if (record.accessStatus === "weather")
+        required(
+          record.noAccessReason,
+          "Weather event / inaccessible areas",
+          10000,
+        );
+    }
     for (const question of record.snapshot.questions) {
       if (!visible(question)) continue;
       const value = record.answers[question.id];
       if (
-        question.required &&
+        rules.required(record, question) &&
         (value == null ||
           String(value).trim() === "" ||
           (question.type === "checkbox" && !value))
@@ -53522,12 +54363,39 @@ window.MineSourceAssets={"definitions":[{"id":"FRM-224","name":"Supervisor Daily
       throw new Error(
         "Add the second signatory name or clear the second signature.",
       );
+    try {
+      await flushDraft();
+    } catch (e) {
+      if (
+        !confirm(
+          "Draft could not be saved: " +
+            e.message +
+            " Generate a PDF from this tab's current data anyway? Download and verify it before leaving.",
+        )
+      )
+        return;
+    }
     const mark = epoch;
     busy = true;
     notice("Generating your PDF on this device…");
     try {
       const done = clone(record);
-      done.status = "completed_on_device";
+      done.status =
+        done.accessStatus === "weather"
+          ? "inspection_not_completed_no_access"
+          : "completed_on_device";
+      if (done.accessStatus === "weather")
+        for (const q of done.snapshot.questions)
+          if (
+            !["source_crew", "source_location", "source_time"].includes(q.id) &&
+            !q.id.startsWith("comment_")
+          )
+            done.answers[q.id] = "N/A";
+      if (done.supervisorType) done.authorPosition = done.supervisorType;
+      if (done.area === "Other") done.area = "Other — " + done.areaOther;
+      if (done.kind === "inspection")
+        done.answers.source_crew =
+          done.crew === "Other" ? "Other — " + done.crewOther : done.crew;
       done.submittedAt = new Date().toISOString();
       done.signature = {
         data: signature,
@@ -53550,6 +54418,34 @@ window.MineSourceAssets={"definitions":[{"id":"FRM-224","name":"Supervisor Daily
             (q) => q.id === p.questionId && visible(q),
           ),
       );
+      if (done.kind === "inspection" && !done.snapshot.source) {
+        for (const [id, label, value] of [
+          ["report_crew", "Crew", done.answers.source_crew],
+          [
+            "report_access_status",
+            "Inspection access status",
+            done.accessStatus === "weather"
+              ? "Inspection not completed — no access due to weather event"
+              : "Normal inspection",
+          ],
+          [
+            "report_weather_reason",
+            "Weather event / inaccessible areas",
+            done.noAccessReason,
+          ],
+        ])
+          if (value) {
+            done.snapshot.questions.push({
+              id,
+              label,
+              type: "text",
+              required: false,
+              photoMode: "none",
+              condition: null,
+            });
+            done.answers[id] = value;
+          }
+      }
       const renderer = done.snapshot.source
         ? window.MineSourcePDF
         : window.MinePDF;
@@ -53558,7 +54454,11 @@ window.MineSourceAssets={"definitions":[{"id":"FRM-224","name":"Supervisor Daily
         siteName: settings.siteName,
         timeZone: settings.timeZone,
         actions: done.actions,
-        submissionLabel: "Completed on device",
+        submissionLabel:
+          done.accessStatus === "weather"
+            ? "Inspection not completed — no access due to weather event: " +
+              done.noAccessReason
+            : "Completed on device",
         profileName: (name) => name,
         actionDateOnly: true,
       });
@@ -53667,7 +54567,12 @@ window.MineSourceAssets={"definitions":[{"id":"FRM-224","name":"Supervisor Daily
         ),
         field(
           "Requested sender email",
-          inp("sender", settings.senderEmail, "email", { maxLength: 254 }),
+          inp(
+            "sender",
+            settings[record.kind + "SenderEmail"] || settings.senderEmail,
+            "email",
+            { maxLength: 254 },
+          ),
         ),
         btn(
           "Prepare Outlook draft with PDF",
@@ -53747,7 +54652,12 @@ window.MineSourceAssets={"definitions":[{"id":"FRM-224","name":"Supervisor Daily
         ),
         field(
           "SharePoint folder URL",
-          inp("sharepoint", settings.sharepointUrl, "url", { maxLength: 3000 }),
+          inp(
+            "sharepoint",
+            settings[record.kind + "SharepointUrl"] || settings.sharepointUrl,
+            "url",
+            { maxLength: 3000 },
+          ),
         ),
         btn(
           "Open SharePoint folder",
@@ -53777,6 +54687,7 @@ window.MineSourceAssets={"definitions":[{"id":"FRM-224","name":"Supervisor Daily
           },
           "secondary",
         ),
+        btn("Back to Home", goHome, "secondary"),
         btn("Clear report / finish", finish, "danger"),
       ),
     );
@@ -53806,7 +54717,7 @@ window.MineSourceAssets={"definitions":[{"id":"FRM-224","name":"Supervisor Daily
       txt("h1", "Private report capture"),
       txt(
         "p",
-        "Answers, identity and pictures are processed in this page's memory. No server receives them from this application; no IndexedDB, local/session storage, cookies, service worker or analytics is used.",
+        "Unfinished reports are encrypted with your PIN-derived key and saved in this browser database. PINs and keys are not stored. Delivery settings are stored separately without encryption; do not enter passwords/tokens. The service worker caches website assets only. No report upload or analytics is used.",
       ),
       txt(
         "p",
@@ -53822,9 +54733,9 @@ window.MineSourceAssets={"definitions":[{"id":"FRM-224","name":"Supervisor Daily
       ),
       txt(
         "p",
-        "Keep this page open while working. Once loaded it can create a PDF without networking, but offline reload/start is not guaranteed. No history, persistent offline drafts, shared identity, approval engine or live automatic delivery is included in this mobile mode.",
+        "Wait for Saved locally and Offline website ready before leaving or disconnecting. Offline reload and draft recovery depend on retained browser storage. Forgotten PINs cannot recover drafts. Private browsing, clearing website data or storage eviction can remove drafts/cache. No completed history, approval engine or automatic email/upload is included.",
       ),
-      btn("Back to start", home, "secondary"),
+      btn("Back to Home", goHome, "secondary"),
     );
   }
   function sourceTemplate(d) {
@@ -54023,6 +54934,18 @@ window.MineSourceAssets={"definitions":[{"id":"FRM-224","name":"Supervisor Daily
       timeZone: required(s.timeZone, "Timezone", 100),
       handoverEmail: required(s.handoverEmail, "Handover email", 254),
       inspectionEmail: required(s.inspectionEmail, "Inspection email", 254),
+      handoverSenderEmail:
+        s.handoverSenderEmail || s.senderEmail || "Massab.Abrar@bravus.com.au",
+      inspectionSenderEmail:
+        s.inspectionSenderEmail ||
+        s.senderEmail ||
+        "Massab.Abrar@bravus.com.au",
+      handoverSharepointUrl: s.handoverSharepointUrl
+        ? sharepointURL(s.handoverSharepointUrl)
+        : s.sharepointUrl || "",
+      inspectionSharepointUrl: s.inspectionSharepointUrl
+        ? sharepointURL(s.inspectionSharepointUrl)
+        : s.sharepointUrl || "",
       senderEmail: required(
         s.senderEmail || "Massab.Abrar@bravus.com.au",
         "Requested sender email",
@@ -54037,6 +54960,8 @@ window.MineSourceAssets={"definitions":[{"id":"FRM-224","name":"Supervisor Daily
       out.handoverEmail,
       out.inspectionEmail,
       out.senderEmail,
+      out.handoverSenderEmail,
+      out.inspectionSenderEmail,
     ])
       if (!/^[^\s<>@,;]+@[^\s<>@,;]+\.[^\s<>@,;]+$/.test(address))
         throw new Error("Enter valid recipient email addresses.");
@@ -54176,12 +55101,12 @@ window.MineSourceAssets={"definitions":[{"id":"FRM-224","name":"Supervisor Daily
       txt("h1", "Templates & delivery"),
       txt(
         "p",
-        "Configuration changes stay in this session. Export a template/config file to reuse them. It contains no report answers, pictures or profiles; a configured company URL/template may itself be confidential.",
+        "Save settings to keep delivery addresses, folder URLs, area options and templates in this browser after reopening. They contain no report answers or PINs. Settings are not encrypted; do not enter secrets. They do not transfer between devices.",
         { className: "warn" },
       ),
       txt(
         "p",
-        "Editing here affects only this browser session. GitHub Pages cannot enforce owner-only template permissions. Supplied inspections use a Bravus source-style PDF matrix; custom additional fields are included after the source questions.",
+        "Editing here affects only this browser. GitHub Pages cannot enforce owner-only template permissions. Supplied inspections use a Bravus source-style PDF matrix; custom additional fields are included after the source questions.",
         { className: "hint" },
       ),
     );
@@ -54219,17 +55144,38 @@ window.MineSourceAssets={"definitions":[{"id":"FRM-224","name":"Supervisor Daily
         "Inspection email",
         inp("inspectionEmail", s.inspectionEmail, "email", { required: true }),
       ),
-      field(
-        "Requested sender email",
-        inp("senderEmail", s.senderEmail, "email", { required: true }),
-      ),
-      field(
-        "SharePoint folder URL",
-        inp("sharepointUrl", s.sharepointUrl, "url", { maxLength: 3000 }),
-      ),
     );
+    for (const kind of ["handover", "inspection"]) {
+      form.append(
+        field(
+          (kind === "handover" ? "Handover" : "Inspection") +
+            " requested sender email",
+          inp(
+            kind + "SenderEmail",
+            s[kind + "SenderEmail"] || s.senderEmail,
+            "email",
+            { required: true },
+          ),
+        ),
+        field(
+          (kind === "handover" ? "Handover" : "Inspection") +
+            " SharePoint folder URL",
+          inp(
+            kind + "SharepointUrl",
+            s[kind + "SharepointUrl"] || s.sharepointUrl,
+            "url",
+            { maxLength: 3000 },
+          ),
+        ),
+      );
+    }
     function capture() {
       Object.assign(s, {
+        handoverSenderEmail: form.elements.handoverSenderEmail.value,
+        inspectionSenderEmail: form.elements.inspectionSenderEmail.value,
+        handoverSharepointUrl: form.elements.handoverSharepointUrl.value.trim(),
+        inspectionSharepointUrl:
+          form.elements.inspectionSharepointUrl.value.trim(),
         companyName: form.elements.company.value,
         siteName: form.elements.site.value,
         timeZone: form.elements.zone.value,
@@ -54237,8 +55183,8 @@ window.MineSourceAssets={"definitions":[{"id":"FRM-224","name":"Supervisor Daily
         shifts: JSON.parse(form.elements.shifts.value),
         handoverEmail: form.elements.handoverEmail.value,
         inspectionEmail: form.elements.inspectionEmail.value,
-        senderEmail: form.elements.senderEmail.value,
-        sharepointUrl: form.elements.sharepointUrl.value.trim(),
+        senderEmail: s.senderEmail || "Massab.Abrar@bravus.com.au",
+        sharepointUrl: "",
       });
     }
     const list = n(
@@ -54302,18 +55248,42 @@ window.MineSourceAssets={"definitions":[{"id":"FRM-224","name":"Supervisor Daily
         "secondary",
       ),
     );
-    form.append(list, n("button", { type: "submit" }, "Apply configuration"));
+    form.append(
+      list,
+      n("button", { type: "submit" }, "Save settings"),
+      btn(
+        "Reset/remove saved settings",
+        async () => {
+          if (
+            !confirm(
+              "Remove saved settings and restore default delivery addresses, areas and templates? Your encrypted drafts are kept.",
+            )
+          )
+            return;
+          await window.MineDrafts.removeSettings();
+          settings = clone(defaultSettings);
+          templates = clone(defaultTemplates);
+          configDraft = null;
+          home();
+          notice(
+            "Saved settings removed and defaults restored. Encrypted drafts retained.",
+          );
+        },
+        "danger",
+      ),
+    );
     form.addEventListener("submit", (e) => {
       e.preventDefault();
-      run(() => {
+      run(async () => {
         capture();
         const valid = validateConfig(configDraft);
+        await window.MineDrafts.saveSettings(valid);
         settings = valid.settings;
         templates = valid.templates;
         configDraft = null;
         home();
         notice(
-          "Configuration applied for this session. Export configuration to reuse it.",
+          "Settings saved on this device/browser until changed or reset. The active report snapshot is preserved.",
         );
       });
     });
@@ -54344,7 +55314,7 @@ window.MineSourceAssets={"definitions":[{"id":"FRM-224","name":"Supervisor Daily
         configDraft = validateConfig(next);
         configView();
         notice(
-          "Private forms loaded into this session only. Review and Apply configuration. Keep source files and configuration exports out of public GitHub uploads.",
+          "Private forms loaded for review. Select Save settings to retain them on this device. Keep source files and configuration exports out of public GitHub uploads.",
         );
       }),
     );
@@ -54391,10 +55361,9 @@ window.MineSourceAssets={"definitions":[{"id":"FRM-224","name":"Supervisor Daily
         ),
       ),
       btn(
-        "Discard settings / back",
+        "Back to Home",
         () => {
-          configDraft = null;
-          home();
+          return goHome();
         },
         "secondary",
       ),
@@ -54402,7 +55371,10 @@ window.MineSourceAssets={"definitions":[{"id":"FRM-224","name":"Supervisor Daily
   }
   function templateEditor(t) {
     const c = $("app");
-    c.replaceChildren(txt("h1", "Edit template"));
+    c.replaceChildren(
+      txt("h1", "Edit template"),
+      btn("Back to Home", goHome, "secondary"),
+    );
     const f = n(
       "form",
       { autocomplete: "off" },
@@ -54563,15 +55535,21 @@ window.MineSourceAssets={"definitions":[{"id":"FRM-224","name":"Supervisor Daily
     });
     c.append(f);
   }
-  window.addEventListener("pagehide", reset);
+  document.addEventListener("input", () => scheduleSave());
+  document.addEventListener("change", () => scheduleSave());
+  window.addEventListener("online", updateSaveStatus);
+  window.addEventListener("offline", updateSaveStatus);
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden && record) run(flushDraft);
+  });
+  window.addEventListener("pagehide", () => {
+    if (record) run(flushDraft);
+  });
   window.addEventListener("pageshow", (e) => {
-    if (e.persisted) {
-      reset();
-      home();
-    }
+    if (e.persisted && record) run(goHome);
   });
   window.addEventListener("beforeunload", (e) => {
-    if (record) {
+    if (record && (saveState !== "Saved locally" || busy)) {
       e.preventDefault();
       e.returnValue = "";
     }
@@ -54589,7 +55567,8 @@ window.MineSourceAssets={"definitions":[{"id":"FRM-224","name":"Supervisor Daily
     );
     templates.push(source);
   }
-  home();
+  defaultTemplates = clone(templates);
+  initialise();
 })();
 
 </script>
