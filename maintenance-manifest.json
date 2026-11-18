@@ -1,0 +1,14 @@
+{
+  "source_repository": "massababrar3-cmd/Software",
+  "source_commit": "3dcddfbe5d33e45ad57524d11792b3ea9cb58add",
+  "source_directory": "maintenance-site",
+  "edition": "maintenance-1",
+  "files": {
+    "index.html": "bdf8b8cfa5edf46b8d2c3664161c7d16711b9bece9da2bcdf94b0ee6b6b01ad8",
+    "sw.js": "4c157d5a71e5f34c80f273f0feb50806f00b79f236fe41be6e7daf383813d9c8",
+    ".nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "robots.txt": "331ea9090db0c9f6f597bd9840fd5b171830f6e0b3ba1cb24dfa91f0c95aedc1",
+    "OPEN-ON-IPHONE.txt": "affd3dca00ee7d2ee8216431371102337d127067ab33485953876281505f6ebb",
+    "README.md": "3e632377c1d21af00b1e80de73d214d2e0b214972938734b601ef702d0d82056"
+  }
+}
