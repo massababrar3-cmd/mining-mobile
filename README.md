@@ -1,7 +1,12 @@
 # mining-mobile deployment mirror
 
-This repository publishes the maintenance-only page at
+Deployment files for the maintenance-only page at
 https://massababrar3-cmd.github.io/mining-mobile/ .
+
+Hosting status at the 18 November 2026 handover: Pages is disabled and the URL
+returns 404. The connected integration can push code but cannot enable Pages.
+A repository administrator must enable Settings > Pages > Deploy from a branch,
+main, / (root), then verify the successful deployment and maintenance page.
 
 Development and tests are maintained in the private
 [massababrar3-cmd/Software](https://github.com/massababrar3-cmd/Software)
